@@ -4,8 +4,10 @@ struct Baker {
 
   // MARK: - Spring
 
-  static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float]) -> BakerAnimation {
+  static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> BakerAnimation {
     let animation = BakerAnimation(keyPath: property.rawValue)
+    animation.keyTimes = [0, duration]
+    animation.duration = duration
     animation.removedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
