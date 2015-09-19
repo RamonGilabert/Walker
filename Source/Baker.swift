@@ -2,7 +2,13 @@ import Foundation
 
 struct Baker {
 
-  // MARK: - Spring
+  static let springAnimationStep = 0.001
+  static let springAnimationThreshold = 0.0001
+  static var tension: CGFloat = 200
+  static var friction: CGFloat = 10
+  static var velocity: CGFloat = 10
+
+  // MARK: - Bezier animations
 
   static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> BakerAnimation {
     let animation = BakerAnimation(keyPath: property.rawValue)
@@ -15,6 +21,10 @@ struct Baker {
 
     return animation
   }
+
+  // MARK: - Spring animations
+
+
 }
 
 class BakerAnimation: CAKeyframeAnimation {
