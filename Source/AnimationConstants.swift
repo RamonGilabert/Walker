@@ -8,14 +8,14 @@ public struct Animation {
     case EaseInOut
   }
 
-  public enum Property {
-    case PositionX
-    case PositionY
-    case Point
-    case Width
-    case Height
-    case Size
-    case Frame
+  public enum Property: String {
+    case PositionX = "position.x"
+    case PositionY = "position.y"
+    case Point = "position"
+    case Width = "size.width"
+    case Height = "size.height"
+    case Size = "transform.scale"
+    case Frame = "bounds"
   }
 }
 

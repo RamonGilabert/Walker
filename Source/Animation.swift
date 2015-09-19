@@ -3,7 +3,7 @@ import Foundation
 extension CALayer {
 
   public func animate<Value>(property: Animation.Property, to: Value, duration: NSTimeInterval, curve: Animation.Curve) {
-    
+    let animation = CAKeyframeAnimation(keyPath: property.rawValue)
   }
 
   public func animateBezier<T>(property: Animation.Property, to: T, _firstX: CGFloat, _firstY: CGFloat, _secondX: CGFloat, _secondY: CGFloat, duration: NSTimeInterval) {
