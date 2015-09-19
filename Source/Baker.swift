@@ -6,7 +6,6 @@ struct Baker {
 
   static func animate(curve: Animation.Curve, duration: NSTimeInterval, finalValue: CGFloat) -> CAAnimation {
     let animation = CAAnimation()
-    let time = Timing.timing(curve, duration)
     return animation
   }
 
@@ -15,37 +14,16 @@ struct Baker {
   // MARK: - Spring
 }
 
-struct Timing {
+class BakerAnimation: CAKeyframeAnimation {
+  var fromValue: NSValue = 0
+  var toValue: NSValue = 0
+  var timing: CFTimeInterval = 0
 
-  static func timing(curve: Animation.Curve, _ duration: NSTimeInterval) -> NSTimeInterval {
-    switch curve {
-    case .Linear:
-      return duration
-    case .EaseIn:
-      return duration * duration * duration
-    case .EaseOut:
-      return pow(duration - 1, 3) + 1
-    case .EaseInOut:
-      return duration < 0.5 ? pow(duration, 3) * 4 : pow(2 * duration - 2, 2) * (duration - 1) + 1
-    }
-  }
-}
-
-struct Interpolation {
-
-  static func position() {
-
+  override init() {
+    super.init()
   }
 
-  static func point() {
-
-  }
-
-  static func size() {
-
-  }
-
-  static func frame() {
-
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
