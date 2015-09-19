@@ -46,7 +46,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animationView.layer.animate(.PositionX, to: 50, duration: 0.6, curve: .EaseIn)
+    animationView.layer.animate(.PositionY, from: animationView.layer.frame.origin.x, to: 375, duration: 1.2, curve: .EaseIn)
   }
 
   // MARK: - Configuration
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
   func setupFrames() {
     animationView.frame = CGRect(
       x: (totalWidth - Dimensions.animationViewSize) / 2,
-      y: (totalHeight - Dimensions.animationViewSize) / 2 - 75,
+      y: (totalHeight - Dimensions.animationViewSize) / 2 - 200,
       width: Dimensions.animationViewSize,
       height: Dimensions.animationViewSize)
 

@@ -2,11 +2,21 @@ import Foundation
 
 extension CALayer {
 
-  public func animate<Value>(property: Animation.Property, from: Value, to: Value, duration: NSTimeInterval, curve: Animation.Curve) {
+  public func animate(property: Animation.Property, from: NSValue, to: NSValue, duration: NSTimeInterval, curve: Animation.Curve) {
     let animation = BakerAnimation(keyPath: property.rawValue)
-    animation.fromValue = from as! CGFloat
-    animation.toValue = from as! CGFloat
-    addAnimation(animation, forKey: property.rawValue)
+    animation.values = [from, to]
+    animation.keyTimes = [0, duration]
+    animation.duration = duration
+    animation.removedOnCompletion = false
+    animation.fillMode = kCAFillModeForwards
+
+    animation.timingFunction = CAMediaTimingFunction(controlPoints:
+      AnimationConstant.CurvePoints.EaseInOut.firstX,
+      AnimationConstant.CurvePoints.EaseInOut.firstY,
+      AnimationConstant.CurvePoints.EaseInOut.secondX,
+      AnimationConstant.CurvePoints.EaseInOut.secondY)
+
+    addAnimation(animation, forKey: nil)
   }
 
   public func animateBezier<T>(property: Animation.Property, to: T, _firstX: CGFloat, _firstY: CGFloat, _secondX: CGFloat, _secondY: CGFloat, duration: NSTimeInterval) {
@@ -19,8 +29,9 @@ extension CALayer {
 }
 
 class BakerAnimation: CAKeyframeAnimation {
-  var fromValue: CGFloat = 0
-  var toValue : CGFloat = 0
+  var fromValue: NSValue = 0
+  var toValue: NSValue = 0
+  var timing: CFTimeInterval = 0
 
   override init() {
     super.init()

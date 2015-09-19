@@ -14,7 +14,7 @@ public struct Animation {
     case Point = "position"
     case Width = "size.width"
     case Height = "size.height"
-    case Size = "transform.scale"
+    case Size = "bounds.size"
     case Frame = "bounds"
   }
 }
@@ -22,38 +22,38 @@ public struct Animation {
 struct AnimationConstant {
   struct CurvePoints {
     struct Linear {
-      static let firstX: CGFloat = 0
-      static let firstY: CGFloat = 0
-      static let secondX: CGFloat = 1
-      static let secondY: CGFloat = 1
+      static let firstX: Float = 0
+      static let firstY: Float = 0
+      static let secondX: Float = 1
+      static let secondY: Float = 1
     }
 
     struct Ease {
-      static let firstX: CGFloat = 0.25
-      static let firstY: CGFloat = 0.1
-      static let secondX: CGFloat = 0.25
-      static let secondY: CGFloat = 1
+      static let firstX: Float = 0.25
+      static let firstY: Float = 0.1
+      static let secondX: Float = 0.25
+      static let secondY: Float = 1
     }
 
     struct EaseIn {
-      static let firstX: CGFloat = 0.42
-      static let firstY: CGFloat = 0
-      static let secondX: CGFloat = 1
-      static let secondY: CGFloat = 1
+      static let firstX: Float = 0.42
+      static let firstY: Float = 0
+      static let secondX: Float = 1
+      static let secondY: Float = 1
     }
 
     struct EaseOut {
-      static let firstX: CGFloat = 0
-      static let firstY: CGFloat = 0
-      static let secondX: CGFloat = 0.58
-      static let secondY: CGFloat = 1
+      static let firstX: Float = 0
+      static let firstY: Float = 0
+      static let secondX: Float = 0.58
+      static let secondY: Float = 1
     }
 
     struct EaseInOut {
-      static let firstX: CGFloat = 0.42
-      static let firstY: CGFloat = 0
-      static let secondX: CGFloat = 0.58
-      static let secondY: CGFloat = 1
+      static let firstX: Float = 0.42
+      static let firstY: Float = 0
+      static let secondX: Float = 0.58
+      static let secondY: Float = 1
     }
   }
 }
