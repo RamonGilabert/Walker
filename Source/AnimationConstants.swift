@@ -34,4 +34,23 @@ public struct Animation {
     }
     return []
   }
+
+  public static func propertyValue(property: Property, layer: CALayer) -> NSValue {
+    switch property {
+    case .PositionX:
+      return layer.position.x
+    case .PositionY:
+      return layer.position.y
+    case .Point:
+      return NSValue(CGPoint: layer.position)
+    case .Width:
+      return layer.frame.width
+    case .Height:
+      return layer.frame.height
+    case .Size:
+      return NSValue(CGSize: layer.frame.size)
+    case .Frame:
+      return NSValue(CGRect: layer.frame)
+    }
+  }
 }
