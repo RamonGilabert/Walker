@@ -7,15 +7,15 @@ struct Animation {
   var duration: NSTimeInterval!
   var delay: NSTimeInterval?
 
-  func animate(curve: Baker.AnimationCurve, duration: NSTimeInterval) {
+  func animate(curve: Baker.AnimationCurve, duration: NSTimeInterval, animations: (() -> Void)!) {
 
   }
 
-  func cubicBezierAnimation(firstX: CGFloat, firstY: CGFloat, secondX: CGFloat, secondY: CGFloat, duration: NSTimeInterval) {
+  func cubicBezierAnimation(firstX: CGFloat, firstY: CGFloat, secondX: CGFloat, secondY: CGFloat, duration: NSTimeInterval, animations: (() -> Void)!) {
 
   }
 
-  func springAnimation(tension: CGFloat, friction: CGFloat, velocity: CGFloat) {
+  func springAnimation(tension: CGFloat, friction: CGFloat, velocity: CGFloat, animations: (() -> Void)!) {
     
   }
 }
