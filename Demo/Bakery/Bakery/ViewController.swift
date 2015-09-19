@@ -46,7 +46,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animationView.layer.animate(Animation.Curve.EaseIn, duration: 0.6)
+    animationView.layer.animate(.EaseIn, duration: 0.6, )
   }
 
   // MARK: - Configuration
