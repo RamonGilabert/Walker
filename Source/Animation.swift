@@ -11,6 +11,7 @@ extension CALayer {
     animation.duration = duration
     animation.removedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
+    
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
       AnimationConstant.CurvePoints.EaseInOut.firstX,
       AnimationConstant.CurvePoints.EaseInOut.firstY,
