@@ -2,15 +2,15 @@ import Foundation
 
 extension CALayer {
 
-  public func animate<T>(curve: Animation.Curve, duration: NSTimeInterval, from: T, to: T) {
+  public func animate<Value>(to: Value, duration: NSTimeInterval, curve: Animation.Curve) {
     print(self.backgroundColor)
   }
 
-  public func cubicBezierAnimation<T>(firstX: CGFloat, firstY: CGFloat, secondX: CGFloat, secondY: CGFloat, duration: NSTimeInterval, from: T, to: T) {
+  public func cubicBezierAnimation<T>(to: T, _firstX: CGFloat, _firstY: CGFloat, _secondX: CGFloat, _secondY: CGFloat, duration: NSTimeInterval) {
 
   }
 
-  public func springAnimation<T>(tension: CGFloat, friction: CGFloat, velocity: CGFloat, from: T, to: T) {
+  public func springAnimation<T>(to: T, _tension: CGFloat, _friction: CGFloat, _velocity: CGFloat) {
     
   }
 }
