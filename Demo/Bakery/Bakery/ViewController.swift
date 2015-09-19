@@ -46,7 +46,9 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-
+    Animation.animate(.EaseIn, duration: 0.5, animations: {
+      self.animationView.layer.cornerRadius = Dimensions.animationViewSize / 2
+    })
   }
 
   // MARK: - Configuration
