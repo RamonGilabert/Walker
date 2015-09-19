@@ -2,10 +2,9 @@ import Foundation
 
 extension CALayer {
 
-  public func animate(property: Animation.Property, to: NSValue, duration: NSTimeInterval, curve: Animation.Curve?) {
-    let animationCurve = curve != nil ? curve : .Linear
+  public func animate(property: Animation.Property, to: NSValue, duration: NSTimeInterval, curve: Animation.Curve = .Linear) {
     let animation = BakerAnimation(keyPath: property.rawValue)
-    let bezierPoints = Animation.bezierPoints(animationCurve!)
+    let bezierPoints = Animation.bezierPoints(curve)
 
     animation.values = [position.y, to]
     animation.keyTimes = [0, duration]
