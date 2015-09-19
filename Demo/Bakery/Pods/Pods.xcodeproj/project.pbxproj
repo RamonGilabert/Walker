@@ -10,12 +10,14 @@
 		024C103848113AEF76AC5A742AF80B75 /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E615E9CA3F7C983E82758A5B9F64D21 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
 		291128AA1BADC39A00C66827 /* Baker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128A91BADC39A00C66827 /* Baker.swift */; settings = {ASSET_TAGS = (); }; };
+		291128AC1BADC43A00C66827 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128AB1BADC43A00C66827 /* Animation.swift */; settings = {ASSET_TAGS = (); }; };
 		98E55E8D3CA662C49E3F8F55DBC24C49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF618E490B3F514801A653D82D0430C /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		176AC4E54E5D939F0BF6A5977E5BFF08 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		291128A91BADC39A00C66827 /* Baker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Baker.swift; path = Source/Baker.swift; sourceTree = "<group>"; };
+		291128AB1BADC43A00C66827 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = Source/Animation.swift; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
 		68D6E7B3B326A240AAB038974DA0CA42 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		6DF618E490B3F514801A653D82D0430C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				291128A91BADC39A00C66827 /* Baker.swift */,
+				291128AB1BADC43A00C66827 /* Animation.swift */,
 			);
 			name = Bakery;
 			path = ../../..;
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E615E9CA3F7C983E82758A5B9F64D21 /* Pods-dummy.m in Sources */,
+				291128AC1BADC43A00C66827 /* Animation.swift in Sources */,
 				291128AA1BADC39A00C66827 /* Baker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
