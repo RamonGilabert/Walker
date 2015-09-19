@@ -1,4 +1,5 @@
 import UIKit
+import Baker
 
 class ViewController: UIViewController {
 
@@ -45,9 +46,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    UIView.animateWithDuration(0.5, animations: {
-      self.animationView.frame.origin.x += 15
-    })
+
   }
 
   // MARK: - Configuration

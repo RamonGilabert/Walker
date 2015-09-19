@@ -11,6 +11,9 @@
 		1E615E9CA3F7C983E82758A5B9F64D21 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
 		291128AA1BADC39A00C66827 /* Baker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128A91BADC39A00C66827 /* Baker.swift */; settings = {ASSET_TAGS = (); }; };
 		291128AC1BADC43A00C66827 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128AB1BADC43A00C66827 /* Animation.swift */; settings = {ASSET_TAGS = (); }; };
+		291128B51BADD17E00C66827 /* Baker.h in Headers */ = {isa = PBXBuildFile; fileRef = 291128B41BADD17E00C66827 /* Baker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		291128BA1BADD18400C66827 /* Baker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128A91BADC39A00C66827 /* Baker.swift */; settings = {ASSET_TAGS = (); }; };
+		291128BB1BADD18700C66827 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128AB1BADC43A00C66827 /* Animation.swift */; settings = {ASSET_TAGS = (); }; };
 		98E55E8D3CA662C49E3F8F55DBC24C49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF618E490B3F514801A653D82D0430C /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -18,6 +21,9 @@
 		176AC4E54E5D939F0BF6A5977E5BFF08 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		291128A91BADC39A00C66827 /* Baker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Baker.swift; path = Source/Baker.swift; sourceTree = "<group>"; };
 		291128AB1BADC43A00C66827 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animation.swift; path = Source/Animation.swift; sourceTree = "<group>"; };
+		291128B21BADD17E00C66827 /* Baker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Baker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		291128B41BADD17E00C66827 /* Baker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Baker.h; sourceTree = "<group>"; };
+		291128B61BADD17E00C66827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
 		68D6E7B3B326A240AAB038974DA0CA42 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		6DF618E490B3F514801A653D82D0430C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -33,6 +39,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		291128AE1BADD17E00C66827 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3168C673007601935FDD8CF0A0C1C66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,8 +61,18 @@
 			isa = PBXGroup;
 			children = (
 				176AC4E54E5D939F0BF6A5977E5BFF08 /* Pods.framework */,
+				291128B21BADD17E00C66827 /* Baker.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		291128B31BADD17E00C66827 /* Baker */ = {
+			isa = PBXGroup;
+			children = (
+				291128B41BADD17E00C66827 /* Baker.h */,
+				291128B61BADD17E00C66827 /* Info.plist */,
+			);
+			path = Baker;
 			sourceTree = "<group>";
 		};
 		53F661C0CA7190D2CF05023FB33D61E4 /* iOS */ = {
@@ -83,6 +106,7 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				C45C9F2E1C640283E3EAC45381E2E536 /* Development Pods */,
+				291128B31BADD17E00C66827 /* Baker */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				1F65C4CD40C947C4415F8D28536735CC /* Products */,
 				B7B80995527643776607AFFA75B91E24 /* Targets Support Files */,
@@ -126,6 +150,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		291128AF1BADD17E00C66827 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291128B51BADD17E00C66827 /* Baker.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		59A00F9704B6AFE0A9DC699A4B8B033F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,6 +186,24 @@
 			productReference = 176AC4E54E5D939F0BF6A5977E5BFF08 /* Pods.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		291128B11BADD17E00C66827 /* Baker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291128B71BADD17E00C66827 /* Build configuration list for PBXNativeTarget "Baker" */;
+			buildPhases = (
+				291128AD1BADD17E00C66827 /* Sources */,
+				291128AE1BADD17E00C66827 /* Frameworks */,
+				291128AF1BADD17E00C66827 /* Headers */,
+				291128B01BADD17E00C66827 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Baker;
+			productName = Baker;
+			productReference = 291128B21BADD17E00C66827 /* Baker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -162,6 +212,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					291128B11BADD17E00C66827 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -176,11 +231,31 @@
 			projectRoot = "";
 			targets = (
 				1BA84416B19DF31967CCD7D02D962E49 /* Pods */,
+				291128B11BADD17E00C66827 /* Baker */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		291128B01BADD17E00C66827 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		291128AD1BADD17E00C66827 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291128BB1BADD18700C66827 /* Animation.swift in Sources */,
+				291128BA1BADD18400C66827 /* Baker.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94E92B28A5AF3478251705B46FC8586F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +299,71 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		291128B81BADD17E00C66827 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Baker/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = RamonGilabert.Baker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		291128B91BADD17E00C66827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = Baker/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = RamonGilabert.Baker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -331,6 +471,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		291128B71BADD17E00C66827 /* Build configuration list for PBXNativeTarget "Baker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291128B81BADD17E00C66827 /* Debug */,
+				291128B91BADD17E00C66827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

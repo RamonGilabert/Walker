@@ -8,7 +8,7 @@ struct Animation {
   var delay: NSTimeInterval?
 
   func animate(curve: Baker.AnimationCurve, duration: NSTimeInterval, animations: (() -> Void)!) {
-
+    print(animations)
   }
 
   func cubicBezierAnimation(firstX: CGFloat, firstY: CGFloat, secondX: CGFloat, secondY: CGFloat, duration: NSTimeInterval, animations: (() -> Void)!) {
