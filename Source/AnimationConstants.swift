@@ -7,6 +7,16 @@ public struct Animation {
     case EaseOut
     case EaseInOut
   }
+
+  public enum Property {
+    case PositionX
+    case PositionY
+    case Point
+    case Width
+    case Height
+    case Size
+    case Frame
+  }
 }
 
 struct AnimationConstant {
