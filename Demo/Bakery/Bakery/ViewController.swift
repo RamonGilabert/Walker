@@ -1,25 +1,11 @@
-//
-//  ViewController.swift
-//  Bakery
-//
-//  Created by Ramon Gilabert Llop on 9/19/15.
-//  Copyright © 2015 Ramon Gilabert Llop. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+
+    view.backgroundColor = UIColor.redColor()
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-
 }
 
