@@ -49,6 +49,7 @@ class ViewController: UIViewController {
 
   func animationButtonDidPress(button: UIButton) {
     animationView.layer.animateBezier(.PositionY, to: 350, bezierPoints: [0.17, 0.67, 0.83, 0.67], duration: 1)
+    animationView.layer.animateBezier(.CornerRadius, to: Dimensions.animationViewSize / 2, bezierPoints: [0.17, 0.67, 0.83, 0.67], duration: 1)
   }
 
   // MARK: - Configuration

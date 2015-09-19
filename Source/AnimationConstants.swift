@@ -17,6 +17,8 @@ public struct Animation {
     case Height = "size.height"
     case Size = "bounds.size"
     case Frame = "bounds"
+    case CornerRadius = "cornerRadius"
+    case Transform = "transform"
   }
 
   public static func bezierPoints(curve: Curve) -> [Float] {
@@ -51,6 +53,10 @@ public struct Animation {
       return NSValue(CGSize: layer.frame.size)
     case .Frame:
       return NSValue(CGRect: layer.frame)
+    case .CornerRadius:
+      return layer.cornerRadius
+    case .Transform:
+      return NSValue(CATransform3D: layer.transform)
     }
   }
 }
