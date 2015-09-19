@@ -1,0 +1,14 @@
+PODS:
+  - Bakery (0.1.0)
+
+DEPENDENCIES:
+  - Bakery (from `../../`)
+
+EXTERNAL SOURCES:
+  Bakery:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  Bakery: e2abf33d775b4c17c2c36e13b8c13bebeb9b554f
+
+COCOAPODS: 0.39.0.beta.4

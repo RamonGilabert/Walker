@@ -1,0 +1,21 @@
+{
+  "name": "Bakery",
+  "summary": "The new animation library",
+  "version": "0.1.0",
+  "homepage": "https://github.com/RamonGilabert/Bakery",
+  "license": "MIT",
+  "authors": {
+    "Hyper Interaktiv AS": "ramon.gilabert.llop@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/RamonGilabert/Bakery.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/RamonGilabert",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Source/**/*",
+  "frameworks": "AVFoundation"
+}
