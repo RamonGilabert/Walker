@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
   lazy var animationView: UIView = {
     let view = UIView()
-    view.backgroundColor = Colors.mainColor
+    view.backgroundColor = UIColor.whiteColor()
     view.layer.cornerRadius = 7.5
 
     return view
@@ -23,9 +23,11 @@ class ViewController: UIViewController {
 
   lazy var animationButton: UIButton = {
     let button = UIButton()
-    button.backgroundColor = Colors.mainColor
     button.layer.cornerRadius = 3.5
+    button.layer.borderColor = UIColor.whiteColor().CGColor
+    button.layer.borderWidth = 1.5
     button.setTitle("Start animation".uppercaseString, forState: .Normal)
+    button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     button.addTarget(self, action: "animationButtonDidPress:", forControlEvents: .TouchUpInside)
 
     return button
@@ -38,7 +40,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     for subview in [animationView, animationButton] { view.addSubview(subview) }
-    view.backgroundColor = UIColor.whiteColor()
+    view.backgroundColor = Colors.mainColor
 
     setupFrames()
   }
@@ -63,6 +65,12 @@ class ViewController: UIViewController {
       y: totalHeight - Dimensions.buttonHeight - 75,
       width: totalWidth - Dimensions.buttonOffset,
       height: Dimensions.buttonHeight)
+  }
+
+  // MARK: - UIStatusBar methods
+
+  override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    return .LightContent
   }
 }
 
