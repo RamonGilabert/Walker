@@ -14,7 +14,9 @@ public struct Animation {
   public var delay: NSTimeInterval?
 
   public static func animate(curve: AnimationCurve, duration: NSTimeInterval, animations: (() -> Void)!) {
-    print(animations)
+    UIView.animateWithDuration(0.4, animations: {
+      animations()
+    })
   }
 
   public static func cubicBezierAnimation(firstX: CGFloat, firstY: CGFloat, secondX: CGFloat, secondY: CGFloat, duration: NSTimeInterval, animations: (() -> Void)!) {
