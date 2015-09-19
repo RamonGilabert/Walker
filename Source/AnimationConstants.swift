@@ -1,8 +1,8 @@
 import Foundation
 
 public struct Animation {
-  public enum Curve {
-    case Linear
+  public enum Curve: AnimationConstant.CurvePoints {
+    case Linear = Animat
     case EaseIn
     case EaseOut
     case EaseInOut
@@ -19,37 +19,37 @@ public struct Animation {
   }
 }
 
-struct AnimationConstant {
-  struct CurvePoints {
-    struct Linear {
+public struct AnimationConstant: RawRepresentable {
+  public struct CurvePoints {
+    public struct Linear {
       static let firstX: Float = 0
       static let firstY: Float = 0
       static let secondX: Float = 1
       static let secondY: Float = 1
     }
 
-    struct Ease {
+    public struct Ease {
       static let firstX: Float = 0.25
       static let firstY: Float = 0.1
       static let secondX: Float = 0.25
       static let secondY: Float = 1
     }
 
-    struct EaseIn {
+    public struct EaseIn {
       static let firstX: Float = 0.42
       static let firstY: Float = 0
       static let secondX: Float = 1
       static let secondY: Float = 1
     }
 
-    struct EaseOut {
+    public struct EaseOut {
       static let firstX: Float = 0
       static let firstY: Float = 0
       static let secondX: Float = 0.58
       static let secondY: Float = 1
     }
 
-    struct EaseInOut {
+    public struct EaseInOut {
       static let firstX: Float = 0.42
       static let firstY: Float = 0
       static let secondX: Float = 0.58
