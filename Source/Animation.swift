@@ -3,6 +3,7 @@ import Foundation
 public struct Animation {
 
   public enum AnimationCurve {
+    case Linear
     case EaseIn
     case EaseOut
     case EaseInOut
