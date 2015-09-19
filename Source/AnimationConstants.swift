@@ -19,7 +19,7 @@ public struct Animation {
     case Frame = "bounds"
   }
 
-  public static func bezierPoints(curve: Curve) -> [CGFloat] {
+  public static func bezierPoints(curve: Curve) -> [Float] {
     switch curve {
     case .Linear:
       return [0, 0, 1, 1]
