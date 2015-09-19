@@ -46,8 +46,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animationView.layer.animate(25, to: <#T##Value#>, duration: <#T##NSTimeInterval#>, curve: <#T##Animation.Curve#>)
-    animationView.layer.animate(.EaseIn, duration: 0.6, from: <#T##T#>, to: <#T##T#>)
+    animationView.layer.animation(CGPoint(x: 125, y: 125), duration: 0.6, curve: .EaseIn)
   }
 
   // MARK: - Configuration
