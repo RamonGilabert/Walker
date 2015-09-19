@@ -31,4 +31,19 @@ struct Timing {
 
 struct Interpolation {
 
+  static func position() {
+
+  }
+
+  static func point() {
+
+  }
+
+  static func size() {
+
+  }
+
+  static func frame() {
+
+  }
 }
