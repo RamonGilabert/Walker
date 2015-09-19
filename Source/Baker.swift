@@ -2,16 +2,17 @@ import Foundation
 
 struct Baker {
 
-  static var velocity: CGFloat = 0
+  // MARK: - Spring
 
-  static func animate(curve: Animation.Curve, duration: NSTimeInterval, finalValue: CGFloat) -> CAAnimation {
-    let animation = CAAnimation()
+  static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float]) -> BakerAnimation {
+    let animation = BakerAnimation(keyPath: property.rawValue)
+    animation.removedOnCompletion = false
+    animation.fillMode = kCAFillModeForwards
+    animation.timingFunction = CAMediaTimingFunction(controlPoints:
+      bezierPoints[0], bezierPoints[1], bezierPoints[2], bezierPoints[3])
+
     return animation
   }
-
-  // MARK: - CubicBezier
-
-  // MARK: - Spring
 }
 
 class BakerAnimation: CAKeyframeAnimation {
