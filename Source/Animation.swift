@@ -19,6 +19,8 @@ extension CALayer {
   }
 
   public func animateBezier(property: Animation.Property, to: NSValue, bezierPoints: [Float], duration: NSTimeInterval) {
+    guard bezierPoints.count == 4 else { return }
+    
     let animation = BakerAnimation(keyPath: property.rawValue)
     let initialValue = Animation.propertyValue(property, layer: self)
 
