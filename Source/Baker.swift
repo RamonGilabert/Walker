@@ -7,6 +7,7 @@ struct Baker {
   static var tension: CGFloat = 200
   static var friction: CGFloat = 10
   static var velocity: CGFloat = 10
+  static var springEnded = false
 
   // MARK: - Bezier animations
 
@@ -24,7 +25,26 @@ struct Baker {
 
   // MARK: - Spring animations
 
+  // MARK: - Spring constants
 
+  static func animateSpring() {
+    var proposedValue: NSValue = 0
+
+    while !springEnded {
+      proposedValue = springPosition()
+      springEnded = springStatusEnded()
+
+      if springEnded { break }
+    }
+  }
+
+  private static func springPosition() -> NSValue {
+    return 2
+  }
+
+  private static func springStatusEnded() -> Bool {
+    return false
+  }
 }
 
 class BakerAnimation: CAKeyframeAnimation {
