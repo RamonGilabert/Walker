@@ -1,5 +1,14 @@
 import Foundation
 
+public struct Animation {
+  public enum Curve {
+    case Linear
+    case EaseIn
+    case EaseOut
+    case EaseInOut
+  }
+}
+
 struct AnimationConstant {
   struct CurvePoints {
     struct Linear {

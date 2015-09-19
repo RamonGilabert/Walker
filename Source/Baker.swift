@@ -4,8 +4,10 @@ struct Baker {
 
   static var velocity: CGFloat = 0
 
-  static func animate(curve: Animation.AnimationCurve, duration: NSTimeInterval, finalValue: CGFloat) {
+  static func animate(curve: Animation.Curve, duration: NSTimeInterval, finalValue: CGFloat) -> CAAnimation {
+    let animation = CAAnimation()
     let time = Timing.timing(curve, duration)
+    return animation
   }
 
   // MARK: - CubicBezier
@@ -15,7 +17,7 @@ struct Baker {
 
 struct Timing {
 
-  static func timing(curve: Animation.AnimationCurve, _ duration: NSTimeInterval) -> NSTimeInterval {
+  static func timing(curve: Animation.Curve, _ duration: NSTimeInterval) -> NSTimeInterval {
     switch curve {
     case .Linear:
       return duration

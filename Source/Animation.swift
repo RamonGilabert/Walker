@@ -1,28 +1,16 @@
 import Foundation
 
-public struct Animation {
+extension CALayer {
 
-  public enum AnimationCurve {
-    case Linear
-    case EaseIn
-    case EaseOut
-    case EaseInOut
+  public func animate(curve: Animation.Curve, duration: NSTimeInterval) {
+    print(self)
   }
 
-  public var fromValue: NSValue?
-  public var toValue: NSValue!
-  public var duration: NSTimeInterval!
-  public var delay: NSTimeInterval?
-
-  public static func animate(curve: AnimationCurve, duration: NSTimeInterval, animations: () -> Void) {
-    
-  }
-
-  public static func cubicBezierAnimation(firstX: CGFloat, firstY: CGFloat, secondX: CGFloat, secondY: CGFloat, duration: NSTimeInterval, animations: () -> Void) {
+  public func cubicBezierAnimation(firstX: CGFloat, firstY: CGFloat, secondX: CGFloat, secondY: CGFloat, duration: NSTimeInterval) {
 
   }
 
-  public static func springAnimation(tension: CGFloat, friction: CGFloat, velocity: CGFloat, animations: () -> Void) {
+  public func springAnimation(tension: CGFloat, friction: CGFloat, velocity: CGFloat) {
     
   }
 }
