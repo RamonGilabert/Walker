@@ -125,8 +125,8 @@ struct Baker {
 
   private static func springPosition(distance: CGFloat, time: CFTimeInterval, from: CGFloat) -> CGFloat {
     let gamma = friction / (2 * mass)
-    let angularVelocity = sqrt((spring / mass) - pow(gamma, 2))
-    let position = exp(-gamma * CGFloat(time)) * distance * cos(angularVelocity * CGFloat(time))
+    let angularVelocity = sqrt((spring / mass) - pow(gamma, 2)) * 4
+    let position = exp(-gamma * CGFloat(time) * 5) * distance * cos(angularVelocity * CGFloat(time))
 
     return position
   }
