@@ -65,6 +65,7 @@ struct Baker {
     while !springEnded {
       springEnded = true
       for (index, element) in initialArray.enumerate() {
+        guard element != 0 else { continue }
         proposedValues[index] = initialArray[index] + (distances[index] - springPosition(distances[index], time: springTiming, from: element))
 
         switch type {
@@ -73,6 +74,7 @@ struct Baker {
         default:
           break
         }
+        
         if springEnded {
           springEnded = springStatusEnded(stepValues[index], proposed: proposedValues[index],
             to: finalArray[index], increment: increments[index])
@@ -82,10 +84,7 @@ struct Baker {
       guard !springEnded else { break }
 
       var value = NSValue()
-
-      for (index, element) in proposedValues.enumerate() {
-        stepValues[index] = element
-      }
+      stepValues = proposedValues
 
       switch property {
       case .PositionX, .PositionY, .Width, .Height, .CornerRadius:

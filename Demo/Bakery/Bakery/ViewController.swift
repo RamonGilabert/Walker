@@ -50,7 +50,8 @@ class ViewController: UIViewController {
   func animationButtonDidPress(button: UIButton) {
     let transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
     animationView.layer.animateSpring(.Transform, to: NSValue(CATransform3D: transform),
-      spring: 200, friction: 10, mass: 10)
+      spring: 500, friction: 5, mass: 5)
+    animationView.layer.animateSpring(.PositionY, to: 275, spring: 500, friction: 5, mass: 5)
   }
 
   // MARK: - Configuration
