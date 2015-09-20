@@ -20,7 +20,7 @@ extension CALayer {
   }
 
   public func animateSpring(property: Animation.Property, to: NSValue,
-    spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.00005) {
+    spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001) {
       let animation = Baker.configureSpringAnimations(property, to: to, spring: spring,
         friction: friction, mass: mass, tolerance: tolerance, type: .Spring, layer: self)
 
@@ -28,7 +28,7 @@ extension CALayer {
   }
 
   public func animateSpringBounce(property: Animation.Property, to: NSValue,
-    spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.00005) {
+    spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001) {
       let animation = Baker.configureSpringAnimations(property, to: to, spring: spring,
         friction: friction, mass: mass, tolerance: tolerance, type: .Bounce, layer: self)
 
