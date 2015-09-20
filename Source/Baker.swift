@@ -63,6 +63,7 @@ struct Baker {
     }
 
     while !springEnded {
+      springEnded = true
       for (index, element) in initialArray.enumerate() {
         proposedValues[index] = initialArray[index] + (distances[index] - springPosition(distances[index], time: springTiming, from: element))
 
@@ -72,12 +73,14 @@ struct Baker {
         default:
           break
         }
-
-        springEnded = springStatusEnded(stepValues[index], proposed: proposedValues[index],
-          to: finalArray[index], increment: increments[index])
+        if springEnded {
+          springEnded = springStatusEnded(stepValues[index], proposed: proposedValues[index],
+            to: finalArray[index], increment: increments[index])
+        }
       }
 
       guard !springEnded else { break }
+
       var value = NSValue()
 
       for (index, element) in proposedValues.enumerate() {
@@ -94,7 +97,7 @@ struct Baker {
       case .Frame:
         value = NSValue(CGRect: CGRect(x: stepValues[0], y: stepValues[1], width: stepValues[2], height: stepValues[3]))
       case .Transform:
-        var transform = CATransform3D()
+        var transform = CATransform3DIdentity
         transform.m11 = stepValues[0]
         transform.m12 = stepValues[1]
         transform.m13 = stepValues[2]
