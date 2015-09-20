@@ -2,8 +2,8 @@ import Foundation
 
 struct Baker {
 
-  static let springAnimationStep = 0.001
-  static let springAnimationThreshold = 0.0001
+  static let springAnimationStep: CGFloat = 0.001
+  static let springAnimationThreshold: CGFloat = 0.0001
   static var tension: CGFloat = 200
   static var friction: CGFloat = 10
   static var velocity: CGFloat = 10
@@ -27,23 +27,27 @@ struct Baker {
 
   // MARK: - Spring constants
 
-  static func animateSpring() {
-    var proposedValue: NSValue = 0
+  static func animateSpring(finalValue: NSValue) {
+    
+    // MARK: Call this method with the array of values, for instance from value x, y, z, etc.
+    var proposedValue: CGFloat = 0
+    var lastValue: CGFloat = 0
 
     while !springEnded {
       proposedValue = springPosition()
-      springEnded = springStatusEnded()
+      springEnded = springStatusEnded(lastValue, proposed: proposedValue, to: finalValue)
 
       if springEnded { break }
+      lastValue = proposedValue
     }
   }
 
-  private static func springPosition() -> NSValue {
+  private static func springPosition() -> CGFloat {
     return 2
   }
 
-  private static func springStatusEnded() -> Bool {
-    return false
+  private static func springStatusEnded(previous: CGFloat, proposed: CGFloat, to: CGFloat) -> Bool {
+    return abs(proposed - previous) <= springAnimationThreshold && (abs(previous - to) <= springAnimationThreshold || abs(previous - to) >= springAnimationThreshold)
   }
 }
 

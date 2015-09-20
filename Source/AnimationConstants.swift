@@ -59,4 +59,28 @@ public struct Animation {
       return NSValue(CATransform3D: layer.transform)
     }
   }
+
+  public static func values(property: Property, to: NSValue, layer: CALayer) -> (initialValue: [CGFloat], finalValue: [CGFloat]) {
+    switch property {
+    case .PositionX:
+      return ([to as! CGFloat], [layer.position.x])
+    case .PositionY:
+      return ([to as! CGFloat], [layer.position.y])
+    case .Point:
+      return ([to.CGPointValue().x, to.CGPointValue().y], [layer.position.x, layer.position.y])
+    case .Width:
+      return ([to.CGSizeValue().width], [layer.frame.width])
+    case .Height:
+      return ([to.CGSizeValue().height], [layer.frame.height])
+    case .Size:
+      return ([to.CGSizeValue().width, to.CGSizeValue().height], [layer.frame.width, layer.frame.height])
+    case .Frame:
+      return ([to.CGRectValue().origin.x, to.CGRectValue().origin.y, to.CGRectValue().size.width, to.CGRectValue().size.height],
+        [layer.position.x, layer.position.y, layer.frame.size.width, layer.frame.size.height])
+    case .CornerRadius:
+      return ([to as! CGFloat], [layer.cornerRadius])
+    case .Transform:
+      return ([], [])
+    }
+  }
 }
