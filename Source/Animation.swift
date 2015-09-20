@@ -20,6 +20,9 @@ extension CALayer {
   }
 
   public func animateSpring(property: Animation.Property, to: NSValue, tension: CGFloat, friction: CGFloat, velocity: CGFloat) {
-    
+    Baker.tension = tension
+    Baker.friction = friction
+    Baker.velocity = velocity
+    Baker.animateSpring(property, finalValue: to, layer: self)
   }
 }

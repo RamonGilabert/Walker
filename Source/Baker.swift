@@ -42,6 +42,8 @@ struct Baker {
     for (index, element) in initialArray.enumerate() {
       distances.append(finalArray[index] - element)
       increments.append(abs(distances[index]) * springAnimationIncrement)
+      proposedValues.append(0)
+      stepValues.append(0)
     }
 
     while !springEnded {
