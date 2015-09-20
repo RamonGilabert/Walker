@@ -4,8 +4,8 @@ struct Baker {
 
   static let springAnimationStep: CFTimeInterval = 0.001
   static let springAnimationIncrement: CGFloat = 0.0001
-  static var friction: CGFloat = 300
-  static var spring: CGFloat = 30
+  static var spring: CGFloat = 300
+  static var friction: CGFloat = 30
   static var mass: CGFloat = 6
   static var springEnded = false
   static var springTiming: CFTimeInterval = 0
@@ -23,8 +23,6 @@ struct Baker {
 
     return animation
   }
-
-  // MARK: - Spring animations
 
   // MARK: - Spring constants
 
@@ -48,7 +46,8 @@ struct Baker {
 
     while !springEnded {
       for (index, element) in initialArray.enumerate() {
-        proposedValues[index] = springPosition(distances[index], time: springTiming, from: element)
+        proposedValues[index] = initialArray[index] + (distances[index] - springPosition(distances[index], time: springTiming, from: element))
+
         springEnded = springStatusEnded(stepValues[index], proposed: proposedValues[index],
           to: finalArray[index], increment: increments[index])
       }
@@ -66,15 +65,15 @@ struct Baker {
   }
 
   private static func springPosition(distance: CGFloat, time: CFTimeInterval, from: CGFloat) -> CGFloat {
-    let gamma = pow(friction, 2) / (4 * pow(mass, 2))
-    let angularVelocity = sqrt((spring / mass) - gamma)
+    let gamma = friction / (2 * mass)
+    let angularVelocity = sqrt((spring / mass) - pow(gamma, 2))
     let position = exp(-gamma * CGFloat(time)) * distance * cos(angularVelocity * CGFloat(time))
 
     return position
   }
 
   private static func springStatusEnded(previous: CGFloat, proposed: CGFloat, to: CGFloat, increment: CGFloat) -> Bool {
-    return abs(proposed - previous) <= increment && (abs(previous - to) <= increment || abs(previous - to) >= increment)
+    return abs(proposed - previous) <= increment && abs(previous - to) <= increment
   }
 }
 

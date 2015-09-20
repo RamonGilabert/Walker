@@ -49,7 +49,7 @@ class ViewController: UIViewController {
 
   func animationButtonDidPress(button: UIButton) {
     //animationView.layer.animateBezier(.PositionY, to: 350, bezierPoints: [0.17, 0.67, 0.83, 0.67], duration: 1)
-    animationView.layer.animateSpring(.PositionY, to: 350, spring: 30, friction: 300, mass: 6)
+    animationView.layer.animateSpring(.PositionY, to: 350, spring: 200, friction: 10, mass: 10)
   }
 
   // MARK: - Configuration

@@ -20,14 +20,14 @@ extension CALayer {
   }
 
   public func animateSpring(property: Animation.Property, to: NSValue, spring: CGFloat, friction: CGFloat, mass: CGFloat) {
-    let animation = CAKeyframeAnimation(keyPath: property.rawValue)
-
     Baker.spring = spring
     Baker.friction = friction
     Baker.mass = mass
+
+    let animation = CAKeyframeAnimation(keyPath: property.rawValue)
     animation.values = Baker.animateSpring(property, finalValue: to, layer: self)
     animation.duration = Baker.springTiming
-    
+
     addAnimation(animation, forKey: nil)
   }
 }

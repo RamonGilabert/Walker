@@ -60,7 +60,7 @@ public struct Animation {
     }
   }
 
-  public static func values(property: Property, to: NSValue, layer: CALayer) -> (initialValue: [CGFloat], finalValue: [CGFloat]) {
+  public static func values(property: Property, to: NSValue, layer: CALayer) -> (finalValue: [CGFloat], initialValue: [CGFloat]) {
     switch property {
     case .PositionX:
       return ([to as! CGFloat], [layer.position.x])
