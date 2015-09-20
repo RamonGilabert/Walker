@@ -85,7 +85,8 @@ public struct Animation {
     case .CornerRadius:
       return ([to as! CGFloat], [layer.cornerRadius])
     case .Transform:
-      return ([], [])
+      return ([to.CATransform3DValue.m11, to.CATransform3DValue.m12, to.CATransform3DValue.m13, to.CATransform3DValue.m14, to.CATransform3DValue.m21, to.CATransform3DValue.m22, to.CATransform3DValue.m23, to.CATransform3DValue.m24, to.CATransform3DValue.m31, to.CATransform3DValue.m32, to.CATransform3DValue.m33, to.CATransform3DValue.m34, to.CATransform3DValue.m41, to.CATransform3DValue.m42, to.CATransform3DValue.m43, to.CATransform3DValue.m44],
+        [layer.transform.m11, layer.transform.m12, layer.transform.m13, layer.transform.m14, layer.transform.m21, layer.transform.m22, layer.transform.m23, layer.transform.m24, layer.transform.m31, layer.transform.m32, layer.transform.m33, layer.transform.m34, layer.transform.m41, layer.transform.m42, layer.transform.m43, layer.transform.m44])
     }
   }
 }

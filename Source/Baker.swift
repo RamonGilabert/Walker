@@ -93,8 +93,25 @@ struct Baker {
         value = NSValue(CGSize: CGSize(width: stepValues[0], height: stepValues[1]))
       case .Frame:
         value = NSValue(CGRect: CGRect(x: stepValues[0], y: stepValues[1], width: stepValues[2], height: stepValues[3]))
-      default:
-        break
+      case .Transform:
+        var transform = CATransform3D()
+        transform.m11 = stepValues[0]
+        transform.m12 = stepValues[1]
+        transform.m13 = stepValues[2]
+        transform.m14 = stepValues[3]
+        transform.m21 = stepValues[4]
+        transform.m22 = stepValues[5]
+        transform.m23 = stepValues[6]
+        transform.m24 = stepValues[7]
+        transform.m31 = stepValues[8]
+        transform.m32 = stepValues[9]
+        transform.m33 = stepValues[10]
+        transform.m34 = stepValues[11]
+        transform.m41 = stepValues[12]
+        transform.m42 = stepValues[13]
+        transform.m43 = stepValues[14]
+        transform.m44 = stepValues[15]
+        value = NSValue(CATransform3D: transform)
       }
 
       finalValues.append(value)
