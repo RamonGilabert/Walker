@@ -8,6 +8,12 @@ One year and a half ago I became an iOS developer, I was happy, I knew how to do
 
 The animation library will try to simplify the code that we are using and the way we are using it. You'll be able to apply animations to views, and layers at some point.
 
+## Upcoming features
+
+- [ ] Spring animations with rect and transforms, you get this shit.
+- [ ] Bounce spring animation.
+- [ ] More types of animations.
+
 ## Done by
 
 Ramon Gilabert. With love.
