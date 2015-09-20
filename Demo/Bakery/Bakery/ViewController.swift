@@ -48,7 +48,8 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animationView.layer.animateSpringBounce(.PositionY, to: 350, spring: 300, friction: 10, mass: 10)
+    animationView.layer.animateSpringBounce(.Size, to: NSValue(CGSize: CGSize(width: 150, height: 150)),
+      spring: 300, friction: 10, mass: 10)
   }
 
   // MARK: - Configuration
