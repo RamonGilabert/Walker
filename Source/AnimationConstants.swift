@@ -9,6 +9,11 @@ public struct Animation {
     case EaseInOut
   }
 
+  public enum Spring {
+    case Spring
+    case Bounce
+  }
+
   public enum Property: String {
     case PositionX = "position.x"
     case PositionY = "position.y"
