@@ -78,11 +78,26 @@ struct Baker {
       }
 
       guard !springEnded else { break }
+      var value = NSValue()
+
       for (index, element) in proposedValues.enumerate() {
         stepValues[index] = element
-        finalValues.append(stepValues[index])
       }
 
+      switch property {
+      case .PositionX, .PositionY, .Width, .Height, .CornerRadius:
+        value = stepValues[0]
+      case .Point:
+        value = NSValue(CGPoint: CGPoint(x: stepValues[0], y: stepValues[1]))
+      case .Size:
+        value = NSValue(CGSize: CGSize(width: stepValues[0], height: stepValues[1]))
+      case .Frame:
+        value = NSValue(CGRect: CGRect(x: stepValues[0], y: stepValues[1], width: stepValues[2], height: stepValues[3]))
+      default:
+        break
+      }
+
+      finalValues.append(value)
       springTiming += springAnimationStep
     }
 
