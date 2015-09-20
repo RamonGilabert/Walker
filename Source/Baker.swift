@@ -12,8 +12,8 @@ struct Baker {
 
   // MARK: - Bezier animations
 
-  static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> BakerAnimation {
-    let animation = BakerAnimation(keyPath: property.rawValue)
+  static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> CAKeyframeAnimation {
+    let animation = CAKeyframeAnimation(keyPath: property.rawValue)
     animation.keyTimes = [0, duration]
     animation.duration = duration
     animation.removedOnCompletion = false
@@ -38,6 +38,8 @@ struct Baker {
 
       animation.values = Baker.animateSpring(property, finalValue: to, layer: layer, type: type)
       animation.duration = Baker.springTiming
+      animation.removedOnCompletion = false
+      animation.fillMode = kCAFillModeForwards
       
       return animation
   }
@@ -97,19 +99,5 @@ struct Baker {
 
   private static func springStatusEnded(previous: CGFloat, proposed: CGFloat, to: CGFloat, increment: CGFloat) -> Bool {
     return abs(proposed - previous) <= increment && abs(previous - to) <= increment
-  }
-}
-
-class BakerAnimation: CAKeyframeAnimation {
-  var fromValue: NSValue = 0
-  var toValue: NSValue = 0
-  var timing: CFTimeInterval = 0
-
-  override init() {
-    super.init()
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
   }
 }
