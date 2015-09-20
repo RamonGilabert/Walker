@@ -26,27 +26,23 @@ struct Baker {
 
   // MARK: - Spring
 
-  static func configureSpringAnimations(property: Animation.Property, to: NSValue, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat, type: Animation.Spring, layer: CALayer) -> CAKeyframeAnimation {
-    Baker.spring = spring
-    Baker.friction = friction
-    Baker.mass = mass
-    Baker.tolerance = tolerance
+  static func configureSpringAnimations(property: Animation.Property, to: NSValue,
+    spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat,
+    type: Animation.Spring, layer: CALayer) -> CAKeyframeAnimation {
+      Baker.spring = spring
+      Baker.friction = friction
+      Baker.mass = mass
+      Baker.tolerance = tolerance
 
-    let animation = CAKeyframeAnimation(keyPath: property.rawValue)
+      let animation = CAKeyframeAnimation(keyPath: property.rawValue)
 
-    switch type {
-    case .Spring:
-      animation.values = Baker.animateSpring(property, finalValue: to, layer: layer)
-    case .Bounce:
-      animation.values = Baker.animateBounceSpring(property, finalValue: to, layer: layer)
-    }
-    
-    animation.duration = Baker.springTiming
-
-    return animation
+      animation.values = Baker.animateSpring(property, finalValue: to, layer: layer, type: type)
+      animation.duration = Baker.springTiming
+      
+      return animation
   }
 
-  static func animateSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer) -> [NSValue] {
+  private static func animateSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer, type: Animation.Spring) -> [NSValue] {
     let initialArray = Animation.values(property, to: finalValue, layer: layer).initialValue
     let finalArray = Animation.values(property, to: finalValue, layer: layer).finalValue
     var distances: [CGFloat] = []
@@ -68,6 +64,13 @@ struct Baker {
       for (index, element) in initialArray.enumerate() {
         proposedValues[index] = initialArray[index] + (distances[index] - springPosition(distances[index], time: springTiming, from: element))
 
+        switch type {
+        case .Bounce:
+          if proposedValues[index] >= finalArray[index] { proposedValues[index] = (finalArray[index] * 2) - proposedValues[index] }
+        default:
+          break
+        }
+
         springEnded = springStatusEnded(stepValues[index], proposed: proposedValues[index],
           to: finalArray[index], increment: increments[index])
       }
@@ -81,45 +84,6 @@ struct Baker {
       springTiming += springAnimationStep
     }
 
-    return finalValues
-  }
-
-  static func animateBounceSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer) -> [NSValue] {
-    let initialArray = Animation.values(property, to: finalValue, layer: layer).initialValue
-    let finalArray = Animation.values(property, to: finalValue, layer: layer).finalValue
-    var distances: [CGFloat] = []
-    var increments: [CGFloat] = []
-    var proposedValues: [CGFloat] = []
-    var stepValues: [CGFloat] = []
-    var finalValues: [NSValue] = []
-    springEnded = false
-    springTiming = 0
-
-    for (index, element) in initialArray.enumerate() {
-      distances.append(finalArray[index] - element)
-      increments.append(abs(distances[index]) * tolerance)
-      proposedValues.append(0)
-      stepValues.append(0)
-    }
-
-    while !springEnded {
-      for (index, element) in initialArray.enumerate() {
-        proposedValues[index] = initialArray[index] + (distances[index] - springPosition(distances[index], time: springTiming, from: element))
-
-        if proposedValues[index] >= finalArray[index] { proposedValues[index] = (finalArray[index] * 2) - proposedValues[index] }
-        springEnded = springStatusEnded(stepValues[index], proposed: proposedValues[index],
-          to: finalArray[index], increment: increments[index])
-      }
-
-      guard !springEnded else { break }
-      for (index, element) in proposedValues.enumerate() {
-        stepValues[index] = element
-        finalValues.append(stepValues[index])
-      }
-
-      springTiming += springAnimationStep
-    }
-    
     return finalValues
   }
 
