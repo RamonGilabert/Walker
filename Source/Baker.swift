@@ -2,12 +2,13 @@ import Foundation
 
 struct Baker {
 
-  static let springAnimationStep: CGFloat = 0.001
-  static let springAnimationThreshold: CGFloat = 0.0001
+  static let springAnimationStep: CFTimeInterval = 0.001
+  static let springAnimationIncrement: CGFloat = 0.0001
   static var tension: CGFloat = 200
   static var friction: CGFloat = 10
   static var velocity: CGFloat = 10
   static var springEnded = false
+  static var springTiming: CFTimeInterval = 0
 
   // MARK: - Bezier animations
 
@@ -27,27 +28,47 @@ struct Baker {
 
   // MARK: - Spring constants
 
-  static func animateSpring(finalValue: NSValue) {
-    
-    // MARK: Call this method with the array of values, for instance from value x, y, z, etc.
-    var proposedValue: CGFloat = 0
-    var lastValue: CGFloat = 0
+  static func animateSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer) -> [NSValue] {
+    let initialArray = Animation.values(property, to: finalValue, layer: layer).initialValue
+    let finalArray = Animation.values(property, to: finalValue, layer: layer).finalValue
+    var distances: [CGFloat] = []
+    var increments: [CGFloat] = []
+    var proposedValues: [CGFloat] = []
+    var stepValues: [CGFloat] = []
+    var finalValues: [NSValue] = []
+    springEnded = false
+    springTiming = 0
+
+    for (index, element) in initialArray.enumerate() {
+      distances.append(finalArray[index] - element)
+      increments.append(abs(distances[index]) * springAnimationIncrement)
+    }
 
     while !springEnded {
-      proposedValue = springPosition()
-      springEnded = springStatusEnded(lastValue, proposed: proposedValue, to: finalValue)
+      for (index, element) in initialArray.enumerate() {
+        proposedValues[index] = springPosition(distances[index], time: springTiming, from: element)
+        springEnded = springStatusEnded(stepValues[index], proposed: proposedValues[index],
+          to: finalArray[index], increment: increments[index])
+      }
 
-      if springEnded { break }
-      lastValue = proposedValue
+      guard !springEnded else { break }
+      for (index, element) in proposedValues.enumerate() {
+        stepValues[index] = element
+        finalValues.append(stepValues[index])
+      }
+
+      springTiming += springAnimationStep
     }
+    print(finalValues)
+    return finalValues
   }
 
-  private static func springPosition() -> CGFloat {
+  private static func springPosition(distance: CGFloat, time: CFTimeInterval, from: CGFloat) -> CGFloat {
     return 2
   }
 
-  private static func springStatusEnded(previous: CGFloat, proposed: CGFloat, to: CGFloat) -> Bool {
-    return abs(proposed - previous) <= springAnimationThreshold && (abs(previous - to) <= springAnimationThreshold || abs(previous - to) >= springAnimationThreshold)
+  private static func springStatusEnded(previous: CGFloat, proposed: CGFloat, to: CGFloat, increment: CGFloat) -> Bool {
+    return abs(proposed - previous) <= increment && (abs(previous - to) <= increment || abs(previous - to) >= increment)
   }
 }
 
