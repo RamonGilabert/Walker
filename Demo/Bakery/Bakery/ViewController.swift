@@ -48,6 +48,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
+    animationView.layer.animateSpring(.CornerRadius, to: 20, spring: 200, friction: 10, mass: 10)
     animationView.layer.animateSpring(.PositionY, to: 275, spring: 200, friction: 10, mass: 10)
   }
 
