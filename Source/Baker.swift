@@ -4,9 +4,9 @@ struct Baker {
 
   static let springAnimationStep: CFTimeInterval = 0.001
   static let springAnimationIncrement: CGFloat = 0.0001
-  static var mass: CGFloat = 200
-  static var spring: CGFloat = 10
-  static var friction: CGFloat = 10
+  static var friction: CGFloat = 300
+  static var spring: CGFloat = 30
+  static var mass: CGFloat = 6
   static var springEnded = false
   static var springTiming: CFTimeInterval = 0
 
@@ -61,7 +61,7 @@ struct Baker {
 
       springTiming += springAnimationStep
     }
-    print(finalValues)
+
     return finalValues
   }
 
