@@ -4,9 +4,9 @@ struct Baker {
 
   static let springAnimationStep: CFTimeInterval = 0.001
   static let springAnimationIncrement: CGFloat = 0.0001
-  static var tension: CGFloat = 200
+  static var mass: CGFloat = 200
+  static var spring: CGFloat = 10
   static var friction: CGFloat = 10
-  static var velocity: CGFloat = 10
   static var springEnded = false
   static var springTiming: CFTimeInterval = 0
 
@@ -66,7 +66,11 @@ struct Baker {
   }
 
   private static func springPosition(distance: CGFloat, time: CFTimeInterval, from: CGFloat) -> CGFloat {
-    return 2
+    let gamma = pow(friction, 2) / (4 * pow(mass, 2))
+    let angularVelocity = sqrt((spring / mass) - gamma)
+    let position = exp(-gamma * CGFloat(time)) * distance * cos(angularVelocity * CGFloat(time))
+
+    return position
   }
 
   private static func springStatusEnded(previous: CGFloat, proposed: CGFloat, to: CGFloat, increment: CGFloat) -> Bool {
