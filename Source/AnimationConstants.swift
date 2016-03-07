@@ -68,9 +68,11 @@ public struct Animation {
   public static func values(property: Property, to: NSValue, layer: CALayer) -> (finalValue: [CGFloat], initialValue: [CGFloat]) {
     switch property {
     case .PositionX:
-      return ([to as! CGFloat], [layer.position.x])
+      guard let to = to as? CGFloat else { return ([0], [layer.position.x]) }
+      return ([to], [layer.position.x])
     case .PositionY:
-      return ([to as! CGFloat], [layer.position.y])
+      guard let to = to as? CGFloat else { return ([0], [layer.position.x]) }
+      return ([to], [layer.position.y])
     case .Point:
       return ([to.CGPointValue().x, to.CGPointValue().y], [layer.position.x, layer.position.y])
     case .Width:
@@ -80,13 +82,27 @@ public struct Animation {
     case .Size:
       return ([to.CGSizeValue().width, to.CGSizeValue().height], [layer.frame.width, layer.frame.height])
     case .Frame:
-      return ([to.CGRectValue().origin.x, to.CGRectValue().origin.y, to.CGRectValue().size.width, to.CGRectValue().size.height],
+      return ([to.CGRectValue().origin.x, to.CGRectValue().origin.y,
+        to.CGRectValue().size.width, to.CGRectValue().size.height],
         [layer.position.x, layer.position.y, layer.frame.size.width, layer.frame.size.height])
     case .CornerRadius:
       return ([to as! CGFloat], [layer.cornerRadius])
     case .Transform:
-      return ([to.CATransform3DValue.m11, to.CATransform3DValue.m12, to.CATransform3DValue.m13, to.CATransform3DValue.m14, to.CATransform3DValue.m21, to.CATransform3DValue.m22, to.CATransform3DValue.m23, to.CATransform3DValue.m24, to.CATransform3DValue.m31, to.CATransform3DValue.m32, to.CATransform3DValue.m33, to.CATransform3DValue.m34, to.CATransform3DValue.m41, to.CATransform3DValue.m42, to.CATransform3DValue.m43, to.CATransform3DValue.m44],
-        [layer.transform.m11, layer.transform.m12, layer.transform.m13, layer.transform.m14, layer.transform.m21, layer.transform.m22, layer.transform.m23, layer.transform.m24, layer.transform.m31, layer.transform.m32, layer.transform.m33, layer.transform.m34, layer.transform.m41, layer.transform.m42, layer.transform.m43, layer.transform.m44])
+      return ([to.CATransform3DValue.m11, to.CATransform3DValue.m12,
+        to.CATransform3DValue.m13, to.CATransform3DValue.m14,
+        to.CATransform3DValue.m21, to.CATransform3DValue.m22,
+        to.CATransform3DValue.m23, to.CATransform3DValue.m24,
+        to.CATransform3DValue.m31, to.CATransform3DValue.m32,
+        to.CATransform3DValue.m33, to.CATransform3DValue.m34,
+        to.CATransform3DValue.m41, to.CATransform3DValue.m42,
+        to.CATransform3DValue.m43, to.CATransform3DValue.m44],
+
+        [layer.transform.m11, layer.transform.m12, layer.transform.m13,
+          layer.transform.m14, layer.transform.m21, layer.transform.m22,
+          layer.transform.m23, layer.transform.m24, layer.transform.m31,
+          layer.transform.m32, layer.transform.m33, layer.transform.m34,
+          layer.transform.m41, layer.transform.m42, layer.transform.m43,
+          layer.transform.m44])
     }
   }
 }
