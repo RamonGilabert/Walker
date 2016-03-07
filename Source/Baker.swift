@@ -28,13 +28,17 @@ struct Baker {
 
   static func configureSpringAnimations(property: Animation.Property, to: NSValue,
     spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat,
-    type: Animation.Spring, layer: CALayer) -> CAKeyframeAnimation {
+    type: Animation.Spring, var layer: CALayer) -> CAKeyframeAnimation {
       Baker.spring = spring
       Baker.friction = friction
       Baker.mass = mass
       Baker.tolerance = tolerance
 
       let animation = CAKeyframeAnimation(keyPath: property.rawValue)
+
+      if let presentedLayer = layer.presentationLayer() as? CALayer {
+        layer = presentedLayer
+      }
 
       animation.values = Baker.animateSpring(property, finalValue: to, layer: layer, type: type)
       animation.duration = Baker.springTiming
