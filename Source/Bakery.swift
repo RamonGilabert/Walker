@@ -88,8 +88,8 @@ public struct Bake {
     animate(.CornerRadius, value)
   }
 
-  public func transform(value: CGAffineTransform) {
-    //animate(.Transform, value)
+  public func transform(value: CATransform3D) {
+    animate(.Transform, NSValue(CATransform3D: value))
   }
 
   internal let view: UIView
