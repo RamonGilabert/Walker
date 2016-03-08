@@ -1,6 +1,7 @@
 import Foundation
 
 public struct Animation {
+  
   public enum Curve {
     case Linear
     case Ease
