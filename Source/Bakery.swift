@@ -64,8 +64,8 @@ public struct Bake {
     animate(.PositionY, value)
   }
 
-  public func origin(value: CGPoint) {
-    animate(.Origin, value)
+  public func origin(x: CGFloat, _ y: CGFloat) {
+    animate(.Origin, NSValue(CGPoint: CGPoint(x: x, y: y)))
   }
 
   public func frame(value: CGRect) {

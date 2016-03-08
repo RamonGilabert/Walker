@@ -18,7 +18,7 @@ public struct Animation {
   public enum Property: String {
     case PositionX = "position.x"
     case PositionY = "position.y"
-    case Point = "position"
+    case Origin = "position"
     case Width = "size.width"
     case Height = "size.height"
     case Size = "bounds.size"
