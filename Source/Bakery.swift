@@ -3,6 +3,9 @@ import UIKit
 public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
   animations(Bake(view: view, duration: duration, curve: curve))
 
+  Bakery.view = view
+  Bakery.animate()
+
   return Bakery.bakery
 }
 
@@ -20,10 +23,13 @@ public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFlo
 
 public class Bakery: NSObject {
 
-  private static let bakery = Bakery()
+  static let bakery = Bakery()
+  private static var animations: [CAKeyframeAnimation] = []
+  private static var view: UIView?
 
   public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
     animations(Bake(view: view, duration: duration, curve: curve))
+    Bakery.view = view
 
     return self
   }
@@ -47,6 +53,24 @@ public class Bakery: NSObject {
 
   public func finally(closure: () -> ()) {
     closure()
+  }
+
+  // MARK: - Animate
+
+  static func animate() {
+    guard let view = Bakery.view, presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
+
+    presentedLayer.addAnimation(Bakery.animations[0], forKey: nil)
+  }
+
+  // MARK: - Finish animation
+
+  public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    Bakery.animations.removeFirst()
+
+    guard !Bakery.animations.isEmpty else { return }
+
+    Bakery.animate()
   }
 }
 
@@ -103,10 +127,12 @@ public struct Bake {
   }
 
   private func animate(property: Animation.Property, _ value: NSValue) {
+    guard let presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
+
     let bezierPoints = Animation.bezierPoints(curve)
     let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
-    animation.values = [Animation.propertyValue(property, layer: view.layer), value]
+    animation.values = [Animation.propertyValue(property, layer: presentedLayer), value]
 
-    view.layer.addAnimation(animation, forKey: nil)
+    Bakery.animations.append(animation)
   }
 }

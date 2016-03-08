@@ -50,6 +50,10 @@ class ViewController: UIViewController {
   func animationButtonDidPress(button: UIButton) {
     animate(animationView) {
       $0.width(200)
+    }.animate(animationView) {
+      $0.width(400)
+    }.animate(animationView) {
+      $0.width(150)
     }
   }
 
