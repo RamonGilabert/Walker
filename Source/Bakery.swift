@@ -1,9 +1,7 @@
 import UIKit
 
-public func animate(duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: () -> ()) -> Bakery {
-  UIView.animateWithDuration(duration, animations: {
-    animations()
-  })
+public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
+  animations(Bake(view: view))
 
   return Bakery.bakery
 }
@@ -12,10 +10,8 @@ public class Bakery: NSObject {
 
   private static let bakery = Bakery()
 
-  public func animate(duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: () -> ()) -> Bakery {
-    UIView.animateWithDuration(duration, animations: {
-      animations()
-    })
+  public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
+    animations(Bake(view: view))
 
     return self
   }
@@ -28,5 +24,46 @@ public class Bakery: NSObject {
 
   public func finally(closure: () -> ()) {
     closure()
+  }
+ }
+
+public struct Bake {
+
+  var view: UIView
+
+  public func alpha(value: CGFloat) {
+    view.alpha = value
+  }
+
+  public func x(value: CGFloat) {
+    view.frame.origin.x = value
+  }
+
+  public func y(value: CGFloat) {
+    view.frame.origin.y = value
+  }
+
+  public func width(value: CGFloat) {
+    view.frame.size.width = value
+  }
+
+  public func height(value: CGFloat) {
+    view.frame.size.height = value
+  }
+
+  public func origin(value: CGPoint) {
+    view.frame.origin = value
+  }
+
+  public func frame(value: CGRect) {
+    view.frame = value
+  }
+
+  public func transform(value: CGAffineTransform) {
+    view.transform = value
+  }
+
+  init(view: UIView) {
+    self.view = view
   }
 }

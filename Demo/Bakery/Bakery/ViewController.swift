@@ -48,10 +48,10 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animate(0.5) {
-      self.animationView.alpha = 0
-    }.animate(1) {
-      self.animationView.alpha = 1
+    animate(animationView) {
+      $0.width(300)
+    }.animate(animationView) {
+      $0.height(400)
     }.finally {
       print("Sup")
     }
