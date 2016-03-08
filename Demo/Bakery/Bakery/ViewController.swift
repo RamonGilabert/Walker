@@ -50,10 +50,6 @@ class ViewController: UIViewController {
   func animationButtonDidPress(button: UIButton) {
     animate(animationView) {
       $0.width(300)
-    }.animate(animationView) {
-      $0.height(400)
-    }.finally {
-      print("Sup")
     }
   }
 

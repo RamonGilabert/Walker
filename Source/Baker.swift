@@ -16,7 +16,7 @@ struct Baker {
     let animation = CAKeyframeAnimation(keyPath: property.rawValue)
     animation.keyTimes = [0, duration]
     animation.duration = duration
-    animation.removedOnCompletion = false
+    animation.removedOnCompletion = true
     animation.fillMode = kCAFillModeForwards
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
       bezierPoints[0], bezierPoints[1], bezierPoints[2], bezierPoints[3])
@@ -42,7 +42,7 @@ struct Baker {
 
       animation.values = Baker.animateSpring(property, finalValue: to, layer: layer, type: type)
       animation.duration = Baker.springTiming
-      animation.removedOnCompletion = false
+      animation.removedOnCompletion = true
       animation.fillMode = kCAFillModeForwards
       
       return animation

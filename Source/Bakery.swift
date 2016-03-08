@@ -1,19 +1,19 @@
 import UIKit
 
 public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
-  animations(Bake(view: view))
+  animations(Bake(view: view, duration: duration, curve: curve))
 
   return Bakery.bakery
 }
 
 public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
-  animations(Bake(view: view))
+  //animations(Bake(view: view, duration: duration, curve: curve))
 
   return Bakery.bakery
 }
 
 public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
-  animations(Bake(view: view))
+  //animations(Bake(view: view, duration: duration, curve: curve))
 
   return Bakery.bakery
 }
@@ -23,19 +23,19 @@ public class Bakery: NSObject {
   private static let bakery = Bakery()
 
   public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
-    animations(Bake(view: view))
+    animations(Bake(view: view, duration: duration, curve: curve))
 
     return self
   }
 
   public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
-    animations(Bake(view: view))
+    //animations(Bake(view: view, duration: duration, curve: curve))
 
     return Bakery.bakery
   }
 
   public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
-    animations(Bake(view: view))
+    //animations(Bake(view: view, duration: duration, curve: curve))
 
     return self
   }
@@ -53,6 +53,8 @@ public class Bakery: NSObject {
 public struct Bake {
 
   internal let view: UIView
+  internal let duration: NSTimeInterval
+  internal let curve: Animation.Curve
 
   public func alpha(value: CGFloat) {
     view.alpha = value
@@ -67,7 +69,11 @@ public struct Bake {
   }
 
   public func width(value: CGFloat) {
-    view.frame.size.width = value
+    let bezierPoints = Animation.bezierPoints(curve)
+    let animation = Baker.configureBezierAnimation(.Width, bezierPoints: bezierPoints, duration: duration)
+    animation.values = [Animation.propertyValue(.Width, layer: view.layer), value]
+
+    view.layer.addAnimation(animation, forKey: nil)
   }
 
   public func height(value: CGFloat) {
@@ -94,7 +100,9 @@ public struct Bake {
     view.transform = value
   }
 
-  init(view: UIView) {
+  init(view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
     self.view = view
+    self.duration = duration
+    self.curve = curve
   }
 }
