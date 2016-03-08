@@ -6,6 +6,12 @@ public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animati
   return Bakery.bakery
 }
 
+public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
+  animations(Bake(view: view))
+
+  return Bakery.bakery
+}
+
 public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
   animations(Bake(view: view))
 
@@ -20,6 +26,12 @@ public class Bakery: NSObject {
     animations(Bake(view: view))
 
     return self
+  }
+
+  public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
+    animations(Bake(view: view))
+
+    return Bakery.bakery
   }
 
   public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
