@@ -38,9 +38,8 @@ public struct Animation {
     case .EaseOut:
       return [0, 0, 0.58, 1]
     case .EaseInOut:
-      [0.42, 0, 0.58, 1]
+      return [0.42, 0, 0.58, 1]
     }
-    return []
   }
 
   public static func propertyValue(property: Property, layer: CALayer) -> NSValue {
