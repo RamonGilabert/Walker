@@ -6,11 +6,23 @@ public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animati
   return Bakery.bakery
 }
 
+public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
+  animations(Bake(view: view))
+
+  return Bakery.bakery
+}
+
 public class Bakery: NSObject {
 
   private static let bakery = Bakery()
 
   public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
+    animations(Bake(view: view))
+
+    return self
+  }
+
+  public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
     animations(Bake(view: view))
 
     return self
