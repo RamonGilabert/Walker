@@ -59,14 +59,17 @@ public class Bakery: NSObject {
 
   static func animate() {
     guard let view = Bakery.view, presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
-
     presentedLayer.addAnimation(Bakery.animations[0], forKey: nil)
   }
 
   // MARK: - Finish animation
 
   public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    Bakery.animations.removeFirst()
+    if !Bakery.animations.isEmpty {
+      Bakery.animations.removeFirst()
+    }
+
+    print(Bakery.view?.layer.presentationLayer()?.frame)
 
     guard !Bakery.animations.isEmpty else { return }
 
@@ -127,11 +130,9 @@ public struct Bake {
   }
 
   private func animate(property: Animation.Property, _ value: NSValue) {
-    guard let presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
-
     let bezierPoints = Animation.bezierPoints(curve)
     let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
-    animation.values = [Animation.propertyValue(property, layer: presentedLayer), value]
+    animation.values = [Animation.propertyValue(property, layer: view.layer), value]
 
     Bakery.animations.append(animation)
   }

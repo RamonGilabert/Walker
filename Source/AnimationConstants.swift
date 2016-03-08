@@ -54,11 +54,11 @@ public struct Animation {
     case .Origin:
       return NSValue(CGPoint: layer.position)
     case .Width:
-      return layer.frame.width
+      return layer.bounds.width
     case .Height:
-      return layer.frame.height
+      return layer.bounds.height
     case .Size:
-      return NSValue(CGSize: layer.frame.size)
+      return NSValue(CGSize: layer.bounds.size)
     case .Frame:
       return NSValue(CGRect: layer.frame)
     case .CornerRadius:
@@ -82,11 +82,11 @@ public struct Animation {
     case .Origin:
       return ([to.CGPointValue().x, to.CGPointValue().y], [layer.position.x, layer.position.y])
     case .Width:
-      return ([to.CGSizeValue().width], [layer.frame.width])
+      return ([to.CGSizeValue().width], [layer.bounds.width])
     case .Height:
-      return ([to.CGSizeValue().height], [layer.frame.height])
+      return ([to.CGSizeValue().height], [layer.bounds.height])
     case .Size:
-      return ([to.CGSizeValue().width, to.CGSizeValue().height], [layer.frame.width, layer.frame.height])
+      return ([to.CGSizeValue().width, to.CGSizeValue().height], [layer.bounds.width, layer.bounds.height])
     case .Frame:
       return ([to.CGRectValue().origin.x, to.CGRectValue().origin.y,
         to.CGRectValue().size.width, to.CGRectValue().size.height],

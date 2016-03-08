@@ -48,13 +48,19 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animate(animationView) {
-      $0.width(200)
-    }.animate(animationView) {
-      $0.width(400)
-    }.animate(animationView) {
-      $0.width(150)
-    }
+    let animation = CABasicAnimation()
+    animation.keyPath = "position.x"
+    animation.fromValue = (totalWidth - Dimensions.animationViewSize) / 2
+    animation.toValue = 300
+    animation.duration = 0.5
+    animation.removedOnCompletion = false
+    animation.fillMode = kCAFillModeForwards
+
+    animationView.layer.addAnimation(animation, forKey: nil)
+
+//    animate(animationView) {
+//      $0.x(300)
+//    }
   }
 
   // MARK: - Configuration

@@ -16,9 +16,10 @@ struct Baker {
     let animation = CAKeyframeAnimation(keyPath: property.rawValue)
     animation.keyTimes = [0, duration]
     animation.duration = duration
-    animation.removedOnCompletion = false
+    animation.removedOnCompletion = true
     animation.fillMode = kCAFillModeForwards
     animation.delegate = Bakery.bakery
+    animation.additive = true
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
       bezierPoints[0], bezierPoints[1], bezierPoints[2], bezierPoints[3])
 
