@@ -18,9 +18,10 @@ public struct Animation {
   public enum Property: String {
     case PositionX = "position.x"
     case PositionY = "position.y"
+    case Opacity = "opacity"
     case Origin = "position"
-    case Width = "size.width"
-    case Height = "size.height"
+    case Width = "bounds.size.width"
+    case Height = "bounds.size.height"
     case Size = "bounds.size"
     case Frame = "bounds"
     case CornerRadius = "cornerRadius"
@@ -48,7 +49,9 @@ public struct Animation {
       return layer.position.x
     case .PositionY:
       return layer.position.y
-    case .Point:
+    case .Opacity:
+      return layer.opacity
+    case .Origin:
       return NSValue(CGPoint: layer.position)
     case .Width:
       return layer.frame.width
@@ -73,7 +76,10 @@ public struct Animation {
     case .PositionY:
       guard let to = to as? CGFloat else { return ([0], [layer.position.x]) }
       return ([to], [layer.position.y])
-    case .Point:
+    case .Opacity:
+      guard let to = to as? CGFloat else { return ([1], [1]) }
+      return ([to], [CGFloat(layer.opacity)])
+    case .Origin:
       return ([to.CGPointValue().x, to.CGPointValue().y], [layer.position.x, layer.position.y])
     case .Width:
       return ([to.CGSizeValue().width], [layer.frame.width])

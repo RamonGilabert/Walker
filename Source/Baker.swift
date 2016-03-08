@@ -91,9 +91,9 @@ struct Baker {
       stepValues = proposedValues
 
       switch property {
-      case .PositionX, .PositionY, .Width, .Height, .CornerRadius:
+      case .PositionX, .PositionY, .Width, .Height, .CornerRadius, .Opacity:
         value = stepValues[0]
-      case .Point:
+      case .Origin:
         value = NSValue(CGPoint: CGPoint(x: stepValues[0], y: stepValues[1]))
       case .Size:
         value = NSValue(CGSize: CGSize(width: stepValues[0], height: stepValues[1]))

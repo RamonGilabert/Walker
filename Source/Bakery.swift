@@ -53,7 +53,7 @@ public class Bakery: NSObject {
 public struct Bake {
 
   public func alpha(value: CGFloat) {
-    animate(.Alpha, value)
+    animate(.Opacity, value)
   }
 
   public func x(value: CGFloat) {
@@ -64,12 +64,24 @@ public struct Bake {
     animate(.PositionY, value)
   }
 
+  public func width(value: CGFloat) {
+    animate(.Width, value)
+  }
+
+  public func height(value: CGFloat) {
+    animate(.Height, value)
+  }
+
   public func origin(x: CGFloat, _ y: CGFloat) {
     animate(.Origin, NSValue(CGPoint: CGPoint(x: x, y: y)))
   }
 
-  public func frame(value: CGRect) {
-    animate(.Frame, value)
+  public func size(width: CGFloat, _ height: CGFloat) {
+    animate(.Size, NSValue(CGSize: CGSize(width: width, height: height)))
+  }
+
+  public func frame(x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
+    animate(.Frame, NSValue(CGRect: CGRect(x: x, y: y, width: width, height: height)))
   }
 
   public func radius(value: CGFloat) {
@@ -77,7 +89,7 @@ public struct Bake {
   }
 
   public func transform(value: CGAffineTransform) {
-    animate(.Transform, value)
+    //animate(.Transform, value)
   }
 
   internal let view: UIView
