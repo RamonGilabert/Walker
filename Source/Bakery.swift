@@ -52,57 +52,49 @@ public class Bakery: NSObject {
 
 public struct Bake {
 
-  internal let view: UIView
-  internal let duration: NSTimeInterval
-  internal let curve: Animation.Curve
-
   public func alpha(value: CGFloat) {
-    view.alpha = value
+    animate(.Alpha, value)
   }
 
   public func x(value: CGFloat) {
-    view.frame.origin.x = value
+    animate(.PositionX, value)
   }
 
   public func y(value: CGFloat) {
-    view.frame.origin.y = value
-  }
-
-  public func width(value: CGFloat) {
-    let bezierPoints = Animation.bezierPoints(curve)
-    let animation = Baker.configureBezierAnimation(.Width, bezierPoints: bezierPoints, duration: duration)
-    animation.values = [Animation.propertyValue(.Width, layer: view.layer), value]
-
-    view.layer.addAnimation(animation, forKey: nil)
-  }
-
-  public func height(value: CGFloat) {
-    view.frame.size.height = value
-  }
-
-  public func size(value: CGSize) {
-    view.frame.size = value
+    animate(.PositionY, value)
   }
 
   public func origin(value: CGPoint) {
-    view.frame.origin = value
+    animate(.Origin, value)
   }
 
   public func frame(value: CGRect) {
-    view.frame = value
+    animate(.Frame, value)
   }
 
   public func radius(value: CGFloat) {
-    view.layer.cornerRadius = value
+    animate(.CornerRadius, value)
   }
 
   public func transform(value: CGAffineTransform) {
-    view.transform = value
+    animate(.Transform, value)
   }
+
+  internal let view: UIView
+  internal let duration: NSTimeInterval
+  internal let curve: Animation.Curve
 
   init(view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
     self.view = view
     self.duration = duration
     self.curve = curve
+  }
+
+  private func animate(property: Animation.Property, _ value: NSValue) {
+    let bezierPoints = Animation.bezierPoints(curve)
+    let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
+    animation.values = [Animation.propertyValue(property, layer: view.layer), value]
+
+    view.layer.addAnimation(animation, forKey: nil)
   }
 }
