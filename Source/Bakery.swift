@@ -18,18 +18,17 @@ public class Bakery: NSObject {
 
   public func then(closure: () -> ()) -> Bakery {
     closure()
-
     return self
   }
 
   public func finally(closure: () -> ()) {
     closure()
   }
- }
+}
 
 public struct Bake {
 
-  var view: UIView
+  internal let view: UIView
 
   public func alpha(value: CGFloat) {
     view.alpha = value
@@ -51,12 +50,20 @@ public struct Bake {
     view.frame.size.height = value
   }
 
+  public func size(value: CGSize) {
+    view.frame.size = value
+  }
+
   public func origin(value: CGPoint) {
     view.frame.origin = value
   }
 
   public func frame(value: CGRect) {
     view.frame = value
+  }
+
+  public func radius(value: CGFloat) {
+    view.layer.cornerRadius = value
   }
 
   public func transform(value: CGAffineTransform) {
