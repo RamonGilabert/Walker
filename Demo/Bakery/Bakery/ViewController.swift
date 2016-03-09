@@ -48,14 +48,14 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animate(animationView, animationButton) {
-      $0.x(50)
-      $1.y(350)
-      $1.x(35)
-    }.chain {
-      $0.x(self.totalWidth / 2)
-      $1.x(Dimensions.buttonOffset / 2)
-      $1.y(self.totalHeight - Dimensions.buttonHeight - 75)
+    animate(animationView, duration: 0.075) {
+      $0.transform(CGAffineTransformMakeTranslation(25, 0))
+    }.chain(duration: 0.075) {
+      $0.transform(CGAffineTransformMakeTranslation(-25, 0))
+    }.chain(duration: 0.075) {
+      $0.transform(CGAffineTransformMakeTranslation(10, 0))
+    }.chain(duration: 0.075) {
+      $0.transform(CGAffineTransformIdentity)
     }
   }
 
