@@ -12,7 +12,7 @@ public func animate(view: UIView, duration: NSTimeInterval = 0.5,
     return Bakery.bakery
 }
 
-public func animate(firstView: UIView, secondView: UIView,
+public func animate(firstView: UIView, _ secondView: UIView,
   duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear,
   animations: (Bake, Bake) -> ()) -> Bakery {
 
@@ -26,7 +26,7 @@ public func animate(firstView: UIView, secondView: UIView,
     return Bakery.bakery
 }
 
-public func animate(firstView: UIView, secondView: UIView, thirdView: UIView,
+public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear,
   animations: (Bake, Bake, Bake) -> ()) -> Bakery {
 
@@ -41,8 +41,8 @@ public func animate(firstView: UIView, secondView: UIView, thirdView: UIView,
     return Bakery.bakery
 }
 
-public func animate(firstView: UIView, secondView: UIView, thirdView: UIView,
-  fourthView: UIView, duration: NSTimeInterval = 0.5,
+public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
+  _ fourthView: UIView, duration: NSTimeInterval = 0.5,
   curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> ()) -> Bakery {
 
     Bakery.bakes = [Bake(view: firstView, duration: duration, curve: curve),
@@ -75,6 +75,7 @@ public class Bakery: NSObject {
 
   public func chain(duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> ()) -> Bakery {
+      guard Bakery.bakes.count == 2 else { fatalError("Out of range")  }
 
       animations(Bakery.bakes[0], Bakery.bakes[1])
 
@@ -83,6 +84,7 @@ public class Bakery: NSObject {
 
   public func chain(duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> ()) -> Bakery {
+      guard Bakery.bakes.count == 3 else { fatalError("Out of range")  }
 
       animations(Bakery.bakes[0], Bakery.bakes[1], Bakery.bakes[2])
 
@@ -91,6 +93,7 @@ public class Bakery: NSObject {
 
   public func chain(duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> ()) -> Bakery {
+      guard Bakery.bakes.count == 4 else { fatalError("Out of range") }
 
       animations(Bakery.bakes[0], Bakery.bakes[1], Bakery.bakes[2], Bakery.bakes[3])
 
