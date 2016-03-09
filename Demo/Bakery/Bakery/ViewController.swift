@@ -51,12 +51,9 @@ class ViewController: UIViewController {
     animate(animationView, animationButton) {
       $0.x(50)
       $1.x(300)
-      $1.radius(2)
     }.chain {
       $0.x(400)
-      $1.x(300)
-    }.chain {
-      $1.alpha(0)
+      $1.x(50)
     }
   }
 

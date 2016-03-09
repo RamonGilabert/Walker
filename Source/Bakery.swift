@@ -60,10 +60,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 public class Bakery: NSObject {
 
   static let bakery = Bakery()
-  private static var animations: [CAKeyframeAnimation] = []
-  private static var properties: [Animation.Property] = []
   private static var bakes: [Bake] = []
-  private static var view: UIView?
 
   public func chain(duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
@@ -113,8 +110,11 @@ public class Bakery: NSObject {
   // MARK: - Animate
 
   static func animate() {
-    guard let view = Bakery.view, animation = Bakery.animations.first,
-      property = Bakery.properties.first, presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
+    guard let bake = Bakery.bakes.first,
+      let view = bake.views.first,
+      presentedLayer = view.layer.presentationLayer() as? CALayer,
+      animation = bake.animations.first,
+      property = bake.properties.first else { return }
 
     animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
 
@@ -124,23 +124,26 @@ public class Bakery: NSObject {
   // MARK: - Finish animation
 
   public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    guard let view = Bakery.view, layer = view.layer.presentationLayer() as? CALayer else { return }
+    guard let bake = Bakery.bakes.first,
+      view = bake.views.first,
+      layer = view.layer.presentationLayer() as? CALayer else { return }
 
-    if !Bakery.animations.isEmpty {
-      Bakery.animations.removeFirst()
-      Bakery.properties.removeFirst()
+    bake.view.layer.position = layer.position
+    bake.view.layer.removeAnimationForKey("animation")
+
+    bake.animations.removeFirst()
+    bake.properties.removeFirst()
+    bake.views.removeFirst()
+
+    if bake.animations.isEmpty {
+      Bakery.bakes.removeFirst()
     }
-
-    view.layer.position = layer.position
-    view.layer.removeAnimationForKey("animation")
-
-    guard !Bakery.animations.isEmpty else { return }
 
     Bakery.animate()
   }
 }
 
-public struct Bake {
+public class Bake {
 
   public func alpha(value: CGFloat) {
     animate(.Opacity, value)
@@ -185,6 +188,9 @@ public struct Bake {
   internal let view: UIView
   internal let duration: NSTimeInterval
   internal let curve: Animation.Curve
+  var animations: [CAKeyframeAnimation] = []
+  var properties: [Animation.Property] = []
+  var views: [UIView] = []
 
   init(view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
     self.view = view
@@ -196,8 +202,9 @@ public struct Bake {
     let bezierPoints = Animation.bezierPoints(curve)
     let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
     animation.values = [value]
-    
-    Bakery.animations.append(animation)
-    Bakery.properties.append(property)
+
+    animations.append(animation)
+    properties.append(property)
+    views.append(view)
   }
 }
