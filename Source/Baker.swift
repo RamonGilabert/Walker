@@ -13,13 +13,13 @@ struct Baker {
   // MARK: - Bezier animations
 
   static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> CAKeyframeAnimation {
-    let animation = CAKeyframeAnimation(keyPath: property.rawValue)
-    animation.keyTimes = [0, duration]
+    let animation = CAKeyframeAnimation()
+    animation.keyPath = property.rawValue
     animation.duration = duration
-    animation.removedOnCompletion = true
+    animation.removedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
     animation.delegate = Bakery.bakery
-    animation.additive = true
+    animation.additive = false
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
       bezierPoints[0], bezierPoints[1], bezierPoints[2], bezierPoints[3])
 

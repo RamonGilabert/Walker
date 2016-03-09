@@ -25,6 +25,7 @@ public class Bakery: NSObject {
 
   static let bakery = Bakery()
   private static var animations: [CAKeyframeAnimation] = []
+  private static var properties: [Animation.Property] = []
   private static var view: UIView?
 
   public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
@@ -58,8 +59,11 @@ public class Bakery: NSObject {
   // MARK: - Animate
 
   static func animate() {
-    guard let view = Bakery.view, presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
-    presentedLayer.addAnimation(Bakery.animations[0], forKey: nil)
+    guard let view = Bakery.view, animation = Bakery.animations.first,
+      property = Bakery.properties.first, presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
+
+    animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
+    view.layer.addAnimation(animation, forKey: nil)
   }
 
   // MARK: - Finish animation
@@ -67,9 +71,8 @@ public class Bakery: NSObject {
   public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
     if !Bakery.animations.isEmpty {
       Bakery.animations.removeFirst()
+      Bakery.properties.removeFirst()
     }
-
-    print(Bakery.view?.layer.presentationLayer()?.frame)
 
     guard !Bakery.animations.isEmpty else { return }
 
@@ -132,8 +135,9 @@ public struct Bake {
   private func animate(property: Animation.Property, _ value: NSValue) {
     let bezierPoints = Animation.bezierPoints(curve)
     let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
-    animation.values = [Animation.propertyValue(property, layer: view.layer), value]
+    animation.values = [value]
 
     Bakery.animations.append(animation)
+    Bakery.properties.append(property)
   }
 }
