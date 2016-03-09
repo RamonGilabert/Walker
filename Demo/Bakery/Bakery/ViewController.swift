@@ -48,10 +48,15 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animate(animationView) {
+    animate(animationView, animationButton, view) {
       $0.x(50)
-    }.animate(animationView) {
-      $0.x(300)
+      $1.x(300)
+      $1.radius(2)
+    }.chain {
+      $0.x(400)
+      $1.x(300)
+    }.chain {
+      $2.alpha(0)
     }
   }
 

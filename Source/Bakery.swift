@@ -1,28 +1,57 @@
 import UIKit
 
 public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
-  Bakery.animations.removeAll()
-  Bakery.properties.removeAll()
-
   animations(Bake(view: view, duration: duration, curve: curve))
 
-  Bakery.view = view
   Bakery.animate()
 
   return Bakery.bakery
 }
 
-public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
-  //animations(Bake(view: view, duration: duration, curve: curve))
+public func animate(firstView: UIView, secondView: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> ()) -> Bakery {
+  animations(
+    Bake(view: firstView, duration: duration, curve: curve),
+    Bake(view: secondView, duration: duration, curve: curve))
+
+  Bakery.animate()
 
   return Bakery.bakery
 }
 
-public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
-  //animations(Bake(view: view, duration: duration, curve: curve))
+public func animate(firstView: UIView, secondView: UIView, thirdView: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> ()) -> Bakery {
+  animations(
+    Bake(view: firstView, duration: duration, curve: curve),
+    Bake(view: secondView, duration: duration, curve: curve),
+    Bake(view: thirdView, duration: duration, curve: curve))
+
+  Bakery.animate()
 
   return Bakery.bakery
 }
+
+public func animate(firstView: UIView, secondView: UIView, thirdView: UIView, fourthView: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> ()) -> Bakery {
+  animations(
+    Bake(view: firstView, duration: duration, curve: curve),
+    Bake(view: secondView, duration: duration, curve: curve),
+    Bake(view: thirdView, duration: duration, curve: curve),
+    Bake(view: fourthView, duration: duration, curve: curve))
+
+  Bakery.animate()
+
+  return Bakery.bakery
+}
+
+//public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
+//  //animations(Bake(view: view, duration: duration, curve: curve))
+//
+//  return Bakery.bakery
+//}
+//
+//public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
+//  //animations(Bake(view: view, duration: duration, curve: curve))
+//
+//  return Bakery.bakery
+//}
 
 public class Bakery: NSObject {
 
@@ -31,24 +60,29 @@ public class Bakery: NSObject {
   private static var properties: [Animation.Property] = []
   private static var view: UIView?
 
-  public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
-    animations(Bake(view: view, duration: duration, curve: curve))
-    Bakery.view = view
+  public func animate(views: UIView..., duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: ([Bake]) -> ()) -> Bakery {
+    var bake: [Bake] = []
+
+    views.forEach {
+      bake.append(Bake(view: $0, duration: duration, curve: curve))
+    }
+
+    animations(bake)
 
     return self
   }
 
-  public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
-    //animations(Bake(view: view, duration: duration, curve: curve))
-
-    return Bakery.bakery
-  }
-
-  public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
-    //animations(Bake(view: view, duration: duration, curve: curve))
-
-    return self
-  }
+//  public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
+//    //animations(Bake(view: view, duration: duration, curve: curve))
+//
+//    return self
+//  }
+//
+//  public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
+//    //animations(Bake(view: view, duration: duration, curve: curve))
+//
+//    return self
+//  }
 
   public func then(closure: () -> ()) -> Bakery {
     closure()
