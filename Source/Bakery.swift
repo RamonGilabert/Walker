@@ -129,12 +129,15 @@ public class Bakery: NSObject {
     guard let bake = Bakery.bakes.first else { return }
 
     for (_, bake) in bake.enumerate() {
-      guard let presentedLayer = bake.view.layer.presentationLayer() as? CALayer,
-        animation = bake.animation, property = bake.property else { return }
+      guard let presentedLayer = bake.view.layer.presentationLayer() as? CALayer else { return }
 
-      animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
+      for (index, animation) in bake.animations.enumerate() {
+        let property = bake.properties[index]
 
-      bake.view.layer.addAnimation(animation, forKey: "animation")
+        animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
+
+        bake.view.layer.addAnimation(animation, forKey: "animation-\(index)")
+      }
     }
   }
 
@@ -144,18 +147,28 @@ public class Bakery: NSObject {
     guard var group = Bakery.bakes.first, let animation = anim as? CAKeyframeAnimation else { return }
 
     var index = 0
-    for (position, bake) in group.enumerate() where bake.view.layer.animationForKey("animation") == animation {
-      index = position
+    var animationIndex = 0
+    for (position, bake) in group.enumerate() {
+      for (animationPosition, _) in bake.animations.enumerate()
+        where bake.view.layer.animationForKey("animation-\(animationPosition)") == animation {
+
+        index = position
+        animationIndex = animationPosition
+      }
     }
 
     guard let layer = group[index].view.layer.presentationLayer() as? CALayer else { return }
 
     group[index].view.layer.position = layer.position
-    group[index].view.layer.removeAnimationForKey("animation")
+    group[index].view.layer.removeAnimationForKey("animation-\(animationIndex)")
+    group[index].animations.removeAtIndex(animationIndex)
+    group[index].properties.removeAtIndex(animationIndex)
 
-    group.removeAtIndex(index)
+    if group[index].animations.isEmpty {
+      group.removeAtIndex(index)
 
-    Bakery.bakes[0] = group
+      Bakery.bakes[0] = group
+    }
 
     if group.isEmpty {
       Bakery.bakes.removeFirst()
@@ -209,8 +222,8 @@ public class Bake {
   internal let view: UIView
   internal let duration: NSTimeInterval
   internal let curve: Animation.Curve
-  var animation: CAKeyframeAnimation?
-  var property: Animation.Property?
+  var animations: [CAKeyframeAnimation] = []
+  var properties: [Animation.Property] = []
 
   init(view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
     self.view = view
@@ -223,7 +236,7 @@ public class Bake {
     let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
     animation.values = [value]
 
-    self.animation = animation
-    self.property = property
+    animations.append(animation)
+    properties.append(property)
   }
 }

@@ -50,10 +50,12 @@ class ViewController: UIViewController {
   func animationButtonDidPress(button: UIButton) {
     animate(animationView, animationButton) {
       $0.x(50)
-      $1.x(100)
+      $1.y(350)
+      $1.x(35)
     }.chain {
-      $0.x(250)
-      $1.y(250)
+      $0.x(self.totalWidth / 2)
+      $1.x(Dimensions.buttonOffset / 2)
+      $1.y(self.totalHeight - Dimensions.buttonHeight - 75)
     }
   }
 
