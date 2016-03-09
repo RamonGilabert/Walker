@@ -20,6 +20,7 @@ struct Baker {
     animation.fillMode = kCAFillModeForwards
     animation.delegate = Bakery.bakery
     animation.additive = false
+    animation.cumulative = true
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
       bezierPoints[0], bezierPoints[1], bezierPoints[2], bezierPoints[3])
 

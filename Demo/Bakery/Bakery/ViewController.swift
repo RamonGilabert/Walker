@@ -49,9 +49,9 @@ class ViewController: UIViewController {
 
   func animationButtonDidPress(button: UIButton) {
     animate(animationView) {
-      $0.x(300)
-    }.animate(animationView) {
       $0.x(50)
+    }.animate(animationView) {
+      $0.x(300)
     }
   }
 

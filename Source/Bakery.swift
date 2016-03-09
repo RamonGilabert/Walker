@@ -1,6 +1,9 @@
 import UIKit
 
 public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
+  Bakery.animations.removeAll()
+  Bakery.properties.removeAll()
+
   animations(Bake(view: view, duration: duration, curve: curve))
 
   Bakery.view = view
@@ -63,16 +66,22 @@ public class Bakery: NSObject {
       property = Bakery.properties.first, presentedLayer = view.layer.presentationLayer() as? CALayer else { return }
 
     animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
-    view.layer.addAnimation(animation, forKey: nil)
+
+    view.layer.addAnimation(animation, forKey: "animation")
   }
 
   // MARK: - Finish animation
 
   public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    guard let view = Bakery.view, layer = view.layer.presentationLayer() as? CALayer else { return }
+
     if !Bakery.animations.isEmpty {
       Bakery.animations.removeFirst()
       Bakery.properties.removeFirst()
     }
+
+    view.layer.position = layer.position
+    view.layer.removeAnimationForKey("animation")
 
     guard !Bakery.animations.isEmpty else { return }
 
