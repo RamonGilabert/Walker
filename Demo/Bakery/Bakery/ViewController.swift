@@ -56,10 +56,12 @@ class ViewController: UIViewController {
     }.chain(duration: 0.075) {
       $0.transform(CGAffineTransformMakeTranslation(10, 0))
     }.chain(duration: 0.075) {
-      $0.radius(0)
+      $0.radius(62.5)
       $0.transform(CGAffineTransformIdentity)
     }
   }
+
+  // TODO: Same method for all of them, right now is complaining.
 
   // MARK: - Configuration
 

@@ -1,7 +1,7 @@
 import UIKit
 
 public func animate(view: UIView, duration: NSTimeInterval = 0.35,
-  curve: Animation.Curve = .Linear, @noescape animations: Bake -> Void) -> Bakery {
+  curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
 
     Bakery.bakes = [[Bake(view: view, duration: duration, curve: curve)]]
 
@@ -14,7 +14,7 @@ public func animate(view: UIView, duration: NSTimeInterval = 0.35,
 
 public func animate(firstView: UIView, _ secondView: UIView,
   duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
-  @noescape animations: (Bake, Bake) -> Void) -> Bakery {
+  animations: (Bake, Bake) -> Void) -> Bakery {
 
     Bakery.bakes = [[Bake(view: firstView, duration: duration, curve: curve),
       Bake(view: secondView, duration: duration, curve: curve)]]
@@ -28,7 +28,7 @@ public func animate(firstView: UIView, _ secondView: UIView,
 
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
-  @noescape animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+  animations: (Bake, Bake, Bake) -> Void) -> Bakery {
 
     Bakery.bakes = [[Bake(view: firstView, duration: duration, curve: curve),
       Bake(view: secondView, duration: duration, curve: curve),
@@ -43,7 +43,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   _ fourthView: UIView, duration: NSTimeInterval = 0.35,
-  curve: Animation.Curve = .Linear, @noescape animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
+  curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
 
     Bakery.bakes.forEach { $0.forEach { $0.view.layer.removeAllAnimations() } }
     Bakery.bakes = [[Bake(view: firstView, duration: duration, curve: curve),
@@ -65,8 +65,8 @@ public class Bakery: NSObject {
   private var closures: [(() -> Void)?] = []
   private var final: (() -> Void)?
 
-  public func chain(duration: NSTimeInterval = 0.35,
-    curve: Animation.Curve = .Linear, @noescape _ animations: Bake -> Void) -> Bakery {
+  public func chain(duration duration: NSTimeInterval = 0.35,
+    curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
       let bake = Bake(view: Bakery.bakes[0][0].view, duration: duration, curve: curve)
 
       Bakery.bakes.append([bake])
@@ -78,8 +78,8 @@ public class Bakery: NSObject {
       return Bakery.bakery
   }
 
-  public func chain(duration: NSTimeInterval = 0.35,
-    curve: Animation.Curve = .Linear, @noescape animations: (Bake, Bake) -> Void) -> Bakery {
+  public func chain(duration duration: NSTimeInterval = 0.35,
+    curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> Void) -> Bakery {
       let firstBake = Bake(view: Bakery.bakes[0][0].view, duration: duration, curve: curve)
       let secondBake = Bake(view: Bakery.bakes[0][1].view, duration: duration, curve: curve)
 
@@ -93,7 +93,7 @@ public class Bakery: NSObject {
   }
 
   public func chain(duration duration: NSTimeInterval = 0.35,
-    curve: Animation.Curve = .Linear, @noescape animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
       let firstBake = Bake(view: Bakery.bakes[0][0].view, duration: duration, curve: curve)
       let secondBake = Bake(view: Bakery.bakes[0][1].view, duration: duration, curve: curve)
       let thirdBake = Bake(view: Bakery.bakes[0][2].view, duration: duration, curve: curve)
@@ -108,7 +108,7 @@ public class Bakery: NSObject {
   }
 
   public func chain(duration duration: NSTimeInterval = 0.35,
-    curve: Animation.Curve = .Linear, @noescape animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
+    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
       let firstBake = Bake(view: Bakery.bakes[0][0].view, duration: duration, curve: curve)
       let secondBake = Bake(view: Bakery.bakes[0][1].view, duration: duration, curve: curve)
       let thirdBake = Bake(view: Bakery.bakes[0][2].view, duration: duration, curve: curve)
