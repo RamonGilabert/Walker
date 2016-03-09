@@ -50,10 +50,10 @@ class ViewController: UIViewController {
   func animationButtonDidPress(button: UIButton) {
     animate(animationView, animationButton) {
       $0.x(50)
-      $1.x(300)
+      $1.x(100)
     }.chain {
-      $0.x(400)
-      $1.x(50)
+      $0.x(250)
+      $1.y(250)
     }
   }
 
