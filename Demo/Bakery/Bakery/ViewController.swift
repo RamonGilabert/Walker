@@ -23,12 +23,13 @@ class ViewController: UIViewController {
 
   lazy var animationButton: UIButton = {
     let button = UIButton()
-    button.layer.cornerRadius = 3.5
+    button.layer.cornerRadius = 1.5
     button.layer.borderColor = UIColor.whiteColor().CGColor
     button.layer.borderWidth = 1.5
     button.setTitle("Start animation".uppercaseString, forState: .Normal)
     button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     button.addTarget(self, action: "animationButtonDidPress:", forControlEvents: .TouchUpInside)
+    button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
 
     return button
     }()
@@ -55,6 +56,7 @@ class ViewController: UIViewController {
     }.chain(duration: 0.075) {
       $0.transform(CGAffineTransformMakeTranslation(10, 0))
     }.chain(duration: 0.075) {
+      $0.radius(0)
       $0.transform(CGAffineTransformIdentity)
     }
   }
