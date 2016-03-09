@@ -1,92 +1,106 @@
 import UIKit
 
-public func animate(view: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
-  animations(Bake(view: view, duration: duration, curve: curve))
+public func animate(view: UIView, duration: NSTimeInterval = 0.5,
+  curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
 
-  Bakery.animate()
+    Bakery.bakes = [Bake(view: view, duration: duration, curve: curve)]
 
-  return Bakery.bakery
+    animations(Bakery.bakes[0])
+
+    Bakery.animate()
+
+    return Bakery.bakery
 }
 
-public func animate(firstView: UIView, secondView: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> ()) -> Bakery {
-  animations(
-    Bake(view: firstView, duration: duration, curve: curve),
-    Bake(view: secondView, duration: duration, curve: curve))
+public func animate(firstView: UIView, secondView: UIView,
+  duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear,
+  animations: (Bake, Bake) -> ()) -> Bakery {
 
-  Bakery.animate()
+    Bakery.bakes = [Bake(view: firstView, duration: duration, curve: curve),
+      Bake(view: secondView, duration: duration, curve: curve)]
 
-  return Bakery.bakery
+    animations(Bakery.bakes[0], Bakery.bakes[1])
+
+    Bakery.animate()
+
+    return Bakery.bakery
 }
 
-public func animate(firstView: UIView, secondView: UIView, thirdView: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> ()) -> Bakery {
-  animations(
-    Bake(view: firstView, duration: duration, curve: curve),
-    Bake(view: secondView, duration: duration, curve: curve),
-    Bake(view: thirdView, duration: duration, curve: curve))
+public func animate(firstView: UIView, secondView: UIView, thirdView: UIView,
+  duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear,
+  animations: (Bake, Bake, Bake) -> ()) -> Bakery {
 
-  Bakery.animate()
+    Bakery.bakes = [Bake(view: firstView, duration: duration, curve: curve),
+      Bake(view: secondView, duration: duration, curve: curve),
+      Bake(view: thirdView, duration: duration, curve: curve)]
 
-  return Bakery.bakery
+    animations(Bakery.bakes[0], Bakery.bakes[1], Bakery.bakes[2])
+
+    Bakery.animate()
+
+    return Bakery.bakery
 }
 
-public func animate(firstView: UIView, secondView: UIView, thirdView: UIView, fourthView: UIView, duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> ()) -> Bakery {
-  animations(
-    Bake(view: firstView, duration: duration, curve: curve),
-    Bake(view: secondView, duration: duration, curve: curve),
-    Bake(view: thirdView, duration: duration, curve: curve),
-    Bake(view: fourthView, duration: duration, curve: curve))
+public func animate(firstView: UIView, secondView: UIView, thirdView: UIView,
+  fourthView: UIView, duration: NSTimeInterval = 0.5,
+  curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> ()) -> Bakery {
 
-  Bakery.animate()
+    Bakery.bakes = [Bake(view: firstView, duration: duration, curve: curve),
+      Bake(view: secondView, duration: duration, curve: curve),
+      Bake(view: thirdView, duration: duration, curve: curve),
+      Bake(view: fourthView, duration: duration, curve: curve)]
 
-  return Bakery.bakery
+    animations(Bakery.bakes[0], Bakery.bakes[1], Bakery.bakes[2], Bakery.bakes[3])
+
+    Bakery.animate()
+
+    return Bakery.bakery
 }
-
-//public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
-//  //animations(Bake(view: view, duration: duration, curve: curve))
-//
-//  return Bakery.bakery
-//}
-//
-//public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
-//  //animations(Bake(view: view, duration: duration, curve: curve))
-//
-//  return Bakery.bakery
-//}
 
 public class Bakery: NSObject {
 
   static let bakery = Bakery()
   private static var animations: [CAKeyframeAnimation] = []
   private static var properties: [Animation.Property] = []
+  private static var bakes: [Bake] = []
   private static var view: UIView?
 
-  public func animate(views: UIView..., duration: NSTimeInterval = 0.5, curve: Animation.Curve = .Linear, animations: ([Bake]) -> ()) -> Bakery {
-    var bake: [Bake] = []
+  public func chain(duration: NSTimeInterval = 0.5,
+    curve: Animation.Curve = .Linear, animations: (Bake) -> ()) -> Bakery {
 
-    views.forEach {
-      bake.append(Bake(view: $0, duration: duration, curve: curve))
-    }
+      animations(Bakery.bakes[0])
 
-    animations(bake)
-
-    return self
+      return Bakery.bakery
   }
 
-//  public func bezier(view: UIView, points: [CGFloat], animations: (Bake) -> ()) -> Bakery {
-//    //animations(Bake(view: view, duration: duration, curve: curve))
-//
-//    return self
-//  }
-//
-//  public func spring(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake) -> ()) -> Bakery {
-//    //animations(Bake(view: view, duration: duration, curve: curve))
-//
-//    return self
-//  }
+  public func chain(duration: NSTimeInterval = 0.5,
+    curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> ()) -> Bakery {
+
+      animations(Bakery.bakes[0], Bakery.bakes[1])
+
+      return Bakery.bakery
+  }
+
+  public func chain(duration: NSTimeInterval = 0.5,
+    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> ()) -> Bakery {
+
+      animations(Bakery.bakes[0], Bakery.bakes[1], Bakery.bakes[2])
+
+      return Bakery.bakery
+  }
+
+  public func chain(duration: NSTimeInterval = 0.5,
+    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> ()) -> Bakery {
+
+      animations(Bakery.bakes[0], Bakery.bakes[1], Bakery.bakes[2], Bakery.bakes[3])
+
+      return Bakery.bakery
+  }
 
   public func then(closure: () -> ()) -> Bakery {
     closure()
-    return self
+
+    return Bakery.bakery
   }
 
   public func finally(closure: () -> ()) {
@@ -179,7 +193,7 @@ public struct Bake {
     let bezierPoints = Animation.bezierPoints(curve)
     let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
     animation.values = [value]
-
+    
     Bakery.animations.append(animation)
     Bakery.properties.append(property)
   }
