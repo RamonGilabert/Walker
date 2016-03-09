@@ -7,72 +7,72 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17FD7986FCFA73A2E796DD1E18D523A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A4C073F3F9F71375DC91795BCF54D7 /* Foundation.framework */; };
-		32D84AB9413299A345693202287BA5F0 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE9BA437F860486820DA72D69ABEDCB /* Animation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		39D0A89CF766F8DA0ECF3631F7109FE0 /* Bakery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4871AA66B107EC92BED3173F79A2424 /* Bakery.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		437FB03AACD903B9DED87007BFAF2BE6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EEBC55BD305BD88ECA7C80F1424E09 /* AVFoundation.framework */; };
-		54EF3930AC517274991D1E1BDFABF430 /* Baker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF08549EA767E527A4B3BF9585A63EF /* Baker.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		18F6FE62714FFAEB827238C22C75A966 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D356D580CD2B1D781F7E4D38405A57 /* AVFoundation.framework */; };
+		3750C5A6BF3B23D1CCA9BAF5A44B7787 /* AnimationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9603B9952D11E528E059C77859C76F3 /* AnimationConstants.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		391A8A0006163825C6A7EE2C65601064 /* Bakery-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DC3B7292E6E60AD7B98E647AE5C92 /* Bakery-dummy.m */; };
+		5E68B478025A8327713A0085A306AA52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C76887805669E6740A074D937BACA2F /* Foundation.framework */; };
 		66299F6B731223C971DACFA628AE7BB2 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
 		6738386FCC493E03249E87160887E37F /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8195043C564EEAFBA6717119DB1BBC15 /* Bakery-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C40E712EF08936E8E6879871120F3651 /* Bakery-dummy.m */; };
-		DAFA9AEE249A55E077EE8AFB2C4FDE13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A4C073F3F9F71375DC91795BCF54D7 /* Foundation.framework */; };
-		E67CA6F85A9A8B4A71EA23118BFC7509 /* Bakery-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F216031034A113BBC955BF083182EE33 /* Bakery-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EF23A581917CD0B144064007424FBC73 /* AnimationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAE5DEA9CDEE096C874B07F6CC44EB1 /* AnimationConstants.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		95CEBE0F159978A2A607CDA54B1DDE85 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7144F7FDE7A0250A0158BCEF622818B /* Animation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A3D2CD6F3CBF3BED2A17C53A2ADE0862 /* Bakery-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5310F1A9AD49316F42DE4F2468EFFEEA /* Bakery-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B484288EC336A833DB2F14C2DF325441 /* Baker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A036EC23028D258717C82AD0744A577 /* Baker.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		CBBD2AFC452AACB9A743DE7FC08E9F59 /* Bakery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782948B7A9C41C300AE8FCADD218F93 /* Bakery.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		DAFA9AEE249A55E077EE8AFB2C4FDE13 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C76887805669E6740A074D937BACA2F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		77FA28E9E8824C9C339BE3B36F6C4902 /* PBXContainerItemProxy */ = {
+		4F226913D91E877179923FD1D7F6486B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1E6D23EE213F1467A37B533651189B2B;
+			remoteGlobalIDString = E4D0395BDA387B1DD4BE90039E09463A;
 			remoteInfo = Bakery;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		013DC3B7292E6E60AD7B98E647AE5C92 /* Bakery-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Bakery-dummy.m"; sourceTree = "<group>"; };
 		130F71EDFFA0BA0B7AE58BCECF2B6396 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		2A036EC23028D258717C82AD0744A577 /* Baker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Baker.swift; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
 		3377722EF6DE033421AE1F49C2A22693 /* Bakery-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bakery-prefix.pch"; sourceTree = "<group>"; };
-		4AF08549EA767E527A4B3BF9585A63EF /* Baker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Baker.swift; sourceTree = "<group>"; };
+		35D356D580CD2B1D781F7E4D38405A57 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		3782948B7A9C41C300AE8FCADD218F93 /* Bakery.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Bakery.swift; sourceTree = "<group>"; };
+		4C76887805669E6740A074D937BACA2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		5310F1A9AD49316F42DE4F2468EFFEEA /* Bakery-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bakery-umbrella.h"; sourceTree = "<group>"; };
 		5B202874E2C5AAFDF95EFBC6A57AB287 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
 		6875DECF110B8DD4A9EA8D2655FE3B89 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69100DF305B7C600D3251018F99AAE8F /* Bakery.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Bakery.modulemap; sourceTree = "<group>"; };
+		6F462D238DB8C96E1D4371B0FA08F5DF /* Bakery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bakery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76F5D10EF6984EF89A8AC1E7705F4C3A /* Bakery.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Bakery.xcconfig; sourceTree = "<group>"; };
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
-		7AAE5DEA9CDEE096C874B07F6CC44EB1 /* AnimationConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationConstants.swift; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		A3EEBC55BD305BD88ECA7C80F1424E09 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		B4871AA66B107EC92BED3173F79A2424 /* Bakery.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Bakery.swift; sourceTree = "<group>"; };
+		B7144F7FDE7A0250A0158BCEF622818B /* Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C40E712EF08936E8E6879871120F3651 /* Bakery-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Bakery-dummy.m"; sourceTree = "<group>"; };
+		C9603B9952D11E528E059C77859C76F3 /* AnimationConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnimationConstants.swift; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		CDE9BA437F860486820DA72D69ABEDCB /* Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		CF6632A82F97BFF311B213AA28ADBDF5 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0405803033A2A777B8E4DFA0C1800ED /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D3A4C073F3F9F71375DC91795BCF54D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E7F21354943D9F42A70697D5A5EF72E9 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		E8446514FBAD26C0E18F24A5715AEF67 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F12358C746E2B1E791DF6C99783F5EB6 /* Bakery.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Bakery.xcconfig; sourceTree = "<group>"; };
-		F216031034A113BBC955BF083182EE33 /* Bakery-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bakery-umbrella.h"; sourceTree = "<group>"; };
-		F6450EBC0263B29264A84A810D9C92BC /* Bakery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bakery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		922CD797A55ED3A5065BCD42B2BBEBDF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18F6FE62714FFAEB827238C22C75A966 /* AVFoundation.framework in Frameworks */,
+				5E68B478025A8327713A0085A306AA52 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D27313C1E563E3A1AD6347B422D4F116 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DAFA9AEE249A55E077EE8AFB2C4FDE13 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F88846ED1135AAF6C0FE557F9616D6E8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				437FB03AACD903B9DED87007BFAF2BE6 /* AVFoundation.framework in Frameworks */,
-				17FD7986FCFA73A2E796DD1E18D523A7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 		004106A4AA1654B55A65262E9570CCF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F6450EBC0263B29264A84A810D9C92BC /* Bakery.framework */,
+				6F462D238DB8C96E1D4371B0FA08F5DF /* Bakery.framework */,
 				CF6632A82F97BFF311B213AA28ADBDF5 /* Pods.framework */,
 			);
 			name = Products;
@@ -92,10 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				69100DF305B7C600D3251018F99AAE8F /* Bakery.modulemap */,
-				F12358C746E2B1E791DF6C99783F5EB6 /* Bakery.xcconfig */,
-				C40E712EF08936E8E6879871120F3651 /* Bakery-dummy.m */,
+				76F5D10EF6984EF89A8AC1E7705F4C3A /* Bakery.xcconfig */,
+				013DC3B7292E6E60AD7B98E647AE5C92 /* Bakery-dummy.m */,
 				3377722EF6DE033421AE1F49C2A22693 /* Bakery-prefix.pch */,
-				F216031034A113BBC955BF083182EE33 /* Bakery-umbrella.h */,
+				5310F1A9AD49316F42DE4F2468EFFEEA /* Bakery-umbrella.h */,
 				6875DECF110B8DD4A9EA8D2655FE3B89 /* Info.plist */,
 			);
 			name = "Support Files";
@@ -105,8 +105,8 @@
 		0AA018695DD430E00FABA1D6DD89C93E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A3EEBC55BD305BD88ECA7C80F1424E09 /* AVFoundation.framework */,
-				D3A4C073F3F9F71375DC91795BCF54D7 /* Foundation.framework */,
+				35D356D580CD2B1D781F7E4D38405A57 /* AVFoundation.framework */,
+				4C76887805669E6740A074D937BACA2F /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -169,10 +169,10 @@
 		8100D53A7C4951985827C91770B2F625 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CDE9BA437F860486820DA72D69ABEDCB /* Animation.swift */,
-				7AAE5DEA9CDEE096C874B07F6CC44EB1 /* AnimationConstants.swift */,
-				4AF08549EA767E527A4B3BF9585A63EF /* Baker.swift */,
-				B4871AA66B107EC92BED3173F79A2424 /* Bakery.swift */,
+				B7144F7FDE7A0250A0158BCEF622818B /* Animation.swift */,
+				C9603B9952D11E528E059C77859C76F3 /* AnimationConstants.swift */,
+				2A036EC23028D258717C82AD0744A577 /* Baker.swift */,
+				3782948B7A9C41C300AE8FCADD218F93 /* Bakery.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -188,14 +188,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		113FDE7E71EC6DA7AAEBD6300E2D6E41 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E67CA6F85A9A8B4A71EA23118BFC7509 /* Bakery-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		41CC8786F49B46C3F9BC63F323E756F9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,26 +196,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64EAAEA5E5F3BD718245B2AC605E19E6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3D2CD6F3CBF3BED2A17C53A2ADE0862 /* Bakery-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1E6D23EE213F1467A37B533651189B2B /* Bakery */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1A1A043E4287C58C2A25E9B44A607ADB /* Build configuration list for PBXNativeTarget "Bakery" */;
-			buildPhases = (
-				26E28472D9D274DB1FF9E4576F2D7AFC /* Sources */,
-				F88846ED1135AAF6C0FE557F9616D6E8 /* Frameworks */,
-				113FDE7E71EC6DA7AAEBD6300E2D6E41 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Bakery;
-			productName = Bakery;
-			productReference = F6450EBC0263B29264A84A810D9C92BC /* Bakery.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		5EB87A30F8BA27C629F45F1801B5CF2C /* Pods */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E3513EFD5BED6A4D6284B51521B14CF /* Build configuration list for PBXNativeTarget "Pods" */;
@@ -235,11 +218,28 @@
 			buildRules = (
 			);
 			dependencies = (
-				533808D98AA1C85FE48B6ACDBD5F804D /* PBXTargetDependency */,
+				E0114DB345CE3BBABDD5758FA120C518 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
 			productReference = CF6632A82F97BFF311B213AA28ADBDF5 /* Pods.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E4D0395BDA387B1DD4BE90039E09463A /* Bakery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8520BE5E64F4256DB87E5F6A77B70991 /* Build configuration list for PBXNativeTarget "Bakery" */;
+			buildPhases = (
+				08F3835B4AAF892B2A83B6F3D42AC97E /* Sources */,
+				922CD797A55ED3A5065BCD42B2BBEBDF /* Frameworks */,
+				64EAAEA5E5F3BD718245B2AC605E19E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Bakery;
+			productName = Bakery;
+			productReference = 6F462D238DB8C96E1D4371B0FA08F5DF /* Bakery.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -263,22 +263,22 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1E6D23EE213F1467A37B533651189B2B /* Bakery */,
+				E4D0395BDA387B1DD4BE90039E09463A /* Bakery */,
 				5EB87A30F8BA27C629F45F1801B5CF2C /* Pods */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		26E28472D9D274DB1FF9E4576F2D7AFC /* Sources */ = {
+		08F3835B4AAF892B2A83B6F3D42AC97E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32D84AB9413299A345693202287BA5F0 /* Animation.swift in Sources */,
-				EF23A581917CD0B144064007424FBC73 /* AnimationConstants.swift in Sources */,
-				54EF3930AC517274991D1E1BDFABF430 /* Baker.swift in Sources */,
-				8195043C564EEAFBA6717119DB1BBC15 /* Bakery-dummy.m in Sources */,
-				39D0A89CF766F8DA0ECF3631F7109FE0 /* Bakery.swift in Sources */,
+				95CEBE0F159978A2A607CDA54B1DDE85 /* Animation.swift in Sources */,
+				3750C5A6BF3B23D1CCA9BAF5A44B7787 /* AnimationConstants.swift in Sources */,
+				B484288EC336A833DB2F14C2DF325441 /* Baker.swift in Sources */,
+				391A8A0006163825C6A7EE2C65601064 /* Bakery-dummy.m in Sources */,
+				CBBD2AFC452AACB9A743DE7FC08E9F59 /* Bakery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,11 +293,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		533808D98AA1C85FE48B6ACDBD5F804D /* PBXTargetDependency */ = {
+		E0114DB345CE3BBABDD5758FA120C518 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Bakery;
-			target = 1E6D23EE213F1467A37B533651189B2B /* Bakery */;
-			targetProxy = 77FA28E9E8824C9C339BE3B36F6C4902 /* PBXContainerItemProxy */;
+			target = E4D0395BDA387B1DD4BE90039E09463A /* Bakery */;
+			targetProxy = 4F226913D91E877179923FD1D7F6486B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -361,9 +361,9 @@
 			};
 			name = Release;
 		};
-		224CFDF69C7274AE31F463CD9755024F /* Release */ = {
+		6A2284B454F7C175766978881FBB5191 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F12358C746E2B1E791DF6C99783F5EB6 /* Bakery.xcconfig */;
+			baseConfigurationReference = 76F5D10EF6984EF89A8AC1E7705F4C3A /* Bakery.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 0.1.0;
@@ -388,9 +388,9 @@
 			};
 			name = Release;
 		};
-		A1E6604DFF34A27B95E342A96E4618EB /* Debug */ = {
+		726A035C7C4D95CDF8AF56377A023D2B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F12358C746E2B1E791DF6C99783F5EB6 /* Bakery.xcconfig */;
+			baseConfigurationReference = 76F5D10EF6984EF89A8AC1E7705F4C3A /* Bakery.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 0.1.0;
@@ -492,20 +492,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1A1A043E4287C58C2A25E9B44A607ADB /* Build configuration list for PBXNativeTarget "Bakery" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A1E6604DFF34A27B95E342A96E4618EB /* Debug */,
-				224CFDF69C7274AE31F463CD9755024F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
 				FB45FFD90572718D82AB9092B750F0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8520BE5E64F4256DB87E5F6A77B70991 /* Build configuration list for PBXNativeTarget "Bakery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				726A035C7C4D95CDF8AF56377A023D2B /* Debug */,
+				6A2284B454F7C175766978881FBB5191 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
