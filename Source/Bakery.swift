@@ -1,10 +1,11 @@
 import UIKit
 
+var bakeries: [Bakery] = []
+
 public class Bakery: NSObject {
 
-  static let bakery = Bakery()
-  static var bakes: [[Bake]] = [[]]
-  static var delays: [NSTimeInterval] = []
+  var bakes: [[Bake]] = [[]]
+  var delays: [NSTimeInterval] = []
   var closures: [(() -> Void)?] = []
   var final: (() -> Void)?
 
@@ -13,7 +14,8 @@ public class Bakery: NSObject {
    */
   public func then(closure: () -> Void) -> Bakery {
     closures.append(closure)
-    return Bakery.bakery
+
+    return self
   }
 
   /**
@@ -25,12 +27,12 @@ public class Bakery: NSObject {
 
   // MARK: - Animate
 
-  static func animate() {
-    guard let delay = Bakery.delays.first else { return }
+  func animate() {
+    guard let delay = delays.first else { return }
 
     let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
     dispatch_after(time, dispatch_get_main_queue()) {
-      guard let bake = Bakery.bakes.first else { return }
+      guard let bake = self.bakes.first else { return }
 
       for (_, bake) in bake.enumerate() {
         guard let presentedLayer = bake.view.layer.presentationLayer() as? CALayer else { return }
@@ -45,7 +47,7 @@ public class Bakery: NSObject {
             animation.duration = Baker.springTiming
           }
 
-          bake.finalValues.removeFirst()
+          if !bake.finalValues.isEmpty { bake.finalValues.removeFirst() }
           bake.view.layer.addAnimation(animation, forKey: "animation-\(index)")
         }
       }
@@ -55,7 +57,7 @@ public class Bakery: NSObject {
   // MARK: - Finish animation
 
   public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    guard var group = Bakery.bakes.first, let animation = anim as? CAKeyframeAnimation else { return }
+    guard var group = bakes.first, let animation = anim as? CAKeyframeAnimation else { return }
 
     var index = 0
     var animationIndex = 0
@@ -82,13 +84,13 @@ public class Bakery: NSObject {
     if bake.animations.isEmpty {
       group.removeAtIndex(index)
 
-      Bakery.bakes[0] = group
+      bakes[0] = group
     }
 
     if group.isEmpty {
-      Bakery.bakes.removeFirst()
-      Bakery.delays.removeFirst()
-      Bakery.animate()
+      bakes.removeFirst()
+      delays.removeFirst()
+      animate()
 
       if let firstClosure = closures.first, closure = firstClosure {
         closure()
@@ -98,7 +100,7 @@ public class Bakery: NSObject {
       }
     }
 
-    if let final = final where Bakery.bakes.isEmpty {
+    if let final = final where bakes.isEmpty {
       final()
     }
   }

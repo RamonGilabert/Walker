@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     view.layer.cornerRadius = 7.5
 
     return view
-    }()
+  }()
 
   lazy var animationButton: UIButton = {
     let button = UIButton()
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
 
     return button
-    }()
+  }()
 
   let totalWidth = UIScreen.mainScreen().bounds.width
   let totalHeight = UIScreen.mainScreen().bounds.height
@@ -54,6 +54,10 @@ class ViewController: UIViewController {
     }.chain(spring: 200, friction: 10, mass: 10) {
       $0.y = (self.totalHeight - Dimensions.animationViewSize) / 2 - 200
     }
+
+//    spring(animationView, spring: 200, friction: 10, mass: 10) {
+//      $0.x = 35
+//    }
   }
 
   // MARK: - Configuration

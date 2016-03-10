@@ -13,11 +13,12 @@ import UIKit
  */
 public func spring(view: UIView, delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
   mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
-    animations(constructor([view], delay, spring, friction, mass, tolerance)[0])
+    let builder = constructor([view], delay, spring, friction, mass, tolerance)
+    animations(builder.bakes[0])
 
-    Bakery.animate()
+    builder.bakery.animate()
 
-    return Bakery.bakery
+    return builder.bakery
 }
 
 /**
@@ -34,12 +35,12 @@ public func spring(view: UIView, delay: NSTimeInterval = 0, spring: CGFloat, fri
 public func spring(firstView: UIView, _ secondView: UIView,
   delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
   mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake, Bake) -> Void) -> Bakery {
-    let bakes = constructor([firstView, secondView], delay, spring, friction, mass, tolerance)
-    animations(bakes[0], bakes[1])
+    let builder = constructor([firstView, secondView], delay, spring, friction, mass, tolerance)
+    animations(builder.bakes[0], builder.bakes[1])
 
-    Bakery.animate()
+    builder.bakery.animate()
 
-    return Bakery.bakery
+    return builder.bakery
 }
 
 /**
@@ -56,23 +57,26 @@ public func spring(firstView: UIView, _ secondView: UIView,
 public func spring(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
   mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
-    let bakes = constructor([firstView, secondView, thirdView], delay, spring, friction, mass, tolerance)
-    animations(bakes[0], bakes[1], bakes[2])
+    let builder = constructor([firstView, secondView, thirdView], delay, spring, friction, mass, tolerance)
+    animations(builder.bakes[0], builder.bakes[1], builder.bakes[2])
 
-    Bakery.animate()
+    builder.bakery.animate()
 
-    return Bakery.bakery
+    return builder.bakery
 }
 
 private func constructor(views: [UIView], _ delay: NSTimeInterval, _ spring: CGFloat,
-  _ friction: CGFloat, _ mass: CGFloat, _ tolerance: CGFloat) -> [Bake] {
+  _ friction: CGFloat, _ mass: CGFloat, _ tolerance: CGFloat) -> (bakes: [Bake], bakery: Bakery) {
+    let bakery = Bakery()
+
     var bakes: [Bake] = []
     views.forEach {
-      bakes.append(Bake(view: $0, spring: spring, friction: friction, mass: mass, tolerance: tolerance))
+      bakes.append(Bake(bakery: bakery, view: $0, spring: spring,
+        friction: friction, mass: mass, tolerance: tolerance))
     }
 
-    Bakery.delays.append(delay)
-    Bakery.bakes = [bakes]
+    bakery.delays.append(delay)
+    bakery.bakes = [bakes]
 
-    return bakes
+    return (bakes: bakes, bakery: bakery)
 }

@@ -18,7 +18,6 @@ struct Baker {
     animation.duration = duration
     animation.removedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
-    animation.delegate = Bakery.bakery
     animation.additive = false
     animation.cumulative = true
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
@@ -40,7 +39,6 @@ struct Baker {
       let animation = CAKeyframeAnimation(keyPath: property.rawValue)
       animation.removedOnCompletion = false
       animation.fillMode = kCAFillModeForwards
-      animation.delegate = Bakery.bakery
 
       return animation
   }

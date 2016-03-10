@@ -17,7 +17,7 @@ extension Bakery {
     curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
       animations(bezier(1, delay, duration, curve)[0])
 
-      return Bakery.bakery
+      return self
   }
 
   /**
@@ -34,7 +34,7 @@ extension Bakery {
       let bakes = bezier(2, delay, duration, curve)
       animations(bakes[0], bakes[1])
 
-      return Bakery.bakery
+      return self
   }
 
   /**
@@ -51,7 +51,7 @@ extension Bakery {
       let bakes = bezier(3, delay, duration, curve)
       animations(bakes[0], bakes[1], bakes[2])
 
-      return Bakery.bakery
+      return self
   }
 
   /**
@@ -68,7 +68,7 @@ extension Bakery {
       let bakes = bezier(4, delay, duration, curve)
       animations(bakes[0], bakes[1], bakes[2], bakes[3])
 
-      return Bakery.bakery
+      return self
   }
 
   // MARK: - Spring chains
@@ -88,7 +88,7 @@ extension Bakery {
     mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
       animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance)[0])
 
-      return Bakery.bakery
+      return self
   }
 
   /**
@@ -107,7 +107,7 @@ extension Bakery {
       let bakes = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance)
       animations(bakes[0], bakes[1])
 
-      return Bakery.bakery
+      return self
   }
 
   /**
@@ -126,40 +126,41 @@ extension Bakery {
       let bakes = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance)
       animations(bakes[0], bakes[1], bakes[2])
 
-      return Bakery.bakery
+      return self
   }
 
   // MARK: - Private constructors
 
   private func bezier(value: Int, _ delay: NSTimeInterval,
     _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
-      var bakes: [Bake] = []
+      var animationBakes: [Bake] = []
       for index in 0..<value {
-        let bake = Bake(view: Bakery.bakes[0][index].view, duration: duration, curve: curve)
-        bakes.append(bake)
+        let bake = Bake(bakery: self, view: self.bakes[0][index].view, duration: duration, curve: curve)
+        animationBakes.append(bake)
       }
 
-      Bakery.delays.append(delay)
-      Bakery.bakes.append(bakes)
+      delays.append(delay)
+      bakes.append(animationBakes)
 
       closures.append(nil)
 
-      return bakes
+      return animationBakes
   }
 
   private func constructor(value: Int, delay: NSTimeInterval, _ spring: CGFloat,
     _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat) -> [Bake] {
-      var bakes: [Bake] = []
+      var animationBakes: [Bake] = []
       for index in 0..<value {
-        let bake = Bake(view: Bakery.bakes[0][index].view, spring: spring, friction: friction, mass: mass, tolerance: tolerance)
-        bakes.append(bake)
+        let bake = Bake(bakery: self, view: self.bakes[0][index].view,
+          spring: spring, friction: friction, mass: mass, tolerance: tolerance)
+        animationBakes.append(bake)
       }
 
-      Bakery.delays.append(delay)
-      Bakery.bakes.append(bakes)
+      delays.append(delay)
+      bakes.append(animationBakes)
       
       closures.append(nil)
       
-      return bakes
+      return animationBakes
   }
 }

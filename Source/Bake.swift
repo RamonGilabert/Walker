@@ -94,8 +94,10 @@ public class Bake {
   var animations: [CAKeyframeAnimation] = []
   var properties: [Animation.Property] = []
   var finalValues: [NSValue] = []
+  var bakery: Bakery
 
-  init(view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
+  init(bakery: Bakery, view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
+    self.bakery = bakery
     self.view = view
     self.duration = duration
     self.curve = curve
@@ -113,7 +115,8 @@ public class Bake {
     self.transform = view.transform
   }
 
-  init(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat) {
+  init(bakery: Bakery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat) {
+    self.bakery = bakery
     self.view = view
     self.duration = 0
     self.curve = .Linear
@@ -137,9 +140,11 @@ public class Bake {
     if kind == .Bezier {
       animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration)
       animation.values = [value]
+      animation.delegate = bakery
     } else {
       animation = Baker.spring(property, spring: spring.spring,
         friction: spring.friction, mass: spring.mass, tolerance: spring.tolerance, type: .Spring)
+      animation.delegate = bakery
     }
 
     animations.append(animation)
