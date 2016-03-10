@@ -120,17 +120,22 @@ public class Bakery: NSObject {
   // MARK: - Animate
 
   static func animate() {
-    guard let bake = Bakery.bakes.first else { return }
+    guard let delay = Bakery.delays.first else { return }
 
-    for (_, bake) in bake.enumerate() {
-      guard let presentedLayer = bake.view.layer.presentationLayer() as? CALayer else { return }
+    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
+    dispatch_after(time, dispatch_get_main_queue()) {
+      guard let bake = Bakery.bakes.first else { return }
 
-      for (index, animation) in bake.animations.enumerate() {
-        let property = bake.properties[index]
+      for (_, bake) in bake.enumerate() {
+        guard let presentedLayer = bake.view.layer.presentationLayer() as? CALayer else { return }
 
-        animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
+        for (index, animation) in bake.animations.enumerate() {
+          let property = bake.properties[index]
 
-        bake.view.layer.addAnimation(animation, forKey: "animation-\(index)")
+          animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
+
+          bake.view.layer.addAnimation(animation, forKey: "animation-\(index)")
+        }
       }
     }
   }
@@ -170,6 +175,7 @@ public class Bakery: NSObject {
 
     if group.isEmpty {
       Bakery.bakes.removeFirst()
+      Bakery.delays.removeFirst()
       Bakery.animate()
 
       if let firstClosure = closures.first, closure = firstClosure {
