@@ -2,7 +2,6 @@ import UIKit
 
 public func animate(view: UIView, duration: NSTimeInterval = 0.35,
   curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
-
     animations(animate([view], duration, curve)[0])
 
     Bakery.animate()
@@ -13,7 +12,6 @@ public func animate(view: UIView, duration: NSTimeInterval = 0.35,
 public func animate(firstView: UIView, _ secondView: UIView,
   duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
   animations: (Bake, Bake) -> Void) -> Bakery {
-
     let bake = animate([firstView, secondView], duration, curve)
     animations(bake[0], bake[1])
 
@@ -25,7 +23,6 @@ public func animate(firstView: UIView, _ secondView: UIView,
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
   animations: (Bake, Bake, Bake) -> Void) -> Bakery {
-
     let bake = animate([firstView, secondView, thirdView], duration, curve)
     animations(bake[0], bake[1], bake[2])
 
@@ -37,7 +34,6 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   _ fourthView: UIView, duration: NSTimeInterval = 0.35,
   curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
-
     let bake = animate([firstView, secondView, thirdView, fourthView], duration, curve)
     animations(bake[0], bake[1], bake[2], bake[3])
 
@@ -47,7 +43,6 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 }
 
 private func animate(views: [UIView], _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
-
   var bakes: [Bake] = []
   views.forEach {
     bakes.append(Bake(view: $0, duration: duration, curve: curve))

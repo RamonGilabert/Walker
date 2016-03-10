@@ -60,8 +60,6 @@ class ViewController: UIViewController {
     }
   }
 
-  // TODO: Same method for all of them, right now is complaining.
-
   // MARK: - Configuration
 
   func setupFrames() {
