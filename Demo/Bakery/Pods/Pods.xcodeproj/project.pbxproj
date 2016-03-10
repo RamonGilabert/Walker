@@ -15,7 +15,6 @@
 		5E68B478025A8327713A0085A306AA52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C76887805669E6740A074D937BACA2F /* Foundation.framework */; };
 		66299F6B731223C971DACFA628AE7BB2 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */; };
 		6738386FCC493E03249E87160887E37F /* Pods-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		95CEBE0F159978A2A607CDA54B1DDE85 /* Animax.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7144F7FDE7A0250A0158BCEF622818B /* Animax.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A3D2CD6F3CBF3BED2A17C53A2ADE0862 /* Bakery-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5310F1A9AD49316F42DE4F2468EFFEEA /* Bakery-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B484288EC336A833DB2F14C2DF325441 /* Baker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A036EC23028D258717C82AD0744A577 /* Baker.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		CBBD2AFC452AACB9A743DE7FC08E9F59 /* Bakery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782948B7A9C41C300AE8FCADD218F93 /* Bakery.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -52,7 +51,6 @@
 		79A9DEDC89FE8336BF5FEDAAF75BF7FC /* Pods.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Pods.modulemap; sourceTree = "<group>"; };
 		87B213035BAC5F75386F62D3C75D2342 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		894E5DA93A9F359521A89826BE6DA777 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		B7144F7FDE7A0250A0158BCEF622818B /* Animax.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animax.swift; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C9603B9952D11E528E059C77859C76F3 /* Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 		8100D53A7C4951985827C91770B2F625 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B7144F7FDE7A0250A0158BCEF622818B /* Animax.swift */,
 				C9603B9952D11E528E059C77859C76F3 /* Animation.swift */,
 				2A036EC23028D258717C82AD0744A577 /* Baker.swift */,
 				3782948B7A9C41C300AE8FCADD218F93 /* Bakery.swift */,
@@ -281,7 +278,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				297A9C801C9183FE001C3610 /* Bezier.swift in Sources */,
-				95CEBE0F159978A2A607CDA54B1DDE85 /* Animax.swift in Sources */,
 				3750C5A6BF3B23D1CCA9BAF5A44B7787 /* Animation.swift in Sources */,
 				B484288EC336A833DB2F14C2DF325441 /* Baker.swift in Sources */,
 				391A8A0006163825C6A7EE2C65601064 /* Bakery-dummy.m in Sources */,
