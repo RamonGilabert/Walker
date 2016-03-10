@@ -42,6 +42,12 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
     return Bakery.bakery
 }
 
+public func spring(view: UIView, spring: CGFloat, friction: CGFloat,
+  mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
+
+    return Bakery.bakery
+}
+
 private func animate(views: [UIView], _ delay: NSTimeInterval, _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
   var bakes: [Bake] = []
   views.forEach {
