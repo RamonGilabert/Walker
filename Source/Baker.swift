@@ -12,7 +12,7 @@ struct Baker {
 
   // MARK: - Bezier animations
 
-  static func configureBezierAnimation(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> CAKeyframeAnimation {
+  static func bezier(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> CAKeyframeAnimation {
     let animation = CAKeyframeAnimation()
     animation.keyPath = property.rawValue
     animation.duration = duration

@@ -8,6 +8,7 @@ public struct Animation {
     case EaseIn
     case EaseOut
     case EaseInOut
+    case Bezier(x: Float, y: Float, z: Float, p: Float)
   }
 
   public enum Spring {
@@ -15,7 +16,7 @@ public struct Animation {
     case Bounce
   }
 
-  public enum Property: String {
+  enum Property: String {
     case PositionX = "position.x"
     case PositionY = "position.y"
     case Opacity = "opacity"
@@ -28,10 +29,8 @@ public struct Animation {
     case Transform = "transform"
   }
 
-  public static func bezierPoints(curve: Curve) -> [Float] {
+  static func points(curve: Curve) -> [Float] {
     switch curve {
-    case .Linear:
-      return [0, 0, 1, 1]
     case .Ease:
       return [0.25, 0.1, 0.25, 1]
     case .EaseIn:
@@ -40,10 +39,14 @@ public struct Animation {
       return [0, 0, 0.58, 1]
     case .EaseInOut:
       return [0.42, 0, 0.58, 1]
+    case let .Bezier(x, y, z, p):
+      return [x, y, z, p]
+    default:
+      return [0, 0, 1, 1]
     }
   }
 
-  public static func propertyValue(property: Property, layer: CALayer) -> NSValue {
+  static func propertyValue(property: Property, layer: CALayer) -> NSValue {
     switch property {
     case .PositionX:
       return layer.position.x
@@ -68,7 +71,7 @@ public struct Animation {
     }
   }
 
-  public static func values(property: Property, to: NSValue, layer: CALayer) -> (finalValue: [CGFloat], initialValue: [CGFloat]) {
+  static func values(property: Property, to: NSValue, layer: CALayer) -> (finalValue: [CGFloat], initialValue: [CGFloat]) {
     switch property {
     case .PositionX:
       guard let to = to as? CGFloat else { return ([0], [layer.position.x]) }

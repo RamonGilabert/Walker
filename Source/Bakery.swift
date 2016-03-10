@@ -288,8 +288,7 @@ public class Bake {
   }
 
   private func animate(property: Animation.Property, _ value: NSValue) {
-    let bezierPoints = Animation.bezierPoints(curve)
-    let animation = Baker.configureBezierAnimation(property, bezierPoints: bezierPoints, duration: duration)
+    let animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration)
     animation.values = [value]
 
     animations.append(animation)

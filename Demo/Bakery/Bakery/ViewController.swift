@@ -49,14 +49,10 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animate(animationView, duration: 0.075) {
-      $0.transform = CGAffineTransformMakeTranslation(25, 0)
-    }.chain(duration: 0.075) {
-      $0.transform = CGAffineTransformMakeTranslation(-25, 0)
-    }.chain(duration: 0.075) {
-      $0.transform = CGAffineTransformMakeTranslation(10, 0)
-    }.chain(duration: 0.075) {
-      $0.transform = CGAffineTransformIdentity
+    animate(animationView, duration: 1, curve: .Bezier(x: 0.8, y: 0, z: 0.8, p: 0.5)) {
+      $0.y = 350
+    }.chain {
+      $0.y = (self.totalHeight - Dimensions.animationViewSize) / 2 - 200
     }
   }
 
