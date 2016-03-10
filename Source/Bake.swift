@@ -1,6 +1,6 @@
 import UIKit
 
-public class Bake {
+public class Bake: Equatable {
 
   internal enum Kind {
     case Bezier, Spring
@@ -151,4 +151,9 @@ public class Bake {
     properties.append(property)
     finalValues.append(value)
   }
+}
+
+public func ==(lhs: Bake, rhs: Bake) -> Bool {
+  return lhs.view == rhs.view && lhs.properties == rhs.properties
+    && lhs.animations == rhs.animations && lhs.finalValues == rhs.finalValues
 }

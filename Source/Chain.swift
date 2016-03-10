@@ -88,6 +88,12 @@ extension Bakery {
     mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
       animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance)[0])
 
+      if !shouldProceed {
+        delays.removeLast()
+        bakes.removeLast()
+        closures.removeLast()
+      }
+
       return self
   }
 
@@ -133,6 +139,7 @@ extension Bakery {
 
   private func bezier(value: Int, _ delay: NSTimeInterval,
     _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
+
       var animationBakes: [Bake] = []
       for index in 0..<value {
         let bake = Bake(bakery: self, view: self.bakes[0][index].view, duration: duration, curve: curve)
@@ -149,6 +156,7 @@ extension Bakery {
 
   private func constructor(value: Int, delay: NSTimeInterval, _ spring: CGFloat,
     _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat) -> [Bake] {
+
       var animationBakes: [Bake] = []
       for index in 0..<value {
         let bake = Bake(bakery: self, view: self.bakes[0][index].view,
@@ -158,7 +166,6 @@ extension Bakery {
 
       delays.append(delay)
       bakes.append(animationBakes)
-      
       closures.append(nil)
       
       return animationBakes

@@ -15,9 +15,21 @@ public func spring(view: UIView, delay: NSTimeInterval = 0, spring: CGFloat, fri
   mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
 
     let builder = constructor([view], delay, spring, friction, mass, tolerance)
+    var shouldProceed = true
     animations(builder.bakes[0])
 
-    builder.bakery.animate()
+    bakeries.forEach {
+      if let bakes = $0.bakes.first where bakes == builder.bakes {
+        shouldProceed = false
+      }
+    }
+
+    builder.bakery.shouldProceed = shouldProceed
+
+    if shouldProceed {
+      bakeries.append(builder.bakery)
+      builder.bakery.animate()
+    }
 
     return builder.bakery
 }
@@ -80,7 +92,6 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval, _ spring: CGF
 
     bakery.delays.append(delay)
     bakery.bakes = [bakes]
-    bakeries.append(bakery)
 
     return (bakes: bakes, bakery: bakery)
 }

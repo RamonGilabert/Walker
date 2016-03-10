@@ -8,6 +8,7 @@ public class Bakery: NSObject {
   var delays: [NSTimeInterval] = []
   var closures: [(() -> Void)?] = []
   var final: (() -> Void)?
+  var shouldProceed = true
 
   /**
    Then gets called when the animation block above has ended.
