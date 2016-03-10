@@ -50,14 +50,13 @@ class ViewController: UIViewController {
 
   func animationButtonDidPress(button: UIButton) {
     animate(animationView, duration: 0.075) {
-      $0.transform(CGAffineTransformMakeTranslation(25, 0))
+      $0.transform = CGAffineTransformMakeTranslation(25, 0)
     }.chain(duration: 0.075) {
-      $0.transform(CGAffineTransformMakeTranslation(-25, 0))
+      $0.transform = CGAffineTransformMakeTranslation(-25, 0)
     }.chain(duration: 0.075) {
-      $0.transform(CGAffineTransformMakeTranslation(10, 0))
+      $0.transform = CGAffineTransformMakeTranslation(10, 0)
     }.chain(duration: 0.075) {
-      $0.radius(62.5)
-      $0.transform(CGAffineTransformIdentity)
+      $0.transform = CGAffineTransformIdentity
     }
   }
 
