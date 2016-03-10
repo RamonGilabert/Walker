@@ -56,33 +56,35 @@ extension Bakery {
       return Bakery.bakery
   }
 
-  private func chain(value: Int, _ delay: NSTimeInterval, _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
-    var bakes: [Bake] = []
-    for index in 0..<value {
-      let bake = Bake(view: Bakery.bakes[0][index].view, duration: duration, curve: curve)
-      bakes.append(bake)
-    }
+  private func chain(value: Int, _ delay: NSTimeInterval,
+    _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
+      var bakes: [Bake] = []
+      for index in 0..<value {
+        let bake = Bake(view: Bakery.bakes[0][index].view, duration: duration, curve: curve)
+        bakes.append(bake)
+      }
 
-    Bakery.delays.append(delay)
-    Bakery.bakes.append(bakes)
+      Bakery.delays.append(delay)
+      Bakery.bakes.append(bakes)
 
-    closures.append(nil)
+      closures.append(nil)
 
-    return bakes
+      return bakes
   }
 
-  private func chain(value: Int, delay: NSTimeInterval, _ spring: CGFloat, _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat) -> [Bake] {
-    var bakes: [Bake] = []
-    for index in 0..<value {
-      let bake = Bake(view: Bakery.bakes[0][index].view, spring: spring, friction: friction, mass: mass, tolerance: tolerance)
-      bakes.append(bake)
-    }
+  private func chain(value: Int, delay: NSTimeInterval, _ spring: CGFloat,
+    _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat) -> [Bake] {
+      var bakes: [Bake] = []
+      for index in 0..<value {
+        let bake = Bake(view: Bakery.bakes[0][index].view, spring: spring, friction: friction, mass: mass, tolerance: tolerance)
+        bakes.append(bake)
+      }
 
-    Bakery.delays.append(delay)
-    Bakery.bakes.append(bakes)
-    
-    closures.append(nil)
-    
-    return bakes
+      Bakery.delays.append(delay)
+      Bakery.bakes.append(bakes)
+      
+      closures.append(nil)
+      
+      return bakes
   }
 }

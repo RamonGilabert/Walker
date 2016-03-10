@@ -49,10 +49,12 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    spring(animationView, spring: 200, friction: 10, mass: 10) {
+    spring(animationView, animationButton, spring: 200, friction: 10, mass: 10) {
       $0.y = 350
+      $1.x = 100
     }.chain(spring: 200, friction: 10, mass: 10) {
       $0.y = (self.totalHeight - Dimensions.animationViewSize) / 2 - 200
+      $1.x = Dimensions.buttonOffset / 2
     }
   }
 
