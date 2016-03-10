@@ -77,6 +77,7 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval, _ spring: CGF
 
     bakery.delays.append(delay)
     bakery.bakes = [bakes]
+    bakeries.append(bakery)
 
     return (bakes: bakes, bakery: bakery)
 }

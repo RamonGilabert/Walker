@@ -103,5 +103,9 @@ public class Bakery: NSObject {
     if let final = final where bakes.isEmpty {
       final()
     }
+
+    if let index = bakeries.indexOf(self) {
+      bakeries.removeAtIndex(index)
+    }
   }
 }
