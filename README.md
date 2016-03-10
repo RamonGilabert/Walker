@@ -20,9 +20,13 @@ animate(firstView) {
 
 ## Upcoming features
 
-- [ ] Spring animations with rect and transforms.
-- [ ] Bounce spring animation.
-- [ ] More types of animations.
+- [ ] Spring animation.
+- [ ] Width, height and size animations.
+- [ ] Change the name for Malibu.
+- [ ] Report bug of the chain thing that it doesn't recognize the signature.
+- [ ] Reverse the previous animation.
+- [ ] Be careful when you tap to animate multiple times.
+- [ ] Multiple animate or spring blocks.
 
 ## Done by
 
