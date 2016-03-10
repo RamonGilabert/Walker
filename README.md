@@ -24,8 +24,8 @@ animate(firstView) {
 - [ ] Width, height and size animations.
 - [ ] Change the name.
 - [ ] Report bug of the chain thing that it doesn't recognize the signature.
-- [ ] Reverse the previous animation.
-- [ ] Call animate two times or more, so add a queue.
+- [ ] Add animation options.
+- [x] Call animate two times or more, so add a queue.
 - [ ] Be careful when you tap two animate multiple times. (Add a flag to lock the main methods).
 - [x] Multiple animate or spring blocks.
 - [x] Document the code.
