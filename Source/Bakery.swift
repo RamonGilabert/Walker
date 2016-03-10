@@ -15,7 +15,7 @@ public class Bakery: NSObject {
       return Bakery.bakery
   }
 
-  public func chain(delay2 delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
+  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> Void) -> Bakery {
       let bakes = chain(2, delay, duration, curve)
       animations(bakes[0], bakes[1])
@@ -23,7 +23,7 @@ public class Bakery: NSObject {
       return Bakery.bakery
   }
 
-  public func chain(delay3 delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
+  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
       let bakes = chain(3, delay, duration, curve)
       animations(bakes[0], bakes[1], bakes[2])
@@ -31,7 +31,7 @@ public class Bakery: NSObject {
       return Bakery.bakery
   }
 
-  public func chain(delay4 delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
+  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
       let bakes = chain(4, delay, duration, curve)
       animations(bakes[0], bakes[1], bakes[2], bakes[3])

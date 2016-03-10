@@ -2,6 +2,10 @@ import UIKit
 
 public class Bake {
 
+  internal enum Kind {
+    case Bezier, Spring
+  }
+
   public var alpha: CGFloat {
     didSet { alpha(alpha) }
   }
@@ -85,6 +89,8 @@ public class Bake {
   internal let view: UIView
   internal let duration: NSTimeInterval
   internal let curve: Animation.Curve
+  internal let kind: Kind
+  internal let spring: (spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat)
   var animations: [CAKeyframeAnimation] = []
   var properties: [Animation.Property] = []
 
@@ -92,6 +98,8 @@ public class Bake {
     self.view = view
     self.duration = duration
     self.curve = curve
+    self.kind = .Bezier
+    self.spring = (0, 0, 0, 0)
     self.alpha = view.alpha
     self.x = view.frame.origin.x
     self.y = view.frame.origin.y
@@ -105,12 +113,35 @@ public class Bake {
   }
 
   init(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat) {
-
+    self.view = view
+    self.duration = 0
+    self.curve = .Linear
+    self.kind = .Spring
+    self.spring = (spring, friction, mass, tolerance)
+    self.alpha = view.alpha
+    self.x = view.frame.origin.x
+    self.y = view.frame.origin.y
+    self.width = view.frame.width
+    self.height = view.frame.height
+    self.origin = view.frame.origin
+    self.size = view.frame.size
+    self.frame = view.frame
+    self.radius = view.layer.cornerRadius
+    self.transform = view.transform
   }
 
   private func animate(property: Animation.Property, _ value: NSValue) {
-    let animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration)
-    animation.values = [value]
+    var animation = CAKeyframeAnimation()
+
+    if kind == .Bezier {
+      animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration)
+      animation.values = [value]
+    } else {
+      animation = Baker.spring(property, spring: spring.spring,
+        friction: spring.friction, mass: spring.mass, tolerance: spring.tolerance, type: .Spring)
+
+      //animation.values = Baker.calculateSpring(property, finalValue: to, layer: layer, type: .Spring)
+    }
 
     animations.append(animation)
     properties.append(property)

@@ -11,7 +11,7 @@ To do animations the code used will be similar to this:
 ```
 animate(firstView) {
   $0.alpha(1)
-}.animate(firstView) {
+}.chain {
   $0.width(300)
 }.finally {
   print("Animation done")

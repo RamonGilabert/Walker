@@ -29,11 +29,9 @@ struct Baker {
 
   // MARK: - Spring
 
-  static func spring(property: Animation.Property, to: NSValue,
+  static func spring(property: Animation.Property,
     spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat,
-    type: Animation.Spring, layer: CALayer) -> CAKeyframeAnimation {
-      guard let layer = layer.presentationLayer() as? CALayer else { return CAKeyframeAnimation() }
-
+    type: Animation.Spring) -> CAKeyframeAnimation {
       Baker.spring = spring
       Baker.friction = friction
       Baker.mass = mass
@@ -42,8 +40,6 @@ struct Baker {
       let animation = CAKeyframeAnimation(keyPath: property.rawValue)
       animation.removedOnCompletion = false
       animation.fillMode = kCAFillModeForwards
-
-      animation.values = Baker.calculateSpring(property, finalValue: to, layer: layer, type: type)
       animation.duration = Baker.springTiming
 
       return animation
