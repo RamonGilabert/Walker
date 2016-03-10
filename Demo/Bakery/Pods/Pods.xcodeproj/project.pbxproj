@@ -10,6 +10,7 @@
 		18F6FE62714FFAEB827238C22C75A966 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D356D580CD2B1D781F7E4D38405A57 /* AVFoundation.framework */; };
 		297A9C801C9183FE001C3610 /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A9C7F1C9183FE001C3610 /* Bezier.swift */; };
 		297A9C821C918444001C3610 /* Bake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A9C811C918444001C3610 /* Bake.swift */; };
+		297A9C841C9184C8001C3610 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297A9C831C9184C8001C3610 /* Spring.swift */; };
 		3750C5A6BF3B23D1CCA9BAF5A44B7787 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9603B9952D11E528E059C77859C76F3 /* Animation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		391A8A0006163825C6A7EE2C65601064 /* Bakery-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 013DC3B7292E6E60AD7B98E647AE5C92 /* Bakery-dummy.m */; };
 		5E68B478025A8327713A0085A306AA52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C76887805669E6740A074D937BACA2F /* Foundation.framework */; };
@@ -36,6 +37,7 @@
 		130F71EDFFA0BA0B7AE58BCECF2B6396 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		297A9C7F1C9183FE001C3610 /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
 		297A9C811C918444001C3610 /* Bake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bake.swift; sourceTree = "<group>"; };
+		297A9C831C9184C8001C3610 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
 		2A036EC23028D258717C82AD0744A577 /* Baker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Baker.swift; sourceTree = "<group>"; };
 		2BCC458FDD5F692BBB2BFC64BB5701FC /* Pods-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-umbrella.h"; sourceTree = "<group>"; };
 		3377722EF6DE033421AE1F49C2A22693 /* Bakery-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bakery-prefix.pch"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				C9603B9952D11E528E059C77859C76F3 /* Animation.swift */,
 				2A036EC23028D258717C82AD0744A577 /* Baker.swift */,
+				297A9C831C9184C8001C3610 /* Spring.swift */,
 				3782948B7A9C41C300AE8FCADD218F93 /* Bakery.swift */,
 				297A9C7F1C9183FE001C3610 /* Bezier.swift */,
 				297A9C811C918444001C3610 /* Bake.swift */,
@@ -283,6 +286,7 @@
 				391A8A0006163825C6A7EE2C65601064 /* Bakery-dummy.m in Sources */,
 				CBBD2AFC452AACB9A743DE7FC08E9F59 /* Bakery.swift in Sources */,
 				297A9C821C918444001C3610 /* Bake.swift in Sources */,
+				297A9C841C9184C8001C3610 /* Spring.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
