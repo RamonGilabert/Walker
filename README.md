@@ -20,13 +20,16 @@ animate(firstView) {
 
 ## Upcoming features
 
-- [ ] Spring animation.
+- [x] Spring animation.
 - [ ] Width, height and size animations.
-- [ ] Change the name for Malibu.
+- [ ] Change the name.
 - [ ] Report bug of the chain thing that it doesn't recognize the signature.
 - [ ] Reverse the previous animation.
-- [ ] Be careful when you tap to animate multiple times.
-- [ ] Multiple animate or spring blocks.
+- [ ] Call animate two times or more, so add a queue.
+- [ ] Be careful when you tap two animate multiple times.
+- [x] Multiple animate or spring blocks.
+- [x] Document the code.
+- [ ] Document bake.
 
 ## Done by
 

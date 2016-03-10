@@ -8,11 +8,17 @@ public class Bakery: NSObject {
   var closures: [(() -> Void)?] = []
   var final: (() -> Void)?
 
+  /**
+   Then gets called when the animation block above has ended.
+   */
   public func then(closure: () -> Void) -> Bakery {
     closures.append(closure)
     return Bakery.bakery
   }
 
+  /**
+   Finally is the last method that gets called when the chain of animations is done.
+   */
   public func finally(closure: () -> Void) {
     final = closure
   }

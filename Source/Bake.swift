@@ -5,7 +5,7 @@ public class Bake {
   internal enum Kind {
     case Bezier, Spring
   }
-
+  
   public var alpha: CGFloat {
     didSet { alpha(alpha) }
   }
