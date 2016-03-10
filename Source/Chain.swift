@@ -88,12 +88,6 @@ extension Bakery {
     mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
       animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance)[0])
 
-      if !shouldProceed {
-        delays.removeLast()
-        bakes.removeLast()
-        closures.removeLast()
-      }
-
       return self
   }
 
@@ -146,10 +140,11 @@ extension Bakery {
         animationBakes.append(bake)
       }
 
-      delays.append(delay)
-      bakes.append(animationBakes)
-
-      closures.append(nil)
+      if shouldProceed {
+        delays.append(delay)
+        bakes.append(animationBakes)
+        closures.append(nil)
+      }
 
       return animationBakes
   }
@@ -164,9 +159,11 @@ extension Bakery {
         animationBakes.append(bake)
       }
 
-      delays.append(delay)
-      bakes.append(animationBakes)
-      closures.append(nil)
+      if shouldProceed {
+        delays.append(delay)
+        bakes.append(animationBakes)
+        closures.append(nil)
+      }
       
       return animationBakes
   }

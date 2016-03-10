@@ -15,22 +15,9 @@ public func spring(view: UIView, delay: NSTimeInterval = 0, spring: CGFloat, fri
   mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
 
     let builder = constructor([view], delay, spring, friction, mass, tolerance)
-    var shouldProceed = true
     animations(builder.bakes[0])
 
-    bakeries.forEach {
-      if let bakes = $0.bakes.first, bake = bakes.first where bake.finalValues.isEmpty {
-        shouldProceed = false
-        return
-      }
-    }
-
-    builder.bakery.shouldProceed = shouldProceed
-
-    if shouldProceed {
-      bakeries.append(builder.bakery)
-      builder.bakery.animate()
-    }
+    validate(builder.bakery)
 
     return builder.bakery
 }
@@ -53,7 +40,7 @@ public func spring(firstView: UIView, _ secondView: UIView,
     let builder = constructor([firstView, secondView], delay, spring, friction, mass, tolerance)
     animations(builder.bakes[0], builder.bakes[1])
 
-    builder.bakery.animate()
+    validate(builder.bakery)
 
     return builder.bakery
 }
@@ -76,7 +63,7 @@ public func spring(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
     let builder = constructor([firstView, secondView, thirdView], delay, spring, friction, mass, tolerance)
     animations(builder.bakes[0], builder.bakes[1], builder.bakes[2])
 
-    builder.bakery.animate()
+    validate(builder.bakery)
 
     return builder.bakery
 }
@@ -95,4 +82,22 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval, _ spring: CGF
     bakery.bakes = [bakes]
 
     return (bakes: bakes, bakery: bakery)
+}
+
+private func validate(bakery: Bakery) {
+
+  var shouldProceed = true
+  bakeries.forEach {
+    if let bakes = $0.bakes.first, bake = bakes.first where bake.finalValues.isEmpty {
+      shouldProceed = false
+      return
+    }
+  }
+
+  bakery.shouldProceed = shouldProceed
+
+  if shouldProceed {
+    bakeries.append(bakery)
+    bakery.animate()
+  }
 }
