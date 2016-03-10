@@ -104,6 +104,10 @@ public class Bake {
     self.transform = view.transform
   }
 
+  init(view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat) {
+
+  }
+
   private func animate(property: Animation.Property, _ value: NSValue) {
     let animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration)
     animation.values = [value]

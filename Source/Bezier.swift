@@ -42,14 +42,15 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
     return Bakery.bakery
 }
 
-private func animate(views: [UIView], _ delay: NSTimeInterval, _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
-  var bakes: [Bake] = []
-  views.forEach {
-    bakes.append(Bake(view: $0, duration: duration, curve: curve))
-  }
+private func animate(views: [UIView], _ delay: NSTimeInterval,
+  _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
+    var bakes: [Bake] = []
+    views.forEach {
+      bakes.append(Bake(view: $0, duration: duration, curve: curve))
+    }
 
-  Bakery.delays.append(delay)
-  Bakery.bakes = [bakes]
-  
-  return bakes
+    Bakery.delays.append(delay)
+    Bakery.bakes = [bakes]
+    
+    return bakes
 }

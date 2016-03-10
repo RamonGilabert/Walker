@@ -40,11 +40,12 @@ struct Baker {
       Baker.tolerance = tolerance
 
       let animation = CAKeyframeAnimation(keyPath: property.rawValue)
-      animation.values = Baker.calculateSpring(property, finalValue: to, layer: layer, type: type)
-      animation.duration = Baker.springTiming
       animation.removedOnCompletion = false
       animation.fillMode = kCAFillModeForwards
-      
+
+      animation.values = Baker.calculateSpring(property, finalValue: to, layer: layer, type: type)
+      animation.duration = Baker.springTiming
+
       return animation
   }
 
