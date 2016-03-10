@@ -10,7 +10,7 @@ struct Baker {
   static var springEnded = false
   static var springTiming: CFTimeInterval = 0
 
-  // MARK: - Bezier animations
+  // MARK: - Cubic bezier
 
   static func bezier(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> CAKeyframeAnimation {
     let animation = CAKeyframeAnimation()
@@ -29,21 +29,18 @@ struct Baker {
 
   // MARK: - Spring
 
-  static func configureSpringAnimations(property: Animation.Property, to: NSValue,
+  static func spring(property: Animation.Property, to: NSValue,
     spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat,
-    type: Animation.Spring, var layer: CALayer) -> CAKeyframeAnimation {
+    type: Animation.Spring, layer: CALayer) -> CAKeyframeAnimation {
+      guard let layer = layer.presentationLayer() as? CALayer else { return CAKeyframeAnimation() }
+
       Baker.spring = spring
       Baker.friction = friction
       Baker.mass = mass
       Baker.tolerance = tolerance
 
       let animation = CAKeyframeAnimation(keyPath: property.rawValue)
-
-      if let presentedLayer = layer.presentationLayer() as? CALayer {
-        layer = presentedLayer
-      }
-
-      animation.values = Baker.animateSpring(property, finalValue: to, layer: layer, type: type)
+      animation.values = Baker.calculateSpring(property, finalValue: to, layer: layer, type: type)
       animation.duration = Baker.springTiming
       animation.removedOnCompletion = false
       animation.fillMode = kCAFillModeForwards
@@ -51,7 +48,7 @@ struct Baker {
       return animation
   }
 
-  private static func animateSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer, type: Animation.Spring) -> [NSValue] {
+  private static func calculateSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer, type: Animation.Spring) -> [NSValue] {
     let initialArray = Animation.values(property, to: finalValue, layer: layer).initialValue
     let finalArray = Animation.values(property, to: finalValue, layer: layer).finalValue
     var distances: [CGFloat] = []
