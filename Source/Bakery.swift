@@ -5,54 +5,8 @@ public class Bakery: NSObject {
   static let bakery = Bakery()
   static var bakes: [[Bake]] = [[]]
   static var delays: [NSTimeInterval] = []
-  private var closures: [(() -> Void)?] = []
-  private var final: (() -> Void)?
-
-  public func chain(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
-      animations(chain(1, delay, duration, curve)[0])
-
-      return Bakery.bakery
-  }
-
-  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> Void) -> Bakery {
-      let bakes = chain(2, delay, duration, curve)
-      animations(bakes[0], bakes[1])
-
-      return Bakery.bakery
-  }
-
-  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
-      let bakes = chain(3, delay, duration, curve)
-      animations(bakes[0], bakes[1], bakes[2])
-
-      return Bakery.bakery
-  }
-
-  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
-      let bakes = chain(4, delay, duration, curve)
-      animations(bakes[0], bakes[1], bakes[2], bakes[3])
-
-      return Bakery.bakery
-  }
-
-  private func chain(value: Int, _ delay: NSTimeInterval, _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
-    var bakes: [Bake] = []
-    for index in 0..<value {
-      let bake = Bake(view: Bakery.bakes[0][index].view, duration: duration, curve: curve)
-      bakes.append(bake)
-    }
-
-    Bakery.delays.append(delay)
-    Bakery.bakes.append(bakes)
-
-    closures.append(nil)
-
-    return bakes
-  }
+  var closures: [(() -> Void)?] = []
+  var final: (() -> Void)?
 
   public func then(closure: () -> Void) -> Bakery {
     closures.append(closure)
