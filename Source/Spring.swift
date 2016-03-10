@@ -19,8 +19,9 @@ public func spring(view: UIView, delay: NSTimeInterval = 0, spring: CGFloat, fri
     animations(builder.bakes[0])
 
     bakeries.forEach {
-      if let bakes = $0.bakes.first where bakes == builder.bakes {
+      if let bakes = $0.bakes.first, bake = bakes.first where bake.finalValues.isEmpty {
         shouldProceed = false
+        return
       }
     }
 

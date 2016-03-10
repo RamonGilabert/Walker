@@ -154,6 +154,5 @@ public class Bake: Equatable {
 }
 
 public func ==(lhs: Bake, rhs: Bake) -> Bool {
-  return lhs.view == rhs.view && lhs.properties == rhs.properties
-    && lhs.animations == rhs.animations && lhs.finalValues == rhs.finalValues
+  return lhs.view == rhs.view && lhs.properties == rhs.properties && lhs.finalValues == rhs.finalValues
 }
