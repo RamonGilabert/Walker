@@ -49,7 +49,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animate(animationView, duration: 1, curve: .Bezier(x: 0.8, y: 0, z: 0.8, p: 0.5)) {
+    spring(animationView, spring: 200, friction: 10, mass: 10) {
       $0.y = 350
     }.chain {
       $0.y = (self.totalHeight - Dimensions.animationViewSize) / 2 - 200

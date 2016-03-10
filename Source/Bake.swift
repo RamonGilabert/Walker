@@ -93,6 +93,7 @@ public class Bake {
   internal let spring: (spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat)
   var animations: [CAKeyframeAnimation] = []
   var properties: [Animation.Property] = []
+  var finalValues: [NSValue] = []
 
   init(view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
     self.view = view
@@ -139,11 +140,10 @@ public class Bake {
     } else {
       animation = Baker.spring(property, spring: spring.spring,
         friction: spring.friction, mass: spring.mass, tolerance: spring.tolerance, type: .Spring)
-
-      //animation.values = Baker.calculateSpring(property, finalValue: to, layer: layer, type: .Spring)
     }
 
     animations.append(animation)
     properties.append(property)
+    finalValues.append(value)
   }
 }

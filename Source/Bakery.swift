@@ -78,8 +78,14 @@ public class Bakery: NSObject {
         for (index, animation) in bake.animations.enumerate() {
           let property = bake.properties[index]
 
-          animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
+          if bake.kind == .Bezier {
+            animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
+          } else if let value = bake.finalValues.first {
+            animation.values = Baker.calculateSpring(property, finalValue: value, layer: presentedLayer, type: .Spring)
+            animation.duration = Baker.springTiming
+          }
 
+          bake.finalValues.removeFirst()
           bake.view.layer.addAnimation(animation, forKey: "animation-\(index)")
         }
       }

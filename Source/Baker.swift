@@ -40,12 +40,12 @@ struct Baker {
       let animation = CAKeyframeAnimation(keyPath: property.rawValue)
       animation.removedOnCompletion = false
       animation.fillMode = kCAFillModeForwards
-      animation.duration = Baker.springTiming
+      animation.delegate = Bakery.bakery
 
       return animation
   }
 
-  private static func calculateSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer, type: Animation.Spring) -> [NSValue] {
+  static func calculateSpring(property: Animation.Property, finalValue: NSValue, layer: CALayer, type: Animation.Spring) -> [NSValue] {
     let initialArray = Animation.values(property, to: finalValue, layer: layer).initialValue
     let finalArray = Animation.values(property, to: finalValue, layer: layer).finalValue
     var distances: [CGFloat] = []
