@@ -31,6 +31,8 @@ public struct Animation {
 
   static func points(curve: Curve) -> [Float] {
     switch curve {
+    case .Linear:
+      return [0, 0, 1, 1]
     case .Ease:
       return [0.25, 0.1, 0.25, 1]
     case .EaseIn:
@@ -41,8 +43,6 @@ public struct Animation {
       return [0.42, 0, 0.58, 1]
     case let .Bezier(x, y, z, p):
       return [x, y, z, p]
-    default:
-      return [0, 0, 1, 1]
     }
   }
 

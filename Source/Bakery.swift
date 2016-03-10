@@ -1,8 +1,8 @@
 import UIKit
 
-public func animate(view: UIView, duration: NSTimeInterval = 0.35,
+public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
   curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
-    animations(animate([view], duration, curve)[0])
+    animations(animate([view], delay, duration, curve)[0])
 
     Bakery.animate()
 
@@ -10,9 +10,9 @@ public func animate(view: UIView, duration: NSTimeInterval = 0.35,
 }
 
 public func animate(firstView: UIView, _ secondView: UIView,
-  duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
+  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
   animations: (Bake, Bake) -> Void) -> Bakery {
-    let bake = animate([firstView, secondView], duration, curve)
+    let bake = animate([firstView, secondView], delay, duration, curve)
     animations(bake[0], bake[1])
 
     Bakery.animate()
@@ -21,9 +21,9 @@ public func animate(firstView: UIView, _ secondView: UIView,
 }
 
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
-  duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
+  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
   animations: (Bake, Bake, Bake) -> Void) -> Bakery {
-    let bake = animate([firstView, secondView, thirdView], duration, curve)
+    let bake = animate([firstView, secondView, thirdView], delay, duration, curve)
     animations(bake[0], bake[1], bake[2])
 
     Bakery.animate()
@@ -33,8 +33,8 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   _ fourthView: UIView, duration: NSTimeInterval = 0.35,
-  curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
-    let bake = animate([firstView, secondView, thirdView, fourthView], duration, curve)
+  delay: NSTimeInterval = 0, curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
+    let bake = animate([firstView, secondView, thirdView, fourthView], delay, duration, curve)
     animations(bake[0], bake[1], bake[2], bake[3])
 
     Bakery.animate()
@@ -42,12 +42,13 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
     return Bakery.bakery
 }
 
-private func animate(views: [UIView], _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
+private func animate(views: [UIView], _ delay: NSTimeInterval, _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
   var bakes: [Bake] = []
   views.forEach {
     bakes.append(Bake(view: $0, duration: duration, curve: curve))
   }
 
+  Bakery.delays.append(delay)
   Bakery.bakes = [bakes]
 
   return bakes
@@ -57,47 +58,49 @@ public class Bakery: NSObject {
 
   static let bakery = Bakery()
   private static var bakes: [[Bake]] = [[]]
+  private static var delays: [NSTimeInterval] = []
   private var closures: [(() -> Void)?] = []
   private var final: (() -> Void)?
 
-  public func chain(duration duration: NSTimeInterval = 0.5,
+  public func chain(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
-      animations(chain(1, duration: duration, curve: curve)[0])
+      animations(chain(1, delay, duration, curve)[0])
 
       return Bakery.bakery
   }
 
-  public func chain(duration2 duration: NSTimeInterval = 0.5,
+  public func chain(delay2 delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> Void) -> Bakery {
-      let bakes = chain(2, duration: duration, curve: curve)
+      let bakes = chain(2, delay, duration, curve)
       animations(bakes[0], bakes[1])
 
       return Bakery.bakery
   }
 
-  public func chain(duration3 duration: NSTimeInterval = 0.5,
+  public func chain(delay3 delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
-      let bakes = chain(3, duration: duration, curve: curve)
+      let bakes = chain(3, delay, duration, curve)
       animations(bakes[0], bakes[1], bakes[2])
 
       return Bakery.bakery
   }
 
-  public func chain(duration4 duration: NSTimeInterval = 0.5,
+  public func chain(delay4 delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
-      let bakes = chain(4, duration: duration, curve: curve)
+      let bakes = chain(4, delay, duration, curve)
       animations(bakes[0], bakes[1], bakes[2], bakes[3])
 
       return Bakery.bakery
   }
 
-  private func chain(value: Int, duration: NSTimeInterval, curve: Animation.Curve) -> [Bake] {
+  private func chain(value: Int, _ delay: NSTimeInterval, _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
     var bakes: [Bake] = []
     for index in 0..<value {
       let bake = Bake(view: Bakery.bakes[0][index].view, duration: duration, curve: curve)
       bakes.append(bake)
     }
 
+    Bakery.delays.append(delay)
     Bakery.bakes.append(bakes)
 
     closures.append(nil)
