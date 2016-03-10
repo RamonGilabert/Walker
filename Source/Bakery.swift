@@ -48,7 +48,7 @@ public class Bakery: NSObject {
           }
 
           if !bake.finalValues.isEmpty { bake.finalValues.removeFirst() }
-          bake.view.layer.addAnimation(animation, forKey: "animation-\(index)")
+          bake.view.layer.addAnimation(animation, forKey: "animation-\(index)-\(self.description)")
         }
       }
     }
@@ -63,7 +63,7 @@ public class Bakery: NSObject {
     var animationIndex = 0
     for (position, bake) in group.enumerate() {
       for (animationPosition, _) in bake.animations.enumerate()
-        where bake.view.layer.animationForKey("animation-\(animationPosition)") == animation {
+        where bake.view.layer.animationForKey("animation-\(animationPosition)-\(self.description)") == animation {
 
         index = position
         animationIndex = animationPosition
@@ -77,7 +77,7 @@ public class Bakery: NSObject {
     bake.view.layer.position = layer.position
     bake.view.layer.transform = layer.transform
     bake.view.layer.cornerRadius = layer.cornerRadius
-    bake.view.layer.removeAnimationForKey("animation-\(animationIndex)")
+    bake.view.layer.removeAnimationForKey("animation-\(animationIndex)-\(self.description)")
     bake.animations.removeAtIndex(animationIndex)
     bake.properties.removeAtIndex(animationIndex)
 
@@ -104,7 +104,7 @@ public class Bakery: NSObject {
       final()
     }
 
-    if let index = bakeries.indexOf(self) {
+    if let index = bakeries.indexOf(self) where bakes.isEmpty {
       bakeries.removeAtIndex(index)
     }
   }

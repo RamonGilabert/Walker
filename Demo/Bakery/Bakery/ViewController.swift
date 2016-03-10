@@ -51,6 +51,8 @@ class ViewController: UIViewController {
   func animationButtonDidPress(button: UIButton) {
     spring(animationView, spring: 200, friction: 10, mass: 10) {
       $0.y = 350
+    }.chain(spring: 200, friction: 10, mass: 10) {
+      $0.y = (self.totalHeight - Dimensions.animationViewSize) / 2 - 200
     }
 
     spring(animationView, spring: 200, friction: 10, mass: 10) {
