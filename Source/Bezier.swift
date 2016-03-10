@@ -14,7 +14,7 @@ public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInt
     let builder = constructor([view], delay, duration, curve)
     animations(builder.bake[0])
 
-    builder.bakery.animate()
+    validate(builder.bakery)
 
     return builder.bakery
 }
@@ -35,7 +35,7 @@ public func animate(firstView: UIView, _ secondView: UIView,
     let builder = constructor([firstView, secondView], delay, duration, curve)
     animations(builder.bake[0], builder.bake[1])
 
-    builder.bakery.animate()
+    validate(builder.bakery)
 
     return builder.bakery
 }
@@ -56,7 +56,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
     let builder = constructor([firstView, secondView, thirdView], delay, duration, curve)
     animations(builder.bake[0], builder.bake[1], builder.bake[2])
 
-    builder.bakery.animate()
+    validate(builder.bakery)
 
     return builder.bakery
 }
@@ -78,10 +78,12 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
     let builder = constructor([firstView, secondView, thirdView, fourthView], delay, duration, curve)
     animations(builder.bake[0], builder.bake[1], builder.bake[2], builder.bake[3])
 
-    builder.bakery.animate()
+    validate(builder.bakery)
 
     return builder.bakery
 }
+
+// MARK: - Private helpers
 
 private func constructor(views: [UIView], _ delay: NSTimeInterval,
   _ duration: NSTimeInterval, _ curve: Animation.Curve) -> (bake: [Bake], bakery: Bakery) {
@@ -97,4 +99,22 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval,
     bakery.bakes = [bakes]
     
     return (bake: bakes, bakery: bakery)
+}
+
+private func validate(bakery: Bakery) {
+
+  var shouldProceed = true
+  bakeries.forEach {
+    if let bakes = $0.bakes.first, bake = bakes.first where bake.finalValues.isEmpty {
+      shouldProceed = false
+      return
+    }
+  }
+
+  bakery.shouldProceed = shouldProceed
+
+  if shouldProceed {
+    bakeries.append(bakery)
+    bakery.animate()
+  }
 }
