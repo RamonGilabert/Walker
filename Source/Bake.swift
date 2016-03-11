@@ -132,7 +132,8 @@ public class Bake: Equatable {
    Change the frame of the view.
    */
   public func frame(x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
-    animate(.Frame, NSValue(CGRect: CGRect(x: x, y: y, width: width, height: height)))
+    animate(.Size, NSValue(CGSize: CGSize(width: width, height: height)))
+    animate(.Origin, NSValue(CGPoint: CGPoint(x: x + width / 2, y: y + height / 2)))
   }
 
   /**

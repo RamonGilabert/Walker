@@ -49,8 +49,10 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
+    //distill(Still.bezier(.PositionX), view: animationView)
+
     animate(animationView, options: [.Reverse, .Repeat(2)]) {
-      $0.x(5)
+      $0.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
     }
   }
 
