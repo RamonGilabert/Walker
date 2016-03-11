@@ -1,13 +1,24 @@
 import UIKit
 
-public func distill(animations: CAKeyframeAnimation..., values: [NSValue], view: UIView) {
-  guard animations.count == values.count else { return }
+public func distill(sets: (animation: CAKeyframeAnimation, final: NSValue)..., view: UIView, key: String? = nil) {
 
-  for (index, animation) in animations.enumerate() {
-    animation.values = [view.layer.position.x, values[index]]
-    view.layer.addAnimation(animation, forKey: nil)
+  for set in sets {
+    guard let keyPath = set.animation.keyPath, property = Animation.Property(rawValue: keyPath),
+      presentedLayer = view.layer.presentationLayer() as? CALayer else { break }
+
+    if let _ = set.animation.timingFunction {
+      set.animation.values = [Animation.propertyValue(property, layer: presentedLayer), set.final]
+    } else {
+      set.animation.values = Distill.calculateSpring(property, finalValue: set.final,
+        layer: presentedLayer, type: .Spring)
+      set.animation.duration = Distill.springTiming
+    }
+
+    view.layer.addAnimation(set.animation, forKey: key)
   }
 }
+
+var stills: [Still] = []
 
 public struct Still {
 

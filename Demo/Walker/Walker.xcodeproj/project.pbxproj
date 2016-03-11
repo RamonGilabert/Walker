@@ -60,10 +60,10 @@
 			isa = PBXGroup;
 			children = (
 				292D719B1C930A8200CFC060 /* AppDelegate.swift */,
+				292D71A01C930A8200CFC060 /* ViewController.swift */,
 				292D719C1C930A8200CFC060 /* Assets.xcassets */,
 				292D719D1C930A8200CFC060 /* LaunchScreen.storyboard */,
 				292D719F1C930A8200CFC060 /* Info.plist */,
-				292D71A01C930A8200CFC060 /* ViewController.swift */,
 			);
 			path = Walker;
 			sourceTree = "<group>";
