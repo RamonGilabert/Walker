@@ -43,7 +43,7 @@ animate(view, curve: .Bezier(1, 0.4, 1, 0.4)) {
 }
 ```
 
-// TODO: Put a gif going from side to side.
+![Linear](https://github.com/RamonGilabert/Walker/blob/master/Resources/linear.gif)
 
 #### Springs
 
