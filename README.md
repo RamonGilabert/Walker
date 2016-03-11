@@ -116,7 +116,7 @@ Check out the [ROADMAP](https://github.com/RamonGilabert/Walker/blob/master/ROAD
 
 ## Author
 
-Ramon Gilabert with ♡.
+Ramon Gilabert with ♥️.
 
 ## Contribute
 
