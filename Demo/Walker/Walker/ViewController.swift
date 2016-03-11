@@ -49,7 +49,15 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    distill((animation: Still.spring(.PositionY, spring: 200, friction: 10, mass: 10), final: 450), view: animationView)
+    spring(animationView, spring: 200, friction: 10, mass: 10) {
+      $0.x = 40
+    }.chain {
+      $0.x = 100
+    }
+
+    let animation = Still.bezier(.PositionX)
+
+    distill((animation: animation, final: 50), view: animationView)
   }
 
   // MARK: - Configuration
