@@ -1,10 +1,10 @@
-# Walker
+// TODO: Put the cover here.
 
 ## The story
 
 Seeing the animations behind Paper, or the transitions behind Mail, being in a world of flat design and transitions, user interaction, app behavior and responsiveness are key, we need good and fast animations to delight our users in every tap, every scroll, every moment that they spend in our app.
 
-After lots of apps, designs and animations, after trying some of the most famous web frameworks for animations and after I learnt FramerJS, which has one of the most beautiful springs I've seen. I'm building a collection of the knowledge I said when I learnt iOS development I would do. Walker, an animation engine and library.
+After lots of apps, designs and animations, after trying some of the most famous web frameworks and after I learnt FramerJS, which has one of the most beautiful springs I've seen. I'm building a collection of my knowledge, as I said when I was learning iOS development I would do, let me present Walker to you, an animation engine and library.
 
 ## Code
 
