@@ -43,7 +43,7 @@ animate(view, curve: .Bezier(1, 0.4, 1, 0.4)) {
 }
 ```
 
-![Linear](https://github.com/RamonGilabert/Walker/blob/master/Resources/linear.gif)
+![Bezier](https://github.com/RamonGilabert/Walker/blob/master/Resources/bezier.gif)
 
 #### Springs
 
@@ -55,7 +55,7 @@ spring(view, spring: 200, friction: 10, mass: 10) {
 }
 ```
 
-![Spring](https://github.com/RamonGilabert/Walker/blob/master/Resources/spring.mp4)
+![Spring](https://github.com/RamonGilabert/Walker/blob/master/Resources/spring.gif)
 
 #### Chains
 
@@ -69,14 +69,14 @@ spring(view, spring: 200, friction: 10, mass: 10) {
 }
 ```
 
-// TODO: Put a gif here.
+![Chain](https://github.com/RamonGilabert/Walker/blob/master/Resources/chain.gif)
 
 #### Create your own
 
 It wouldn't be a good animation engine if you couldn't reuse animations, there's a component inside the engine called Still, this one will talk to the background motor and will provide you with a `CAKeyframeAnimation`, just by calling this:
 
 ```swift
-let animation = Still.bezier(.PositionX)
+let animation = Still.bezier(.PositionX, curve: .Bezier(1, 0.4, 1, 0.4))
 ```
 
 Still can have, as the engine above, Cubic Bezier and Spring animations inside, each one configured differently. Note also that this will provide a layer animation.
@@ -89,7 +89,7 @@ distill((animation: animation, final: 100), view: view)
 
 Distill works with as many animations at a time as you want.
 
-// TODO: Put a gif here.
+![Bezier](https://github.com/RamonGilabert/Walker/blob/master/Resources/bezier.gif)
 
 #### More questions?
 
