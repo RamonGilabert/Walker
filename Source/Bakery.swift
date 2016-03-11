@@ -2,6 +2,11 @@ import UIKit
 
 var bakeries: [Bakery] = []
 
+public func cancelBakeries() {
+
+  bakeries.forEach { $0.bakes.forEach { $0.forEach { $0.view.layer.removeAllAnimations() } } }
+}
+
 public class Bakery: NSObject {
 
   var bakes: [[Bake]] = [[]]
