@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		291128981BADBFBD00C66827 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128971BADBFBD00C66827 /* AppDelegate.swift */; };
-		2911289A1BADBFBD00C66827 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291128991BADBFBD00C66827 /* ViewController.swift */; };
-		2911289F1BADBFBD00C66827 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2911289E1BADBFBD00C66827 /* Assets.xcassets */; };
-		291128A21BADBFBD00C66827 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 291128A01BADBFBD00C66827 /* LaunchScreen.storyboard */; };
+		292D71A11C930A8200CFC060 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D719B1C930A8200CFC060 /* AppDelegate.swift */; };
+		292D71A21C930A8200CFC060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292D719C1C930A8200CFC060 /* Assets.xcassets */; };
+		292D71A31C930A8200CFC060 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 292D719D1C930A8200CFC060 /* LaunchScreen.storyboard */; };
+		292D71A41C930A8200CFC060 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292D719F1C930A8200CFC060 /* Info.plist */; };
+		292D71A51C930A8200CFC060 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71A01C930A8200CFC060 /* ViewController.swift */; };
 		B5CDF636EE8B82EE01CF4249 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E582BAC85E775687B231AD /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		291128941BADBFBD00C66827 /* BakeryDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BakeryDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		291128971BADBFBD00C66827 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		291128991BADBFBD00C66827 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2911289E1BADBFBD00C66827 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		291128A11BADBFBD00C66827 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		291128A31BADBFBD00C66827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		291128941BADBFBD00C66827 /* WalkerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		292D719B1C930A8200CFC060 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		292D719C1C930A8200CFC060 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		292D719E1C930A8200CFC060 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		292D719F1C930A8200CFC060 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		292D71A01C930A8200CFC060 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		35E582BAC85E775687B231AD /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5377AD9B76F4F7B6DA0BB2B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F8C0846ED4886CDAA304450F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -41,7 +42,7 @@
 		2911288B1BADBFBD00C66827 = {
 			isa = PBXGroup;
 			children = (
-				291128961BADBFBD00C66827 /* BakeryDemo */,
+				292D719A1C930A8200CFC060 /* Walker */,
 				291128951BADBFBD00C66827 /* Products */,
 				9EC4BEDE79C0A88B17BE1781 /* Pods */,
 				39F09D49120F3BDF1A295310 /* Frameworks */,
@@ -51,22 +52,21 @@
 		291128951BADBFBD00C66827 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				291128941BADBFBD00C66827 /* BakeryDemo.app */,
+				291128941BADBFBD00C66827 /* WalkerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		291128961BADBFBD00C66827 /* BakeryDemo */ = {
+		292D719A1C930A8200CFC060 /* Walker */ = {
 			isa = PBXGroup;
 			children = (
-				291128971BADBFBD00C66827 /* AppDelegate.swift */,
-				291128991BADBFBD00C66827 /* ViewController.swift */,
-				2911289E1BADBFBD00C66827 /* Assets.xcassets */,
-				291128A01BADBFBD00C66827 /* LaunchScreen.storyboard */,
-				291128A31BADBFBD00C66827 /* Info.plist */,
+				292D719B1C930A8200CFC060 /* AppDelegate.swift */,
+				292D719C1C930A8200CFC060 /* Assets.xcassets */,
+				292D719D1C930A8200CFC060 /* LaunchScreen.storyboard */,
+				292D719F1C930A8200CFC060 /* Info.plist */,
+				292D71A01C930A8200CFC060 /* ViewController.swift */,
 			);
-			name = BakeryDemo;
-			path = Bakery;
+			path = Walker;
 			sourceTree = "<group>";
 		};
 		39F09D49120F3BDF1A295310 /* Frameworks */ = {
@@ -89,9 +89,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		291128931BADBFBD00C66827 /* BakeryDemo */ = {
+		291128931BADBFBD00C66827 /* WalkerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 291128A61BADBFBD00C66827 /* Build configuration list for PBXNativeTarget "BakeryDemo" */;
+			buildConfigurationList = 291128A61BADBFBD00C66827 /* Build configuration list for PBXNativeTarget "WalkerDemo" */;
 			buildPhases = (
 				CB274C55CCECCB06260C53A4 /* Check Pods Manifest.lock */,
 				291128901BADBFBD00C66827 /* Sources */,
@@ -104,9 +104,9 @@
 			);
 			dependencies = (
 			);
-			name = BakeryDemo;
+			name = WalkerDemo;
 			productName = Bakery;
-			productReference = 291128941BADBFBD00C66827 /* BakeryDemo.app */;
+			productReference = 291128941BADBFBD00C66827 /* WalkerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +123,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2911288F1BADBFBD00C66827 /* Build configuration list for PBXProject "Bakery" */;
+			buildConfigurationList = 2911288F1BADBFBD00C66827 /* Build configuration list for PBXProject "Walker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -136,7 +136,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				291128931BADBFBD00C66827 /* BakeryDemo */,
+				291128931BADBFBD00C66827 /* WalkerDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -146,8 +146,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				291128A21BADBFBD00C66827 /* LaunchScreen.storyboard in Resources */,
-				2911289F1BADBFBD00C66827 /* Assets.xcassets in Resources */,
+				292D71A21C930A8200CFC060 /* Assets.xcassets in Resources */,
+				292D71A31C930A8200CFC060 /* LaunchScreen.storyboard in Resources */,
+				292D71A41C930A8200CFC060 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,18 +207,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2911289A1BADBFBD00C66827 /* ViewController.swift in Sources */,
-				291128981BADBFBD00C66827 /* AppDelegate.swift in Sources */,
+				292D71A51C930A8200CFC060 /* ViewController.swift in Sources */,
+				292D71A11C930A8200CFC060 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		291128A01BADBFBD00C66827 /* LaunchScreen.storyboard */ = {
+		292D719D1C930A8200CFC060 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				291128A11BADBFBD00C66827 /* Base */,
+				292D719E1C930A8200CFC060 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -313,10 +314,10 @@
 			baseConfigurationReference = F8C0846ED4886CDAA304450F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Bakery/Info.plist;
+				INFOPLIST_FILE = Walker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RamonGilabert.Bakery;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.Walker;
+				PRODUCT_NAME = WalkerDemo;
 			};
 			name = Debug;
 		};
@@ -325,17 +326,17 @@
 			baseConfigurationReference = A5377AD9B76F4F7B6DA0BB2B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Bakery/Info.plist;
+				INFOPLIST_FILE = Walker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RamonGilabert.Bakery;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.Walker;
+				PRODUCT_NAME = WalkerDemo;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2911288F1BADBFBD00C66827 /* Build configuration list for PBXProject "Bakery" */ = {
+		2911288F1BADBFBD00C66827 /* Build configuration list for PBXProject "Walker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				291128A41BADBFBD00C66827 /* Debug */,
@@ -344,7 +345,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		291128A61BADBFBD00C66827 /* Build configuration list for PBXNativeTarget "BakeryDemo" */ = {
+		291128A61BADBFBD00C66827 /* Build configuration list for PBXNativeTarget "WalkerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				291128A71BADBFBD00C66827 /* Debug */,
