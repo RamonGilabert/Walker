@@ -1,6 +1,6 @@
 import Foundation
 
-struct Baker {
+struct Distill {
 
   static let springAnimationStep: CFTimeInterval = 0.001
   static var spring: CGFloat = 300
@@ -39,10 +39,10 @@ struct Baker {
   static func spring(property: Animation.Property,
     spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat,
     type: Animation.Spring) -> CAKeyframeAnimation {
-      Baker.spring = spring
-      Baker.friction = friction
-      Baker.mass = mass
-      Baker.tolerance = tolerance
+      Distill.spring = spring
+      Distill.friction = friction
+      Distill.mass = mass
+      Distill.tolerance = tolerance
 
       let animation = CAKeyframeAnimation(keyPath: property.rawValue)
       animation.removedOnCompletion = false

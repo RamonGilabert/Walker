@@ -1,6 +1,6 @@
 import UIKit
 
-public class Bake: Equatable {
+public class Ingredient: Equatable {
 
   internal enum Kind {
     case Bezier, Spring
@@ -160,12 +160,12 @@ public class Bake: Equatable {
   var animations: [CAKeyframeAnimation] = []
   var properties: [Animation.Property] = []
   var finalValues: [NSValue] = []
-  var bakery: Bakery
+  var distillery: Distillery
 
-  init(bakery: Bakery, view: UIView, duration: NSTimeInterval,
+  init(distillery: Distillery, view: UIView, duration: NSTimeInterval,
     curve: Animation.Curve, options: [Animation.Options]) {
 
-      self.bakery = bakery
+      self.distillery = distillery
       self.view = view
       self.duration = duration
       self.curve = curve
@@ -185,10 +185,10 @@ public class Bake: Equatable {
       self.transform = view.transform
   }
 
-  init(bakery: Bakery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat,
+  init(distillery: Distillery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat,
     tolerance: CGFloat, calculation: Animation.Spring, options: [Animation.Options] = []) {
 
-      self.bakery = bakery
+      self.distillery = distillery
       self.view = view
       self.duration = 0
       self.curve = .Linear
@@ -208,17 +208,17 @@ public class Bake: Equatable {
       self.transform = view.transform
   }
 
-  private func animate(property: Animation.Property, _ value: NSValue) {
+  func animate(property: Animation.Property, _ value: NSValue) {
     var animation = CAKeyframeAnimation()
 
     if kind == .Bezier {
-      animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration, options: options)
+      animation = Distill.bezier(property, bezierPoints: Animation.points(curve), duration: duration, options: options)
       animation.values = [value]
-      animation.delegate = bakery
+      animation.delegate = distillery
     } else {
-      animation = Baker.spring(property, spring: spring.spring,
+      animation = Distill.spring(property, spring: spring.spring,
         friction: spring.friction, mass: spring.mass, tolerance: spring.tolerance, type: .Spring)
-      animation.delegate = bakery
+      animation.delegate = distillery
     }
 
     animations.append(animation)
@@ -227,6 +227,6 @@ public class Bake: Equatable {
   }
 }
 
-public func ==(lhs: Bake, rhs: Bake) -> Bool {
+public func ==(lhs: Ingredient, rhs: Ingredient) -> Bool {
   return lhs.view == rhs.view && lhs.properties == rhs.properties && lhs.finalValues == rhs.finalValues
 }

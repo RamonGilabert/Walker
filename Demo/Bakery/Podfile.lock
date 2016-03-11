@@ -1,14 +1,14 @@
 PODS:
-  - Bakery (0.1.0)
+  - Walker (0.1.0)
 
 DEPENDENCIES:
-  - Bakery (from `../../`)
+  - Walker (from `../../`)
 
 EXTERNAL SOURCES:
-  Bakery:
+  Walker:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Bakery: e2abf33d775b4c17c2c36e13b8c13bebeb9b554f
+  Walker: 520247b3db109de6137f103d1958fdcf91ce5aa4
 
 COCOAPODS: 0.39.0.beta.4

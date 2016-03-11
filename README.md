@@ -34,7 +34,7 @@ animate(firstView) {
 - [ ] Add an easy way to create animations, spring and bezier's. x
 - [x] Cancel all animations.
 - [x] Apply bounce in the Spring.
-- [ ] Add a general method to reverse more than one animation.
+- [x] Finish the frame animation.
 
 ## Done by
 

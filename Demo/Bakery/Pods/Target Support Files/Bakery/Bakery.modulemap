@@ -1,6 +1,0 @@
-framework module Bakery {
-  umbrella header "Bakery-umbrella.h"
-
-  export *
-  module * { export * }
-}

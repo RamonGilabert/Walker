@@ -12,14 +12,14 @@ import UIKit
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */
 public func spring(view: UIView, delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-  mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: Bake -> Void) -> Bakery {
+  mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: Ingredient -> Void) -> Distillery {
 
     let builder = constructor([view], delay, spring, friction, mass, tolerance, kind)
     animations(builder.bakes[0])
 
-    validate(builder.bakery)
+    validate(builder.distillery)
 
-    return builder.bakery
+    return builder.distillery
 }
 
 /**
@@ -35,14 +35,14 @@ public func spring(view: UIView, delay: NSTimeInterval = 0, spring: CGFloat, fri
  */
 public func spring(firstView: UIView, _ secondView: UIView,
   delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-  mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Bake, Bake) -> Void) -> Bakery {
+  mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView], delay, spring, friction, mass, tolerance, kind)
     animations(builder.bakes[0], builder.bakes[1])
 
-    validate(builder.bakery)
+    validate(builder.distillery)
 
-    return builder.bakery
+    return builder.distillery
 }
 
 /**
@@ -58,46 +58,46 @@ public func spring(firstView: UIView, _ secondView: UIView,
  */
 public func spring(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-  mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring  , animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+  mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring  , animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView, thirdView], delay, spring, friction, mass, tolerance, kind)
     animations(builder.bakes[0], builder.bakes[1], builder.bakes[2])
 
-    validate(builder.bakery)
+    validate(builder.distillery)
 
-    return builder.bakery
+    return builder.distillery
 }
 
 private func constructor(views: [UIView], _ delay: NSTimeInterval, _ spring: CGFloat,
-  _ friction: CGFloat, _ mass: CGFloat, _ tolerance: CGFloat, _ calculation: Animation.Spring) -> (bakes: [Bake], bakery: Bakery) {
-    let bakery = Bakery()
-    var bakes: [Bake] = []
+  _ friction: CGFloat, _ mass: CGFloat, _ tolerance: CGFloat, _ calculation: Animation.Spring) -> (bakes: [Ingredient], distillery: Distillery) {
+    let distillery = Distillery()
+    var bakes: [Ingredient] = []
 
     views.forEach {
-      bakes.append(Bake(bakery: bakery, view: $0, spring: spring,
+      bakes.append(Ingredient(distillery: distillery, view: $0, spring: spring,
         friction: friction, mass: mass, tolerance: tolerance, calculation: calculation))
     }
 
-    bakery.delays.append(delay)
-    bakery.bakes = [bakes]
+    distillery.delays.append(delay)
+    distillery.bakes = [bakes]
 
-    return (bakes: bakes, bakery: bakery)
+    return (bakes: bakes, distillery: distillery)
 }
 
-private func validate(bakery: Bakery) {
+private func validate(distillery: Distillery) {
 
   var shouldProceed = true
-  bakeries.forEach {
+  distilleries.forEach {
     if let bakes = $0.bakes.first, bake = bakes.first where bake.finalValues.isEmpty {
       shouldProceed = false
       return
     }
   }
 
-  bakery.shouldProceed = shouldProceed
+  distillery.shouldProceed = shouldProceed
 
   if shouldProceed {
-    bakeries.append(bakery)
-    bakery.animate()
+    distilleries.append(distillery)
+    distillery.animate()
   }
 }

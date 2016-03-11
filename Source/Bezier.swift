@@ -12,14 +12,14 @@ import UIKit
 public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
   curve: Animation.Curve = .Linear,
   options: [Animation.Options] = [],
-  animations: Bake -> Void) -> Bakery {
+  animations: Ingredient -> Void) -> Distillery {
 
     let builder = constructor([view], delay, duration, curve, options)
     animations(builder.bake[0])
 
-    validate(builder.bakery)
+    validate(builder.distillery)
 
-    return builder.bakery
+    return builder.distillery
 }
 
 /**
@@ -34,14 +34,14 @@ public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInt
 public func animate(firstView: UIView, _ secondView: UIView,
   delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
   curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-  animations: (Bake, Bake) -> Void) -> Bakery {
+  animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView], delay, duration, curve, options)
     animations(builder.bake[0], builder.bake[1])
 
-    validate(builder.bakery)
+    validate(builder.distillery)
 
-    return builder.bakery
+    return builder.distillery
 }
 
 /**
@@ -56,14 +56,14 @@ public func animate(firstView: UIView, _ secondView: UIView,
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
   curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-  animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+  animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView, thirdView], delay, duration, curve, options)
     animations(builder.bake[0], builder.bake[1], builder.bake[2])
 
-    validate(builder.bakery)
+    validate(builder.distillery)
 
-    return builder.bakery
+    return builder.distillery
 }
 
 /**
@@ -78,48 +78,48 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   _ fourthView: UIView, duration: NSTimeInterval = 0.35,
   delay: NSTimeInterval = 0, curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-  animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
+  animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView, thirdView, fourthView], delay, duration, curve, options)
     animations(builder.bake[0], builder.bake[1], builder.bake[2], builder.bake[3])
 
-    validate(builder.bakery)
+    validate(builder.distillery)
 
-    return builder.bakery
+    return builder.distillery
 }
 
 // MARK: - Private helpers
 
 private func constructor(views: [UIView], _ delay: NSTimeInterval,
-  _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (bake: [Bake], bakery: Bakery) {
+  _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (bake: [Ingredient], distillery: Distillery) {
 
-    let bakery = Bakery()
-    var bakes: [Bake] = []
+    let distillery = Distillery()
+    var bakes: [Ingredient] = []
 
     views.forEach {
-      bakes.append(Bake(bakery: bakery, view: $0, duration: duration, curve: curve, options: options))
+      bakes.append(Ingredient(distillery: distillery, view: $0, duration: duration, curve: curve, options: options))
     }
 
-    bakery.delays.append(delay)
-    bakery.bakes = [bakes]
+    distillery.delays.append(delay)
+    distillery.bakes = [bakes]
     
-    return (bake: bakes, bakery: bakery)
+    return (bake: bakes, distillery: distillery)
 }
 
-private func validate(bakery: Bakery) {
+private func validate(distillery: Distillery) {
 
   var shouldProceed = true
-  bakeries.forEach {
+  distilleries.forEach {
     if let bakes = $0.bakes.first, bake = bakes.first where bake.finalValues.isEmpty {
       shouldProceed = false
       return
     }
   }
 
-  bakery.shouldProceed = shouldProceed
+  distillery.shouldProceed = shouldProceed
 
   if shouldProceed {
-    bakeries.append(bakery)
-    bakery.animate()
+    distilleries.append(distillery)
+    distillery.animate()
   }
 }

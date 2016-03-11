@@ -1,15 +1,15 @@
 import UIKit
 
-var bakeries: [Bakery] = []
+var distilleries: [Distillery] = []
 
-public func cancelBakeries() {
+public func closeDistilleries() {
 
-  bakeries.forEach { $0.bakes.forEach { $0.forEach { $0.view.layer.removeAllAnimations() } } }
+  distilleries.forEach { $0.bakes.forEach { $0.forEach { $0.view.layer.removeAllAnimations() } } }
 }
 
-public class Bakery: NSObject {
+public class Distillery: NSObject {
 
-  var bakes: [[Bake]] = [[]]
+  var bakes: [[Ingredient]] = [[]]
   var delays: [NSTimeInterval] = []
   var closures: [(() -> Void)?] = []
   var final: (() -> Void)?
@@ -18,7 +18,7 @@ public class Bakery: NSObject {
   /**
    Then gets called when the animation block above has ended.
    */
-  public func then(closure: () -> Void) -> Bakery {
+  public func then(closure: () -> Void) -> Distillery {
     closures.append(closure)
 
     return self
@@ -49,8 +49,8 @@ public class Bakery: NSObject {
           if bake.kind == .Bezier {
             animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
           } else if let value = bake.finalValues.first {
-            animation.values = Baker.calculateSpring(property, finalValue: value, layer: presentedLayer, type: bake.calculation)
-            animation.duration = Baker.springTiming
+            animation.values = Distill.calculateSpring(property, finalValue: value, layer: presentedLayer, type: bake.calculation)
+            animation.duration = Distill.springTiming
           }
 
           if !bake.finalValues.isEmpty { bake.finalValues.removeFirst() }
@@ -111,8 +111,8 @@ public class Bakery: NSObject {
       final()
     }
 
-    if let index = bakeries.indexOf(self) where bakes.isEmpty {
-      bakeries.removeAtIndex(index)
+    if let index = distilleries.indexOf(self) where bakes.isEmpty {
+      distilleries.removeAtIndex(index)
     }
   }
 }

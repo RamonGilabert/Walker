@@ -1,6 +1,6 @@
 import UIKit
 
-extension Bakery {
+extension Distillery {
 
   // MARK: - Bezier chains
 
@@ -15,7 +15,7 @@ extension Bakery {
   */
   public func chain(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-    animations: Bake -> Void) -> Bakery {
+    animations: Ingredient -> Void) -> Distillery {
 
       animations(bezier(1, delay, duration, curve, options)[0])
 
@@ -33,7 +33,7 @@ extension Bakery {
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-     animations: (Bake, Bake) -> Void) -> Bakery {
+     animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
       let bakes = bezier(2, delay, duration, curve, options)
       animations(bakes[0], bakes[1])
@@ -52,7 +52,7 @@ extension Bakery {
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-    animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+    animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
       let bakes = bezier(3, delay, duration, curve, options)
       animations(bakes[0], bakes[1], bakes[2])
@@ -71,7 +71,7 @@ extension Bakery {
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-    animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
+    animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
       let bakes = bezier(4, delay, duration, curve, options)
       animations(bakes[0], bakes[1], bakes[2], bakes[3])
@@ -93,7 +93,7 @@ extension Bakery {
   - Returns: A series of bakes that you can configure with all the animatable properties.
   */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: Bake -> Void) -> Bakery {
+    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: Ingredient -> Void) -> Distillery {
       animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)[0])
 
       return self
@@ -111,7 +111,7 @@ extension Bakery {
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Bake, Bake) -> Void) -> Bakery {
+    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
       let bakes = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
       animations(bakes[0], bakes[1])
 
@@ -131,7 +131,7 @@ extension Bakery {
    */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
     mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring,
-    animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+    animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
       let bakes = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
       animations(bakes[0], bakes[1], bakes[2])
@@ -142,11 +142,11 @@ extension Bakery {
   // MARK: - Private constructors
 
   private func bezier(value: Int, _ delay: NSTimeInterval,
-    _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> [Bake] {
+    _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> [Ingredient] {
 
-      var animationBakes: [Bake] = []
+      var animationBakes: [Ingredient] = []
       for index in 0..<value {
-        let bake = Bake(bakery: self, view: self.bakes[0][index].view, duration: duration, curve: curve, options: options)
+        let bake = Ingredient(distillery: self, view: self.bakes[0][index].view, duration: duration, curve: curve, options: options)
         animationBakes.append(bake)
       }
 
@@ -160,11 +160,11 @@ extension Bakery {
   }
 
   private func constructor(value: Int, delay: NSTimeInterval, _ spring: CGFloat,
-    _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat, _ calculation: Animation.Spring) -> [Bake] {
+    _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat, _ calculation: Animation.Spring) -> [Ingredient] {
 
-      var animationBakes: [Bake] = []
+      var animationBakes: [Ingredient] = []
       for index in 0..<value {
-        let bake = Bake(bakery: self, view: self.bakes[0][index].view,
+        let bake = Ingredient(distillery: self, view: self.bakes[0][index].view,
           spring: spring, friction: friction, mass: mass, tolerance: tolerance, calculation: calculation)
         animationBakes.append(bake)
       }
