@@ -1,5 +1,7 @@
 // TODO: Put the cover here.
 
+This is still a work in progress.
+
 ## The story
 
 Seeing the animations behind Paper, or the transitions behind Mail, being in a world of flat design and transitions, user interaction, app behavior and responsiveness are key, we need good and fast animations to delight our users in every tap, every scroll, every moment that they spend in our app.
