@@ -63,9 +63,9 @@ As stated in the first example, you can chain animations, but not only animation
 
 ```swift
 spring(view, spring: 200, friction: 10, mass: 10) {
-  $0.x = 0
-}.chain {
   $0.x = 100
+}.chain {
+  $0.x = 0
 }
 ```
 
@@ -107,16 +107,16 @@ pod 'Walker'
 **Walker** is also available through [Carthage](https://github.com/Carthage/Carthage). To install just write into your Cartfile:
 
 ```ruby
-github "RamonGilabert/Walker"
+github 'RamonGilabert/Walker'
 ```
 
 ## Upcoming features
 
-Check out the [ROADMAP](https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md) to see the upcoming features that we are thinking to implement and don't hesitate to [open an issue](https://github.com/RamonGilabert/Walker/issues) or make a PR with a proposal in the roadmap.
+Check out the [ROADMAP](https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md) file to see the upcoming features that we are thinking to implement and don't hesitate to [open an issue](https://github.com/RamonGilabert/Walker/issues) or make a PR with a proposal in the roadmap.
 
 ## Author
 
-Ramon Gilabert with ♥️.
+Ramon Gilabert with ♥️
 
 ## Contribute
 
