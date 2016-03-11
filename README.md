@@ -1,18 +1,23 @@
 ![Walker](https://github.com/RamonGilabert/Walker/blob/master/Resources/header-image.png)
 
-This is still a work in progress.
+[![Version](https://img.shields.io/cocoapods/v/Walker.svg?style=flat)](http://cocoadocs.org/docsets/Walker)
+[![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![License](https://img.shields.io/cocoapods/l/Walker.svg?style=flat)](http://cocoadocs.org/docsets/Walker)
+[![Platform](https://img.shields.io/cocoapods/p/Walker.svg?style=flat)](http://cocoadocs.org/docsets/Walker)
+[![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/Walker.svg?style=flat)](http://cocoadocs.org/docsets/Walker)
+![Swift](https://img.shields.io/badge/%20in-swift%202.2-orange.svg)
 
 ## The story
 
 Seeing the animations behind Paper, or the transitions behind Mail, being in a world of flat design and transitions, user interaction, app behavior and responsiveness are key, we need good and fast animations to delight our users in every tap, every scroll, every moment that they spend in our app.
 
-After lots of apps, designs and animations, after trying some of the most famous web frameworks and after I learnt FramerJS, which has one of the most beautiful springs I've seen. I'm building a collection of my knowledge, as I said when I was learning iOS development I would do, let me present Walker to you, an animation engine and library.
+After lots of apps, designs and animations, after trying some of the most famous web frameworks and after I learnt FramerJS, which has one of the most beautiful springs I've seen. I'm building a collection of my knowledge, as I said when I was learning iOS development I would do, let me present **Walker** to you, an animation engine and library.
 
-Walker has a bohemian companion that walks tight with him, this is [], a set of animations that will make your life easier when developing iOS apps.
+**Walker** has a bohemian companion that walks tight with him, this is [], a set of animations that will make your life easier when developing iOS apps.
 
 ## Code
 
-Walker has different types of use cases and behaviors, you can either have a chain of animations with different blocks and callbacks, or reuse animations and apply them in different cases.
+**Walker** has different types of use cases and behaviors, you can either have a chain of animations with different blocks and callbacks, or reuse animations and apply them in different cases.
 
 ```swift
 animate(view) {
@@ -94,6 +99,14 @@ Have more questions and want to see more implementation in detail? We have a [de
 
 Check out the [ROADMAP](https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md) to see the upcoming features that we are thinking to implement and don't hesitate to [open an issue](https://github.com/RamonGilabert/Walker/issues) or make a PR with a proposal in the roadmap.
 
-## Done by
+## Author
 
 Ramon Gilabert with ♡.
+
+## Contribute
+
+We would love you to contribute to **Walker**, check the [CONTRIBUTING](https://github.com/RamonGilabert/Walker/blob/master/CONTRIBUTING.md) file for more info.
+
+## License
+
+**Walker** is available under the MIT license. See the [LICENSE](https://github.com/RamonGilabert/Walker/blob/master/LICENSE.md) file for more info.
