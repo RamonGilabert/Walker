@@ -4,12 +4,12 @@ var distilleries: [Distillery] = []
 
 public func closeDistilleries() {
 
-  distilleries.forEach { $0.bakes.forEach { $0.forEach { $0.view.layer.removeAllAnimations() } } }
+  distilleries.forEach { $0.ingredients.forEach { $0.forEach { $0.view.layer.removeAllAnimations() } } }
 }
 
 public class Distillery: NSObject {
 
-  var bakes: [[Ingredient]] = [[]]
+  var ingredients: [[Ingredient]] = [[]]
   var delays: [NSTimeInterval] = []
   var closures: [(() -> Void)?] = []
   var final: (() -> Void)?
@@ -38,7 +38,7 @@ public class Distillery: NSObject {
 
     let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
     dispatch_after(time, dispatch_get_main_queue()) {
-      guard let bake = self.bakes.first else { return }
+      guard let bake = self.ingredients.first else { return }
 
       for (_, bake) in bake.enumerate() {
         guard let presentedLayer = bake.view.layer.presentationLayer() as? CALayer else { return }
@@ -63,7 +63,7 @@ public class Distillery: NSObject {
   // MARK: - Finish animation
 
   public override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    guard var group = bakes.first, let animation = anim as? CAKeyframeAnimation else { return }
+    guard var group = ingredients.first, let animation = anim as? CAKeyframeAnimation else { return }
 
     var index = 0
     var animationIndex = 0
@@ -91,11 +91,11 @@ public class Distillery: NSObject {
     if bake.animations.isEmpty {
       group.removeAtIndex(index)
 
-      bakes[0] = group
+      ingredients[0] = group
     }
 
     if group.isEmpty {
-      bakes.removeFirst()
+      ingredients.removeFirst()
       delays.removeFirst()
       animate()
 
@@ -107,11 +107,11 @@ public class Distillery: NSObject {
       }
     }
 
-    if let final = final where bakes.isEmpty {
+    if let final = final where ingredients.isEmpty {
       final()
     }
 
-    if let index = distilleries.indexOf(self) where bakes.isEmpty {
+    if let index = distilleries.indexOf(self) where ingredients.isEmpty {
       distilleries.removeAtIndex(index)
     }
   }

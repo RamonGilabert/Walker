@@ -8,7 +8,7 @@ import UIKit
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
  - Parameter options: A set of options, for now .Reverse or .Repeat.
 
- - Returns: A series of bakes that you can configure with all the animatable properties.
+ - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
 public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
   curve: Animation.Curve = .Linear,
@@ -31,7 +31,7 @@ public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInt
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
  - Parameter options: A set of options, for now .Reverse or .Repeat.
 
- - Returns: A series of bakes that you can configure with all the animatable properties.
+ - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
 public func animate(firstView: UIView, _ secondView: UIView,
   delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
@@ -54,7 +54,7 @@ public func animate(firstView: UIView, _ secondView: UIView,
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
  - Parameter options: A set of options, for now .Reverse or .Repeat.
 
- - Returns: A series of bakes that you can configure with all the animatable properties.
+ - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
@@ -77,7 +77,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
  - Parameter options: A set of options, for now .Reverse or .Repeat.
 
- - Returns: A series of bakes that you can configure with all the animatable properties.
+ - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   _ fourthView: UIView, duration: NSTimeInterval = 0.35,
@@ -98,23 +98,23 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval,
   _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (bake: [Ingredient], distillery: Distillery) {
 
     let distillery = Distillery()
-    var bakes: [Ingredient] = []
+    var ingredients: [Ingredient] = []
 
     views.forEach {
-      bakes.append(Ingredient(distillery: distillery, view: $0, duration: duration, curve: curve, options: options))
+      ingredients.append(Ingredient(distillery: distillery, view: $0, duration: duration, curve: curve, options: options))
     }
 
     distillery.delays.append(delay)
-    distillery.bakes = [bakes]
+    distillery.ingredients = [ingredients]
     
-    return (bake: bakes, distillery: distillery)
+    return (bake: ingredients, distillery: distillery)
 }
 
 private func validate(distillery: Distillery) {
 
   var shouldProceed = true
   distilleries.forEach {
-    if let bakes = $0.bakes.first, bake = bakes.first where bake.finalValues.isEmpty {
+    if let ingredients = $0.ingredients.first, bake = ingredients.first where bake.finalValues.isEmpty {
       shouldProceed = false
       return
     }

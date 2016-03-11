@@ -12,7 +12,7 @@ extension Distillery {
   - Parameter curve: The animation curve.
   - Parameter options: A set of options, for now .Reverse or .Repeat.
 
-  - Returns: A series of bakes that you can configure with all the animatable properties.
+  - Returns: A series of ingredients that you can configure with all the animatable properties.
   */
   public func chain(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
@@ -31,14 +31,14 @@ extension Distillery {
    - Parameter curve: The animation curve.
    - Parameter options: A set of options, for now .Reverse or .Repeat.
 
-   - Returns: A series of bakes that you can configure with all the animatable properties.
+   - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
      animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
-      let bakes = bezier(2, delay, duration, curve, options)
-      animations(bakes[0], bakes[1])
+      let ingredients = bezier(2, delay, duration, curve, options)
+      animations(ingredients[0], ingredients[1])
 
       return self
   }
@@ -51,14 +51,14 @@ extension Distillery {
    - Parameter curve: The animation curve.
    - Parameter options: A set of options, for now .Reverse or .Repeat.
 
-   - Returns: A series of bakes that you can configure with all the animatable properties.
+   - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
-      let bakes = bezier(3, delay, duration, curve, options)
-      animations(bakes[0], bakes[1], bakes[2])
+      let ingredients = bezier(3, delay, duration, curve, options)
+      animations(ingredients[0], ingredients[1], ingredients[2])
 
       return self
   }
@@ -71,14 +71,14 @@ extension Distillery {
    - Parameter curve: The animation curve.
    - Parameter options: A set of options, for now .Reverse or .Repeat.
 
-   - Returns: A series of bakes that you can configure with all the animatable properties.
+   - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
-      let bakes = bezier(4, delay, duration, curve, options)
-      animations(bakes[0], bakes[1], bakes[2], bakes[3])
+      let ingredients = bezier(4, delay, duration, curve, options)
+      animations(ingredients[0], ingredients[1], ingredients[2], ingredients[3])
 
       return self
   }
@@ -94,7 +94,7 @@ extension Distillery {
   - Parameter mass: The value of the mass of the layer.
   - Parameter tolerance: The tolerance that will default to 0.0001.
 
-  - Returns: A series of bakes that you can configure with all the animatable properties.
+  - Returns: A series of ingredients that you can configure with all the animatable properties.
   */
   public func chain(delay delay: NSTimeInterval = 0,
     spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
@@ -114,14 +114,14 @@ extension Distillery {
    - Parameter mass: The value of the mass of the layer.
    - Parameter tolerance: The tolerance that will default to 0.0001.
 
-   - Returns: A series of bakes that you can configure with all the animatable properties.
+   - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat,
     friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
     kind: Animation.Spring = .Spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
-      let bakes = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
-      animations(bakes[0], bakes[1])
+      let ingredients = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
+      animations(ingredients[0], ingredients[1])
 
       return self
   }
@@ -135,14 +135,14 @@ extension Distillery {
    - Parameter mass: The value of the mass of the layer.
    - Parameter tolerance: The tolerance that will default to 0.0001.
 
-   - Returns: A series of bakes that you can configure with all the animatable properties.
+   - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
     mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring,
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
-      let bakes = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
-      animations(bakes[0], bakes[1], bakes[2])
+      let ingredients = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
+      animations(ingredients[0], ingredients[1], ingredients[2])
 
       return self
   }
@@ -152,37 +152,37 @@ extension Distillery {
   private func bezier(value: Int, _ delay: NSTimeInterval,
     _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> [Ingredient] {
 
-      var animationBakes: [Ingredient] = []
+      var animationIngredients: [Ingredient] = []
       for index in 0..<value {
-        let bake = Ingredient(distillery: self, view: self.bakes[0][index].view, duration: duration, curve: curve, options: options)
-        animationBakes.append(bake)
+        let bake = Ingredient(distillery: self, view: self.ingredients[0][index].view, duration: duration, curve: curve, options: options)
+        animationIngredients.append(bake)
       }
 
       if shouldProceed {
         delays.append(delay)
-        bakes.append(animationBakes)
+        ingredients.append(animationIngredients)
         closures.append(nil)
       }
 
-      return animationBakes
+      return animationIngredients
   }
 
   private func constructor(value: Int, delay: NSTimeInterval, _ spring: CGFloat,
     _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat, _ calculation: Animation.Spring) -> [Ingredient] {
 
-      var animationBakes: [Ingredient] = []
+      var animationIngredients: [Ingredient] = []
       for index in 0..<value {
-        let bake = Ingredient(distillery: self, view: self.bakes[0][index].view,
+        let bake = Ingredient(distillery: self, view: self.ingredients[0][index].view,
           spring: spring, friction: friction, mass: mass, tolerance: tolerance, calculation: calculation)
-        animationBakes.append(bake)
+        animationIngredients.append(bake)
       }
 
       if shouldProceed {
         delays.append(delay)
-        bakes.append(animationBakes)
+        ingredients.append(animationIngredients)
         closures.append(nil)
       }
       
-      return animationBakes
+      return animationIngredients
   }
 }
