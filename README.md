@@ -22,7 +22,7 @@ animate(firstView) {
 
 - [x] Spring animation.
 - [x] Width, height and size animations.
-- [ ] Change the name. x
+- [x] Change the name.
 - [ ] Report bug of the chain thing that it doesn't recognize the signature.
 - [x] Add Swift proposal to add arrays as a back for closures.
 - [x] Add animation options.
