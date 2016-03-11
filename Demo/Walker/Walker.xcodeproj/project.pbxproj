@@ -10,7 +10,6 @@
 		292D71A11C930A8200CFC060 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D719B1C930A8200CFC060 /* AppDelegate.swift */; };
 		292D71A21C930A8200CFC060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 292D719C1C930A8200CFC060 /* Assets.xcassets */; };
 		292D71A31C930A8200CFC060 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 292D719D1C930A8200CFC060 /* LaunchScreen.storyboard */; };
-		292D71A41C930A8200CFC060 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292D719F1C930A8200CFC060 /* Info.plist */; };
 		292D71A51C930A8200CFC060 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71A01C930A8200CFC060 /* ViewController.swift */; };
 		B5CDF636EE8B82EE01CF4249 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E582BAC85E775687B231AD /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -115,7 +114,7 @@
 		2911288C1BADBFBD00C66827 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Ramon Gilabert Llop";
 				TargetAttributes = {
 					291128931BADBFBD00C66827 = {
@@ -148,7 +147,6 @@
 			files = (
 				292D71A21C930A8200CFC060 /* Assets.xcassets in Resources */,
 				292D71A31C930A8200CFC060 /* LaunchScreen.storyboard in Resources */,
-				292D71A41C930A8200CFC060 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Walker: 520247b3db109de6137f103d1958fdcf91ce5aa4
+  Walker: 694d094cc8e9c79d5b906ff1c2cea581ba1c9be0
 
 COCOAPODS: 0.39.0.beta.4
