@@ -13,8 +13,7 @@ struct Baker {
   // MARK: - Cubic bezier
 
   static func bezier(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval, options: [Animation.Options]) -> CAKeyframeAnimation {
-    let animation = CAKeyframeAnimation()
-    animation.keyPath = property.rawValue
+    let animation = CAKeyframeAnimation(keyPath: property.rawValue)
     animation.duration = duration
     animation.removedOnCompletion = false
     animation.fillMode = kCAFillModeForwards

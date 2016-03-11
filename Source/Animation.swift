@@ -21,7 +21,7 @@ public struct Animation {
     case Bounce
   }
 
-  enum Property: String {
+  public enum Property: String {
     case PositionX = "position.x"
     case PositionY = "position.y"
     case Opacity = "opacity"
