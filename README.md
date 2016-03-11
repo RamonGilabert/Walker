@@ -84,9 +84,13 @@ Distill works with as many animations at a time as you want.
 
 // TODO: Put a gif here.
 
+#### More questions?
+
+Have more questions and want to see more implementation in detail? We have a [demo](https://github.com/RamonGilabert/Walker/tree/master/Demo/Walker) for you. If you still have something unclear, don't hesitate to [contact me](mailto:ramon.gilabert.llop@gmail.com) or [open an issue](https://github.com/RamonGilabert/Walker/issues).
+
 ## Upcoming features
 
-Check out the [ROADMAP](https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md) to see the upcoming features that we are thinking to implement and don't hesitate to open an issue or make a PR with a proposal in the roadmap.
+Check out the [ROADMAP](https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md) to see the upcoming features that we are thinking to implement and don't hesitate to [open an issue](https://github.com/RamonGilabert/Walker/issues) or make a PR with a proposal in the roadmap.
 
 ## Done by
 
