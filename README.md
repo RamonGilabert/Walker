@@ -95,6 +95,21 @@ Distill works with as many animations at a time as you want.
 
 Have more questions and want to see more implementation in detail? We have a [demo](https://github.com/RamonGilabert/Walker/tree/master/Demo/Walker) for you. If you still have something unclear, don't hesitate to [contact me](mailto:ramon.gilabert.llop@gmail.com) or [open an issue](https://github.com/RamonGilabert/Walker/issues).
 
+## Installation
+
+**Walker** is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'Walker'
+```
+
+**Walker** is also available through [Carthage](https://github.com/Carthage/Carthage). To install just write into your Cartfile:
+
+```ruby
+github "RamonGilabert/Walker"
+```
+
 ## Upcoming features
 
 Check out the [ROADMAP](https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md) to see the upcoming features that we are thinking to implement and don't hesitate to [open an issue](https://github.com/RamonGilabert/Walker/issues) or make a PR with a proposal in the roadmap.
