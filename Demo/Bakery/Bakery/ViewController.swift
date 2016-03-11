@@ -53,7 +53,7 @@ class ViewController: UIViewController {
 
     animate(animationView) {
       $0.y = 350
-    }.chain(spring: 200, friction: 10, mass: 10) {
+    }.chain(spring: 200, friction: 10, mass: 10, kind: .Bounce) {
       $0.y = finalPosition
     }
   }

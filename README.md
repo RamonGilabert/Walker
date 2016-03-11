@@ -24,14 +24,16 @@ animate(firstView) {
 - [ ] Width, height and size animations.
 - [ ] Change the name.
 - [ ] Report bug of the chain thing that it doesn't recognize the signature.
+- [ ] Add Swift proposal to add arrays as a back for closures.
 - [ ] Add animation options.
 - [x] Call animate two times or more, so add a queue.
-- [ ] Be careful when you tap two animate multiple times. (Add a flag to lock the main methods).
+- [x] Be careful when you tap two animate multiple times. (Add a flag to lock the main methods).
 - [x] Multiple animate or spring blocks.
 - [x] Document the code.
-- [ ] Document bake.
+- [x] Document bake.
 - [ ] Add an easy way to create animations, spring and bezier's.
-- [ ] Cancel all animations.
+- [x] Cancel all animations.
+- [ ] Apply bounce in the Spring.
 
 ## Done by
 

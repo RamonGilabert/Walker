@@ -150,6 +150,7 @@ public class Bake: Equatable {
   internal let duration: NSTimeInterval
   internal let curve: Animation.Curve
   internal let kind: Kind
+  internal let calculation: Animation.Spring
   internal let spring: (spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat)
   var animations: [CAKeyframeAnimation] = []
   var properties: [Animation.Property] = []
@@ -162,6 +163,7 @@ public class Bake: Equatable {
     self.duration = duration
     self.curve = curve
     self.kind = .Bezier
+    self.calculation = .Spring
     self.spring = (0, 0, 0, 0)
     self.alpha = view.alpha
     self.x = view.frame.origin.x
@@ -175,12 +177,13 @@ public class Bake: Equatable {
     self.transform = view.transform
   }
 
-  init(bakery: Bakery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat) {
+  init(bakery: Bakery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat, calculation: Animation.Spring) {
     self.bakery = bakery
     self.view = view
     self.duration = 0
     self.curve = .Linear
     self.kind = .Spring
+    self.calculation = calculation
     self.spring = (spring, friction, mass, tolerance)
     self.alpha = view.alpha
     self.x = view.frame.origin.x

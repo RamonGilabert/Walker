@@ -85,8 +85,8 @@ extension Bakery {
   - Returns: A series of bakes that you can configure with all the animatable properties.
   */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, animations: Bake -> Void) -> Bakery {
-      animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance)[0])
+    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: Bake -> Void) -> Bakery {
+      animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)[0])
 
       return self
   }
@@ -103,8 +103,8 @@ extension Bakery {
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake, Bake) -> Void) -> Bakery {
-      let bakes = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance)
+    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Bake, Bake) -> Void) -> Bakery {
+      let bakes = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
       animations(bakes[0], bakes[1])
 
       return self
@@ -122,8 +122,8 @@ extension Bakery {
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
-      let bakes = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance)
+    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+      let bakes = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
       animations(bakes[0], bakes[1], bakes[2])
 
       return self
@@ -150,12 +150,12 @@ extension Bakery {
   }
 
   private func constructor(value: Int, delay: NSTimeInterval, _ spring: CGFloat,
-    _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat) -> [Bake] {
+    _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat, _ calculation: Animation.Spring) -> [Bake] {
 
       var animationBakes: [Bake] = []
       for index in 0..<value {
         let bake = Bake(bakery: self, view: self.bakes[0][index].view,
-          spring: spring, friction: friction, mass: mass, tolerance: tolerance)
+          spring: spring, friction: friction, mass: mass, tolerance: tolerance, calculation: calculation)
         animationBakes.append(bake)
       }
 

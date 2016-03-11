@@ -49,7 +49,7 @@ public class Bakery: NSObject {
           if bake.kind == .Bezier {
             animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
           } else if let value = bake.finalValues.first {
-            animation.values = Baker.calculateSpring(property, finalValue: value, layer: presentedLayer, type: .Spring)
+            animation.values = Baker.calculateSpring(property, finalValue: value, layer: presentedLayer, type: bake.calculation)
             animation.duration = Baker.springTiming
           }
 
