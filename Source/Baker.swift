@@ -12,16 +12,25 @@ struct Baker {
 
   // MARK: - Cubic bezier
 
-  static func bezier(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval) -> CAKeyframeAnimation {
+  static func bezier(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval, options: [Animation.Options]) -> CAKeyframeAnimation {
     let animation = CAKeyframeAnimation()
     animation.keyPath = property.rawValue
     animation.duration = duration
     animation.removedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
     animation.additive = false
-    animation.cumulative = true
+    animation.cumulative = false
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
       bezierPoints[0], bezierPoints[1], bezierPoints[2], bezierPoints[3])
+
+    options.forEach { option in
+      switch option {
+      case .Reverse :
+        animation.autoreverses = true
+      case let .Repeat(t):
+        animation.repeatCount = t
+      }
+    }
 
     return animation
   }

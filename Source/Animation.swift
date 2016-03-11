@@ -11,6 +11,11 @@ public struct Animation {
     case Bezier(x: Float, y: Float, z: Float, p: Float)
   }
 
+  public enum Options {
+    case Reverse
+    case Repeat(t: Float)
+  }
+
   public enum Spring {
     case Spring
     case Bounce

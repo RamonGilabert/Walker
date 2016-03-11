@@ -155,56 +155,63 @@ public class Bake: Equatable {
   internal let kind: Kind
   internal let calculation: Animation.Spring
   internal let spring: (spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat)
+  internal let options: [Animation.Options]
   var animations: [CAKeyframeAnimation] = []
   var properties: [Animation.Property] = []
   var finalValues: [NSValue] = []
   var bakery: Bakery
 
-  init(bakery: Bakery, view: UIView, duration: NSTimeInterval, curve: Animation.Curve) {
-    self.bakery = bakery
-    self.view = view
-    self.duration = duration
-    self.curve = curve
-    self.kind = .Bezier
-    self.calculation = .Spring
-    self.spring = (0, 0, 0, 0)
-    self.alpha = view.alpha
-    self.x = view.frame.origin.x
-    self.y = view.frame.origin.y
-    self.width = view.frame.width
-    self.height = view.frame.height
-    self.origin = view.frame.origin
-    self.size = view.frame.size
-    self.frame = view.frame
-    self.radius = view.layer.cornerRadius
-    self.transform = view.transform
+  init(bakery: Bakery, view: UIView, duration: NSTimeInterval,
+    curve: Animation.Curve, options: [Animation.Options]) {
+
+      self.bakery = bakery
+      self.view = view
+      self.duration = duration
+      self.curve = curve
+      self.kind = .Bezier
+      self.calculation = .Spring
+      self.options = options
+      self.spring = (0, 0, 0, 0)
+      self.alpha = view.alpha
+      self.x = view.frame.origin.x
+      self.y = view.frame.origin.y
+      self.width = view.frame.width
+      self.height = view.frame.height
+      self.origin = view.frame.origin
+      self.size = view.frame.size
+      self.frame = view.frame
+      self.radius = view.layer.cornerRadius
+      self.transform = view.transform
   }
 
-  init(bakery: Bakery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat, calculation: Animation.Spring) {
-    self.bakery = bakery
-    self.view = view
-    self.duration = 0
-    self.curve = .Linear
-    self.kind = .Spring
-    self.calculation = calculation
-    self.spring = (spring, friction, mass, tolerance)
-    self.alpha = view.alpha
-    self.x = view.frame.origin.x
-    self.y = view.frame.origin.y
-    self.width = view.frame.width
-    self.height = view.frame.height
-    self.origin = view.frame.origin
-    self.size = view.frame.size
-    self.frame = view.frame
-    self.radius = view.layer.cornerRadius
-    self.transform = view.transform
+  init(bakery: Bakery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat,
+    tolerance: CGFloat, calculation: Animation.Spring, options: [Animation.Options] = []) {
+
+      self.bakery = bakery
+      self.view = view
+      self.duration = 0
+      self.curve = .Linear
+      self.kind = .Spring
+      self.calculation = calculation
+      self.options = options
+      self.spring = (spring, friction, mass, tolerance)
+      self.alpha = view.alpha
+      self.x = view.frame.origin.x
+      self.y = view.frame.origin.y
+      self.width = view.frame.width
+      self.height = view.frame.height
+      self.origin = view.frame.origin
+      self.size = view.frame.size
+      self.frame = view.frame
+      self.radius = view.layer.cornerRadius
+      self.transform = view.transform
   }
 
   private func animate(property: Animation.Property, _ value: NSValue) {
     var animation = CAKeyframeAnimation()
 
     if kind == .Bezier {
-      animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration)
+      animation = Baker.bezier(property, bezierPoints: Animation.points(curve), duration: duration, options: options)
       animation.values = [value]
       animation.delegate = bakery
     } else {

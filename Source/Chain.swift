@@ -14,8 +14,10 @@ extension Bakery {
   - Returns: A series of bakes that you can configure with all the animatable properties.
   */
   public func chain(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
-      animations(bezier(1, delay, duration, curve)[0])
+    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+    animations: Bake -> Void) -> Bakery {
+
+      animations(bezier(1, delay, duration, curve, options)[0])
 
       return self
   }
@@ -30,8 +32,10 @@ extension Bakery {
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: (Bake, Bake) -> Void) -> Bakery {
-      let bakes = bezier(2, delay, duration, curve)
+    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+     animations: (Bake, Bake) -> Void) -> Bakery {
+
+      let bakes = bezier(2, delay, duration, curve, options)
       animations(bakes[0], bakes[1])
 
       return self
@@ -47,8 +51,10 @@ extension Bakery {
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
-      let bakes = bezier(3, delay, duration, curve)
+    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+    animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+
+      let bakes = bezier(3, delay, duration, curve, options)
       animations(bakes[0], bakes[1], bakes[2])
 
       return self
@@ -64,8 +70,10 @@ extension Bakery {
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
   public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
-      let bakes = bezier(4, delay, duration, curve)
+    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+    animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
+
+      let bakes = bezier(4, delay, duration, curve, options)
       animations(bakes[0], bakes[1], bakes[2], bakes[3])
 
       return self
@@ -122,7 +130,9 @@ extension Bakery {
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
   public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring,
+    animations: (Bake, Bake, Bake) -> Void) -> Bakery {
+
       let bakes = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
       animations(bakes[0], bakes[1], bakes[2])
 
@@ -132,11 +142,11 @@ extension Bakery {
   // MARK: - Private constructors
 
   private func bezier(value: Int, _ delay: NSTimeInterval,
-    _ duration: NSTimeInterval, _ curve: Animation.Curve) -> [Bake] {
+    _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> [Bake] {
 
       var animationBakes: [Bake] = []
       for index in 0..<value {
-        let bake = Bake(bakery: self, view: self.bakes[0][index].view, duration: duration, curve: curve)
+        let bake = Bake(bakery: self, view: self.bakes[0][index].view, duration: duration, curve: curve, options: options)
         animationBakes.append(bake)
       }
 

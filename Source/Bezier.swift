@@ -10,8 +10,11 @@ import UIKit
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */
 public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
-  curve: Animation.Curve = .Linear, animations: Bake -> Void) -> Bakery {
-    let builder = constructor([view], delay, duration, curve)
+  curve: Animation.Curve = .Linear,
+  options: [Animation.Options] = [],
+  animations: Bake -> Void) -> Bakery {
+
+    let builder = constructor([view], delay, duration, curve, options)
     animations(builder.bake[0])
 
     validate(builder.bakery)
@@ -29,10 +32,11 @@ public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInt
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */
 public func animate(firstView: UIView, _ secondView: UIView,
-  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
+  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
+  curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
   animations: (Bake, Bake) -> Void) -> Bakery {
 
-    let builder = constructor([firstView, secondView], delay, duration, curve)
+    let builder = constructor([firstView, secondView], delay, duration, curve, options)
     animations(builder.bake[0], builder.bake[1])
 
     validate(builder.bakery)
@@ -50,10 +54,11 @@ public func animate(firstView: UIView, _ secondView: UIView,
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
-  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35, curve: Animation.Curve = .Linear,
+  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
+  curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
   animations: (Bake, Bake, Bake) -> Void) -> Bakery {
 
-    let builder = constructor([firstView, secondView, thirdView], delay, duration, curve)
+    let builder = constructor([firstView, secondView, thirdView], delay, duration, curve, options)
     animations(builder.bake[0], builder.bake[1], builder.bake[2])
 
     validate(builder.bakery)
@@ -72,10 +77,10 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
  */
 public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   _ fourthView: UIView, duration: NSTimeInterval = 0.35,
-  delay: NSTimeInterval = 0, curve: Animation.Curve = .Linear,
+  delay: NSTimeInterval = 0, curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
   animations: (Bake, Bake, Bake, Bake) -> Void) -> Bakery {
 
-    let builder = constructor([firstView, secondView, thirdView, fourthView], delay, duration, curve)
+    let builder = constructor([firstView, secondView, thirdView, fourthView], delay, duration, curve, options)
     animations(builder.bake[0], builder.bake[1], builder.bake[2], builder.bake[3])
 
     validate(builder.bakery)
@@ -86,13 +91,13 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 // MARK: - Private helpers
 
 private func constructor(views: [UIView], _ delay: NSTimeInterval,
-  _ duration: NSTimeInterval, _ curve: Animation.Curve) -> (bake: [Bake], bakery: Bakery) {
+  _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (bake: [Bake], bakery: Bakery) {
 
     let bakery = Bakery()
     var bakes: [Bake] = []
 
     views.forEach {
-      bakes.append(Bake(bakery: bakery, view: $0, duration: duration, curve: curve))
+      bakes.append(Bake(bakery: bakery, view: $0, duration: duration, curve: curve, options: options))
     }
 
     bakery.delays.append(delay)
