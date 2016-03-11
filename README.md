@@ -6,6 +6,8 @@ Seeing the animations behind Paper, or the transitions behind Mail, being in a w
 
 After lots of apps, designs and animations, after trying some of the most famous web frameworks and after I learnt FramerJS, which has one of the most beautiful springs I've seen. I'm building a collection of my knowledge, as I said when I was learning iOS development I would do, let me present Walker to you, an animation engine and library.
 
+Walker has a bohemian companion that walks tight with him, this is [], a present of animations that will make your life easier when developing iOS apps.
+
 ## Code
 
 Walker has different types of use cases and behaviors, you can either have a chain of animations with different blocks and callbacks, or reuse animations and apply them in different cases.
@@ -34,6 +36,8 @@ animate(animationView, curve: .Bezier(1, 0.4, 1, 0.4)) {
 }
 ```
 
+// TODO: Put a gif going from side to side.
+
 #### Springs
 
 Springs are the most beautiful animations in the spectrum, taking inspiration of the curve used in FramerJS, you'll have a look alike feel that you are going to be able to configure like the following set.
@@ -43,6 +47,8 @@ spring(animationView, spring: 200, friction: 10, mass: 10) {
   $0.x = 40
 }
 ```
+
+// TODO: Put a gif here.
 
 #### Chains
 
@@ -55,6 +61,8 @@ spring(animationView, spring: 200, friction: 10, mass: 10) {
   $0.x = 100
 }
 ```
+
+// TODO: Put a gif here.
 
 #### Create your own
 
@@ -73,6 +81,8 @@ distill((animation: animation, final: 50), view: animationView)
 ```
 
 Distill works with as many animations at a time as you want.
+
+// TODO: Put a gif here.
 
 ## Upcoming features
 
