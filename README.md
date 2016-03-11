@@ -20,21 +20,7 @@ animate(firstView) {
 
 ## Upcoming features
 
-- [x] Spring animation.
-- [x] Width, height and size animations.
-- [x] Change the name.
-- [ ] Report bug of the chain thing that it doesn't recognize the signature.
-- [x] Add Swift proposal to add arrays as a back for closures.
-- [x] Add animation options.
-- [x] Call animate two times or more, so add a queue.
-- [x] Be careful when you tap two animate multiple times. (Add a flag to lock the main methods).
-- [x] Multiple animate or spring blocks.
-- [x] Document the code.
-- [x] Document bake.
-- [ ] Add an easy way to create animations, spring and bezier's. x
-- [x] Cancel all animations.
-- [x] Apply bounce in the Spring.
-- [x] Finish the frame animation.
+Check out the [https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md](ROADMAP) to see the upcoming features that we are thinking to implement and don't hesitate to open an issue or make a PR with a proposal in the roadmap.
 
 ## Done by
 
