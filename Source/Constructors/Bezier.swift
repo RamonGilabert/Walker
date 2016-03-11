@@ -6,6 +6,7 @@ import UIKit
  - Parameter delay: The delay that this chain should wait to be triggered.
  - Parameter duration: The duration of the animation block.
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
+ - Parameter options: A set of options, for now .Reverse or .Repeat.
 
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */
@@ -28,6 +29,7 @@ public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInt
  - Parameter delay: The delay that this chain should wait to be triggered.
  - Parameter duration: The duration of the animation block.
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
+ - Parameter options: A set of options, for now .Reverse or .Repeat.
 
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */
@@ -50,6 +52,7 @@ public func animate(firstView: UIView, _ secondView: UIView,
  - Parameter delay: The delay that this chain should wait to be triggered.
  - Parameter duration: The duration of the animation block.
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
+ - Parameter options: A set of options, for now .Reverse or .Repeat.
 
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */
@@ -72,6 +75,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
  - Parameter delay: The delay that this chain should wait to be triggered.
  - Parameter duration: The duration of the animation block.
  - Parameter curve: A curve from the Animation.Curve series, it defaults to .Linear.
+ - Parameter options: A set of options, for now .Reverse or .Repeat.
 
  - Returns: A series of bakes that you can configure with all the animatable properties.
  */

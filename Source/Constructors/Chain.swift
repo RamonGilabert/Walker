@@ -10,6 +10,7 @@ extension Distillery {
   - Parameter delay: The delay that this chain should wait to be triggered.
   - Parameter duration: The duration of the animation.
   - Parameter curve: The animation curve.
+  - Parameter options: A set of options, for now .Reverse or .Repeat.
 
   - Returns: A series of bakes that you can configure with all the animatable properties.
   */
@@ -28,6 +29,7 @@ extension Distillery {
    - Parameter delay: The delay that this chain should wait to be triggered.
    - Parameter duration: The duration of the animation.
    - Parameter curve: The animation curve.
+   - Parameter options: A set of options, for now .Reverse or .Repeat.
 
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
@@ -47,6 +49,7 @@ extension Distillery {
    - Parameter delay: The delay that this chain should wait to be triggered.
    - Parameter duration: The duration of the animation.
    - Parameter curve: The animation curve.
+   - Parameter options: A set of options, for now .Reverse or .Repeat.
 
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
@@ -66,6 +69,7 @@ extension Distillery {
    - Parameter delay: The delay that this chain should wait to be triggered.
    - Parameter duration: The duration of the animation.
    - Parameter curve: The animation curve.
+   - Parameter options: A set of options, for now .Reverse or .Repeat.
 
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
@@ -92,8 +96,10 @@ extension Distillery {
 
   - Returns: A series of bakes that you can configure with all the animatable properties.
   */
-  public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: Ingredient -> Void) -> Distillery {
+  public func chain(delay delay: NSTimeInterval = 0,
+    spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
+    kind: Animation.Spring = .Spring, animations: Ingredient -> Void) -> Distillery {
+
       animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)[0])
 
       return self
@@ -110,8 +116,10 @@ extension Distillery {
 
    - Returns: A series of bakes that you can configure with all the animatable properties.
    */
-  public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
+  public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat,
+    friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
+    kind: Animation.Spring = .Spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
+
       let bakes = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
       animations(bakes[0], bakes[1])
 
