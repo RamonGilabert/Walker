@@ -49,12 +49,8 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    let finalPosition = (self.totalHeight - Dimensions.animationViewSize) / 2 - 200
-
     animate(animationView) {
-      $0.y = 350
-    }.chain(spring: 200, friction: 10, mass: 10, kind: .Bounce) {
-      $0.y = finalPosition
+      $0.size(200, 200)
     }
   }
 

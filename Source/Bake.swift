@@ -102,6 +102,7 @@ public class Bake: Equatable {
    */
   public func width(value: CGFloat) {
     animate(.Width, value)
+    animate(.PositionX, view.frame.origin.x + value / 2)
   }
 
   /**
@@ -109,6 +110,7 @@ public class Bake: Equatable {
    */
   public func height(value: CGFloat) {
     animate(.Height, value)
+    animate(.PositionY, view.frame.origin.y + value / 2)
   }
 
   /**
@@ -123,6 +125,7 @@ public class Bake: Equatable {
    */
   public func size(width: CGFloat, _ height: CGFloat) {
     animate(.Size, NSValue(CGSize: CGSize(width: width, height: height)))
+    animate(.Origin, NSValue(CGPoint: CGPoint(x: view.frame.origin.x + width / 2, y: view.frame.origin.y + height / 2)))
   }
 
   /**

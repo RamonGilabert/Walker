@@ -81,6 +81,7 @@ public class Bakery: NSObject {
     guard let layer = bake.view.layer.presentationLayer() as? CALayer else { return }
 
     bake.view.layer.position = layer.position
+    bake.view.layer.frame.size = layer.frame.size
     bake.view.layer.transform = layer.transform
     bake.view.layer.cornerRadius = layer.cornerRadius
     bake.view.layer.removeAnimationForKey("animation-\(animationIndex)-\(self.description)")

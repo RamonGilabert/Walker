@@ -67,11 +67,8 @@ struct Baker {
         guard element != 0 else { continue }
         proposedValues[index] = initialArray[index] + (distances[index] - springPosition(distances[index], time: springTiming, from: element))
 
-        switch type {
-        case .Bounce:
-          if proposedValues[index] >= finalArray[index] { proposedValues[index] = (finalArray[index] * 2) - proposedValues[index] }
-        default:
-          break
+        if type == .Bounce && proposedValues[index] >= finalArray[index] {
+          proposedValues[index] = (finalArray[index] * 2) - proposedValues[index]
         }
         
         if springEnded {
