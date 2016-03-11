@@ -39,7 +39,7 @@ Considering Linear, Ease, EaseIn, EaseOut and EaseInOut cubic animations, the fo
 
 ```swift
 animate(view, curve: .Bezier(1, 0.4, 1, 0.4)) {
-  $0.x = 40
+  $0.x = 100
 }
 ```
 
@@ -55,7 +55,7 @@ spring(view, spring: 200, friction: 10, mass: 10) {
 }
 ```
 
-// TODO: Put a gif here.
+![Spring](https://github.com/RamonGilabert/Walker/blob/master/Resources/spring.mp4)
 
 #### Chains
 
@@ -63,7 +63,7 @@ As stated in the first example, you can chain animations, but not only animation
 
 ```swift
 spring(view, spring: 200, friction: 10, mass: 10) {
-  $0.x = 40
+  $0.x = 0
 }.chain {
   $0.x = 100
 }
@@ -84,7 +84,7 @@ Still can have, as the engine above, Cubic Bezier and Spring animations inside, 
 Finally, this animation won't be tight to a final value or to any view, so you can reuse it across by distilling it:
 
 ```swift
-distill((animation: animation, final: 50), view: view)
+distill((animation: animation, final: 100), view: view)
 ```
 
 Distill works with as many animations at a time as you want.
