@@ -1,4 +1,4 @@
-// TODO: Put the cover here.
+![Walker](https://github.com/RamonGilabert/Walker/blob/master/Resources/header-image.png)
 
 This is still a work in progress.
 
