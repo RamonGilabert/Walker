@@ -154,8 +154,8 @@ extension Distillery {
 
       var animationIngredients: [Ingredient] = []
       for index in 0..<value {
-        let bake = Ingredient(distillery: self, view: self.ingredients[0][index].view, duration: duration, curve: curve, options: options)
-        animationIngredients.append(bake)
+        let ingredient = Ingredient(distillery: self, view: self.ingredients[0][index].view, duration: duration, curve: curve, options: options)
+        animationIngredients.append(ingredient)
       }
 
       if shouldProceed {
@@ -172,9 +172,9 @@ extension Distillery {
 
       var animationIngredients: [Ingredient] = []
       for index in 0..<value {
-        let bake = Ingredient(distillery: self, view: self.ingredients[0][index].view,
+        let ingredient = Ingredient(distillery: self, view: self.ingredients[0][index].view,
           spring: spring, friction: friction, mass: mass, tolerance: tolerance, calculation: calculation)
-        animationIngredients.append(bake)
+        animationIngredients.append(ingredient)
       }
 
       if shouldProceed {

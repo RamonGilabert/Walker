@@ -88,7 +88,7 @@ private func validate(distillery: Distillery) {
 
   var shouldProceed = true
   distilleries.forEach {
-    if let ingredients = $0.ingredients.first, bake = ingredients.first where bake.finalValues.isEmpty {
+    if let ingredients = $0.ingredients.first, ingredient = ingredients.first where ingredient.finalValues.isEmpty {
       shouldProceed = false
       return
     }

@@ -16,7 +16,7 @@ public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInt
   animations: Ingredient -> Void) -> Distillery {
 
     let builder = constructor([view], delay, duration, curve, options)
-    animations(builder.bake[0])
+    animations(builder.ingredient[0])
 
     validate(builder.distillery)
 
@@ -39,7 +39,7 @@ public func animate(firstView: UIView, _ secondView: UIView,
   animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView], delay, duration, curve, options)
-    animations(builder.bake[0], builder.bake[1])
+    animations(builder.ingredient[0], builder.ingredient[1])
 
     validate(builder.distillery)
 
@@ -62,7 +62,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
   animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView, thirdView], delay, duration, curve, options)
-    animations(builder.bake[0], builder.bake[1], builder.bake[2])
+    animations(builder.ingredient[0], builder.ingredient[1], builder.ingredient[2])
 
     validate(builder.distillery)
 
@@ -85,7 +85,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
   animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView, thirdView, fourthView], delay, duration, curve, options)
-    animations(builder.bake[0], builder.bake[1], builder.bake[2], builder.bake[3])
+    animations(builder.ingredient[0], builder.ingredient[1], builder.ingredient[2], builder.ingredient[3])
 
     validate(builder.distillery)
 
@@ -95,7 +95,7 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 // MARK: - Private helpers
 
 private func constructor(views: [UIView], _ delay: NSTimeInterval,
-  _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (bake: [Ingredient], distillery: Distillery) {
+  _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (ingredient: [Ingredient], distillery: Distillery) {
 
     let distillery = Distillery()
     var ingredients: [Ingredient] = []
@@ -107,14 +107,14 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval,
     distillery.delays.append(delay)
     distillery.ingredients = [ingredients]
     
-    return (bake: ingredients, distillery: distillery)
+    return (ingredient: ingredients, distillery: distillery)
 }
 
 private func validate(distillery: Distillery) {
 
   var shouldProceed = true
   distilleries.forEach {
-    if let ingredients = $0.ingredients.first, bake = ingredients.first where bake.finalValues.isEmpty {
+    if let ingredients = $0.ingredients.first, ingredient = ingredients.first where ingredient.finalValues.isEmpty {
       shouldProceed = false
       return
     }

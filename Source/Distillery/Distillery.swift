@@ -38,23 +38,23 @@ public class Distillery: NSObject {
 
     let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
     dispatch_after(time, dispatch_get_main_queue()) {
-      guard let bake = self.ingredients.first else { return }
+      guard let ingredient = self.ingredients.first else { return }
 
-      for (_, bake) in bake.enumerate() {
-        guard let presentedLayer = bake.view.layer.presentationLayer() as? CALayer else { return }
+      for (_, ingredient) in ingredient.enumerate() {
+        guard let presentedLayer = ingredient.view.layer.presentationLayer() as? CALayer else { return }
 
-        for (index, animation) in bake.animations.enumerate() {
-          let property = bake.properties[index]
+        for (index, animation) in ingredient.animations.enumerate() {
+          let property = ingredient.properties[index]
 
-          if bake.kind == .Bezier {
+          if ingredient.kind == .Bezier {
             animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
-          } else if let value = bake.finalValues.first {
-            animation.values = Distill.calculateSpring(property, finalValue: value, layer: presentedLayer, type: bake.calculation)
+          } else if let value = ingredient.finalValues.first {
+            animation.values = Distill.calculateSpring(property, finalValue: value, layer: presentedLayer, type: ingredient.calculation)
             animation.duration = Distill.springTiming
           }
 
-          if !bake.finalValues.isEmpty { bake.finalValues.removeFirst() }
-          bake.view.layer.addAnimation(animation, forKey: "animation-\(index)-\(self.description)")
+          if !ingredient.finalValues.isEmpty { ingredient.finalValues.removeFirst() }
+          ingredient.view.layer.addAnimation(animation, forKey: "animation-\(index)-\(self.description)")
         }
       }
     }
@@ -67,28 +67,28 @@ public class Distillery: NSObject {
 
     var index = 0
     var animationIndex = 0
-    for (position, bake) in group.enumerate() {
-      for (animationPosition, _) in bake.animations.enumerate()
-        where bake.view.layer.animationForKey("animation-\(animationPosition)-\(self.description)") == animation {
+    for (position, ingredient) in group.enumerate() {
+      for (animationPosition, _) in ingredient.animations.enumerate()
+        where ingredient.view.layer.animationForKey("animation-\(animationPosition)-\(self.description)") == animation {
 
         index = position
         animationIndex = animationPosition
       }
     }
 
-    let bake = group[index]
+    let ingredient = group[index]
 
-    guard let layer = bake.view.layer.presentationLayer() as? CALayer else { return }
+    guard let layer = ingredient.view.layer.presentationLayer() as? CALayer else { return }
 
-    bake.view.layer.position = layer.position
-    bake.view.layer.frame.size = layer.frame.size
-    bake.view.layer.transform = layer.transform
-    bake.view.layer.cornerRadius = layer.cornerRadius
-    bake.view.layer.removeAnimationForKey("animation-\(animationIndex)-\(self.description)")
-    bake.animations.removeAtIndex(animationIndex)
-    bake.properties.removeAtIndex(animationIndex)
+    ingredient.view.layer.position = layer.position
+    ingredient.view.layer.frame.size = layer.frame.size
+    ingredient.view.layer.transform = layer.transform
+    ingredient.view.layer.cornerRadius = layer.cornerRadius
+    ingredient.view.layer.removeAnimationForKey("animation-\(animationIndex)-\(self.description)")
+    ingredient.animations.removeAtIndex(animationIndex)
+    ingredient.properties.removeAtIndex(animationIndex)
 
-    if bake.animations.isEmpty {
+    if ingredient.animations.isEmpty {
       group.removeAtIndex(index)
 
       ingredients[0] = group
