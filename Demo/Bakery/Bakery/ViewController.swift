@@ -49,7 +49,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    animate(animationView, options: [.Reverse, .Repeat(t: 2)]) {
+    animate(animationView, options: [.Reverse, .Repeat(2)]) {
       $0.x(5)
     }
   }

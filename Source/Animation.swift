@@ -8,12 +8,12 @@ public struct Animation {
     case EaseIn
     case EaseOut
     case EaseInOut
-    case Bezier(x: Float, y: Float, z: Float, p: Float)
+    case Bezier(Float, Float, Float, Float)
   }
 
   public enum Options {
     case Reverse
-    case Repeat(t: Float)
+    case Repeat(Float)
   }
 
   public enum Spring {
