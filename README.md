@@ -2,7 +2,9 @@
 
 ## The story
 
-One year and a half ago I became an iOS developer, I was happy, I knew how to do iOS apps, but static ones. I saw the animations behind Paper, or the transitions behind Mail, and I was impressed, I wanted to do that. After trying and trying, I did some great animations, I learnt FramerJS, which, in my opinion, has some beauty in it's springs, and I felt in love with it. Trying to learn more and more, I saw an article that talked about the animations in UIKit, and I started to investigate about spring, I saw that, putting a timing on it didn't make sense, and that's the reason why I want to bring the perfect animation to iOS development, the, in my opinion best platform to develop on.
+Seeing the animations behind Paper, or the transitions behind Mail, being in a world of flat design and transitions, user interaction, app behavior and responsiveness are key, we need good and fast animations to delight our users in every tap, every scroll, every moment that they spend in our app.
+
+After lots of apps, designs and animations, after trying some of the most famous web frameworks for animations and after I learnt FramerJS, which has one of the most beautiful springs I've seen. I'm building a collection of the knowledge I said when I learnt iOS development I would do. Walker, an animation engine and library.
 
 ## Code
 
@@ -24,4 +26,4 @@ Check out the [https://github.com/RamonGilabert/Walker/blob/master/ROADMAP.md](R
 
 ## Done by
 
-Ramon Gilabert. With love.
+Ramon Gilabert with ♡.
