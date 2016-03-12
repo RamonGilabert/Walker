@@ -13,7 +13,7 @@ Seeing the animations behind Paper, or the transitions behind Mail, being in a w
 
 After lots of apps, designs and animations, after trying some of the most famous web frameworks and after I learnt FramerJS, which has one of the most beautiful springs I've seen. I'm building a collection of my knowledge, as I said when I was learning iOS development I would do, let me present **Walker** to you, an animation engine and library.
 
-**Walker** has a bohemian companion that walks tight with him, this is [], a set of animations that will make your life easier when developing iOS apps.
+**Walker** has a bohemian companion that wanders with him, [Morgan](https://github.com/RamonGilabert/Morgan), a set of animations that will make your life easier when developing iOS apps. Note that Morgan is unfinished and always improving.
 
 ## Code
 
