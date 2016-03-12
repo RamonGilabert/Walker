@@ -87,12 +87,21 @@ public class Distillery: NSObject {
 
     if ingredient.properties.contains(.Transform) {
       ingredient.view.layer.transform = layer.transform
-    } else {
-      ingredient.view.layer.position = layer.position
-      ingredient.view.layer.frame.size = layer.frame.size
-      ingredient.view.layer.cornerRadius = layer.cornerRadius
-      ingredient.view.layer.opacity = layer.opacity
     }
+
+    if ingredient.properties.contains(.PositionX)
+      || ingredient.properties.contains(.PositionY)
+      || ingredient.properties.contains(.Width)
+      || ingredient.properties.contains(.Height)
+      || ingredient.properties.contains(.Size)
+      || ingredient.properties.contains(.Frame){
+
+        ingredient.view.layer.position = layer.position
+        ingredient.view.layer.frame.size = layer.frame.size
+    }
+
+    ingredient.view.layer.cornerRadius = layer.cornerRadius
+    ingredient.view.layer.opacity = layer.opacity
 
     ingredient.view.layer.removeAnimationForKey("animation-\(animationIndex)-\(self.description)")
     ingredient.animations.removeAtIndex(animationIndex)
