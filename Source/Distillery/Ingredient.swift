@@ -77,6 +77,13 @@ public class Ingredient: Equatable {
   }
 
   /**
+   Apply a transform value, can be any `CATransform3D`.
+   */
+  public var transform3D: CATransform3D {
+    didSet { transform3D(transform3D) }
+  }
+
+  /**
    Changes the opacity of the layer.
    */
   public func alpha(value: CGFloat) {
@@ -150,6 +157,13 @@ public class Ingredient: Equatable {
     animate(.Transform, NSValue(CATransform3D: CATransform3DMakeAffineTransform(value)))
   }
 
+  /**
+   Apply a transform value, can be any `CATransform3D`.
+   */
+  public func transform3D(value: CATransform3D) {
+    animate(.Transform, NSValue(CATransform3D: value))
+  }
+
   internal let view: UIView
   internal let duration: NSTimeInterval
   internal let curve: Animation.Curve
@@ -184,6 +198,7 @@ public class Ingredient: Equatable {
       self.frame = view.frame
       self.radius = view.layer.cornerRadius
       self.transform = view.transform
+      self.transform3D = view.layer.transform
   }
 
   init(distillery: Distillery, view: UIView, spring: CGFloat, friction: CGFloat, mass: CGFloat,
@@ -207,6 +222,7 @@ public class Ingredient: Equatable {
       self.frame = view.frame
       self.radius = view.layer.cornerRadius
       self.transform = view.transform
+      self.transform3D = view.layer.transform
   }
 
   func animate(property: Animation.Property, _ value: NSValue) {
