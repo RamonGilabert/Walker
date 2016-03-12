@@ -8,11 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		292D71D01C94934800CFC060 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292D71CF1C94934800CFC060 /* Info.plist */; };
+		292D71DE1C9493BC00CFC060 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 292D71D21C9493BC00CFC060 /* .gitkeep */; };
+		292D71DF1C9493BC00CFC060 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71D41C9493BC00CFC060 /* Animation.swift */; };
+		292D71E01C9493BC00CFC060 /* Distill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71D51C9493BC00CFC060 /* Distill.swift */; };
+		292D71E11C9493BC00CFC060 /* Bezier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71D71C9493BC00CFC060 /* Bezier.swift */; };
+		292D71E21C9493BC00CFC060 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71D81C9493BC00CFC060 /* Chain.swift */; };
+		292D71E31C9493BC00CFC060 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71D91C9493BC00CFC060 /* Spring.swift */; };
+		292D71E41C9493BC00CFC060 /* Still.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71DA1C9493BC00CFC060 /* Still.swift */; };
+		292D71E51C9493BC00CFC060 /* Distillery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71DC1C9493BC00CFC060 /* Distillery.swift */; };
+		292D71E61C9493BC00CFC060 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71DD1C9493BC00CFC060 /* Ingredient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		292D71C31C94930C00CFC060 /* Walker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Walker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292D71CF1C94934800CFC060 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		292D71D21C9493BC00CFC060 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		292D71D41C9493BC00CFC060 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		292D71D51C9493BC00CFC060 /* Distill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distill.swift; sourceTree = "<group>"; };
+		292D71D71C9493BC00CFC060 /* Bezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bezier.swift; sourceTree = "<group>"; };
+		292D71D81C9493BC00CFC060 /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
+		292D71D91C9493BC00CFC060 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+		292D71DA1C9493BC00CFC060 /* Still.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Still.swift; sourceTree = "<group>"; };
+		292D71DC1C9493BC00CFC060 /* Distillery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distillery.swift; sourceTree = "<group>"; };
+		292D71DD1C9493BC00CFC060 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				292D71C51C94930C00CFC060 /* Walker */,
+				292D71D11C9493BC00CFC060 /* Source */,
 				292D71C41C94930C00CFC060 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +76,46 @@
 			);
 			path = Others;
 			sourceTree = SOURCE_ROOT;
+		};
+		292D71D11C9493BC00CFC060 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				292D71D21C9493BC00CFC060 /* .gitkeep */,
+				292D71D31C9493BC00CFC060 /* Background */,
+				292D71D61C9493BC00CFC060 /* Constructors */,
+				292D71DB1C9493BC00CFC060 /* Distillery */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		292D71D31C9493BC00CFC060 /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				292D71D41C9493BC00CFC060 /* Animation.swift */,
+				292D71D51C9493BC00CFC060 /* Distill.swift */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		292D71D61C9493BC00CFC060 /* Constructors */ = {
+			isa = PBXGroup;
+			children = (
+				292D71D71C9493BC00CFC060 /* Bezier.swift */,
+				292D71D81C9493BC00CFC060 /* Chain.swift */,
+				292D71D91C9493BC00CFC060 /* Spring.swift */,
+				292D71DA1C9493BC00CFC060 /* Still.swift */,
+			);
+			path = Constructors;
+			sourceTree = "<group>";
+		};
+		292D71DB1C9493BC00CFC060 /* Distillery */ = {
+			isa = PBXGroup;
+			children = (
+				292D71DC1C9493BC00CFC060 /* Distillery.swift */,
+				292D71DD1C9493BC00CFC060 /* Ingredient.swift */,
+			);
+			path = Distillery;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -126,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				292D71D01C94934800CFC060 /* Info.plist in Resources */,
+				292D71DE1C9493BC00CFC060 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +196,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292D71E11C9493BC00CFC060 /* Bezier.swift in Sources */,
+				292D71E31C9493BC00CFC060 /* Spring.swift in Sources */,
+				292D71E41C9493BC00CFC060 /* Still.swift in Sources */,
+				292D71E21C9493BC00CFC060 /* Chain.swift in Sources */,
+				292D71E61C9493BC00CFC060 /* Ingredient.swift in Sources */,
+				292D71E51C9493BC00CFC060 /* Distillery.swift in Sources */,
+				292D71DF1C9493BC00CFC060 /* Animation.swift in Sources */,
+				292D71E01C9493BC00CFC060 /* Distill.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +306,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Walker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RamonGilabert.Walker;
@@ -254,7 +322,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Walker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Others/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RamonGilabert.Walker;
