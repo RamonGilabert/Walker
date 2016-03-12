@@ -46,7 +46,7 @@ class ViewController: UIViewController {
   // MARK: - Actions
 
   func animationButtonDidPress(button: UIButton) {
-    let finalValue = views.first?.frame.origin.x == 25 ? totalWidth - Dimensions.viewSize - 50 : 25
+    let finalValue = views.first?.frame.origin.x == 25 ? totalWidth - Dimensions.viewSize - 25 : 25
 
     for (index, view) in views.enumerate() {
 
