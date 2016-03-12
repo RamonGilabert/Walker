@@ -33,7 +33,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
+  public func chains(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
      animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -53,7 +53,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
+  public func chainTwo(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -73,7 +73,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chain(delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
+  public func chainsTwo(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
     curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -116,7 +116,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat,
+  public func chains(delay delay: NSTimeInterval = 0, spring: CGFloat,
     friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
     kind: Animation.Spring = .Spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -137,7 +137,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chain(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
+  public func chainTwo(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
     mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring,
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 

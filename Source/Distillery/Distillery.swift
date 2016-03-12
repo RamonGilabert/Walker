@@ -84,6 +84,7 @@ public class Distillery: NSObject {
     ingredient.view.layer.frame.size = layer.frame.size
     ingredient.view.layer.transform = layer.transform
     ingredient.view.layer.cornerRadius = layer.cornerRadius
+    ingredient.view.layer.opacity = layer.opacity
     ingredient.view.layer.removeAnimationForKey("animation-\(animationIndex)-\(self.description)")
     ingredient.animations.removeAtIndex(animationIndex)
     ingredient.properties.removeAtIndex(animationIndex)

@@ -7,63 +7,63 @@ public class Ingredient: Equatable {
   }
 
   /**
-   Change the opacity of the layer.
+   Changes the opacity of the layer.
    */
   public var alpha: CGFloat {
     didSet { alpha(alpha) }
   }
 
   /**
-   Change the x position in the anchor point (0, 0).
+   Changes the x position in the anchor point (0, 0).
    */
   public var x: CGFloat {
     didSet { x(x) }
   }
 
   /**
-   Change the y position in the anchor point (0, 0).
+   Changes the y position in the anchor point (0, 0).
    */
   public var y: CGFloat {
     didSet { y(y) }
   }
 
   /**
-   Change the width of the layer.
+   Changes the width of the layer.
    */
   public var width: CGFloat {
     didSet { width(width) }
   }
 
   /**
-   Change the height of the layer.
+   Changes the height of the layer.
    */
   public var height: CGFloat {
     didSet { height(height) }
   }
 
   /**
-   Change the origin of the view in the anchor point (0, 0)
+   Changes the origin of the view in the anchor point (0, 0)
    */
   public var origin: CGPoint {
     didSet { origin(origin.x, origin.y) }
   }
 
   /**
-   Change the size of the view.
+   Changes the size of the view.
    */
   public var size: CGSize {
     didSet { size(size.width, size.height) }
   }
 
   /**
-   Change the frame of the view.
+   Changes the frame of the view.
    */
   public var frame: CGRect {
     didSet { frame(frame.origin.x, frame.origin.y, frame.width, frame.height) }
   }
 
   /**
-   Change the cornerRadius of the layer.
+   Changes the cornerRadius of the layer.
    */
   public var radius: CGFloat {
     didSet { radius(radius) }
@@ -77,28 +77,28 @@ public class Ingredient: Equatable {
   }
 
   /**
-   Change the opacity of the layer.
+   Changes the opacity of the layer.
    */
   public func alpha(value: CGFloat) {
     animate(.Opacity, value)
   }
 
   /**
-   Change the x position in the anchor point (0, 0).
+   Changes the x position in the anchor point (0, 0).
    */
   public func x(value: CGFloat) {
     animate(.PositionX, value + view.frame.width / 2)
   }
 
   /**
-   Change the y position in the anchor point (0, 0).
+   Changes the y position in the anchor point (0, 0).
    */
   public func y(value: CGFloat) {
     animate(.PositionY, value + view.frame.height / 2)
   }
 
   /**
-   Change the width of the layer.
+   Changes the width of the layer.
    */
   public func width(value: CGFloat) {
     animate(.Width, value)
@@ -106,7 +106,7 @@ public class Ingredient: Equatable {
   }
 
   /**
-   Change the height of the layer.
+   Changes the height of the layer.
    */
   public func height(value: CGFloat) {
     animate(.Height, value)
@@ -114,14 +114,14 @@ public class Ingredient: Equatable {
   }
 
   /**
-   Change the origin of the view in the anchor point (0, 0)
+   Changes the origin of the view in the anchor point (0, 0)
    */
   public func origin(x: CGFloat, _ y: CGFloat) {
     animate(.Origin, NSValue(CGPoint: CGPoint(x: x + view.frame.width / 2, y: y + view.frame.height / 2)))
   }
 
   /**
-   Change the size of the view.
+   Changes the size of the view.
    */
   public func size(width: CGFloat, _ height: CGFloat) {
     animate(.Size, NSValue(CGSize: CGSize(width: width, height: height)))
@@ -129,7 +129,7 @@ public class Ingredient: Equatable {
   }
 
   /**
-   Change the frame of the view.
+   Changes the frame of the view.
    */
   public func frame(x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
     animate(.Size, NSValue(CGSize: CGSize(width: width, height: height)))
@@ -137,7 +137,7 @@ public class Ingredient: Equatable {
   }
 
   /**
-   Change the cornerRadius of the layer.
+   Changes the cornerRadius of the layer.
    */
   public func radius(value: CGFloat) {
     animate(.CornerRadius, value)
