@@ -93,7 +93,7 @@ Distill works with as many animations at a time as you want.
 
 #### More questions?
 
-Have more questions and want to see more implementation in detail? We have a [demo](https://github.com/RamonGilabert/Walker/tree/master/Demo/Walker) for you. If you still have something unclear, don't hesitate to [contact me](mailto:ramon.gilabert.llop@gmail.com) or [open an issue](https://github.com/RamonGilabert/Walker/issues).
+Have more questions and want to see more implementation in detail? We have a [demo](https://github.com/RamonGilabert/Walker/tree/master/Demo/Walker) for you. Inside it you'll find some different animations applied into different views, you can check the file right [here](https://github.com/RamonGilabert/Walker/blob/master/Demo/Walker/Walker/ViewController.swift#L53). If you still have something unclear, don't hesitate to [contact me](mailto:ramon.gilabert.llop@gmail.com) or [open an issue](https://github.com/RamonGilabert/Walker/issues).
 
 ## Installation
 
