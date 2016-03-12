@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     button.layer.cornerRadius = 1.5
     button.layer.borderColor = UIColor.whiteColor().CGColor
     button.layer.borderWidth = 1.5
-    button.setTitle("Start animation".uppercaseString, forState: .Normal)
+    button.setTitle("Start animations".uppercaseString, forState: .Normal)
     button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
     button.addTarget(self, action: "animationButtonDidPress:", forControlEvents: .TouchUpInside)
     button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)

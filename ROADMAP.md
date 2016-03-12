@@ -3,6 +3,7 @@
 This is the roadmap for Walker, there's always things to improve, things to do better, things to refactor.
 
 - [ ] Add more functionality in terms of Still animations.
+- [ ] Implement back spring reusable animations.
 - [ ] Improve the API to have just one method when Apple fixes the bug of the method signatures.
 - [ ] Always refactor.
 - [ ] Remove the copy of the code when Swift evolves.
