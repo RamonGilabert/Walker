@@ -48,9 +48,14 @@ public class Distillery: NSObject {
 
           if ingredient.kind == .Bezier {
             animation.values?.insert(Animation.propertyValue(property, layer: presentedLayer), atIndex: 0)
-          } else if let value = ingredient.finalValues.first {
-            animation.values = Distill.calculateSpring(property, finalValue: value, layer: presentedLayer, type: ingredient.calculation)
-            animation.duration = Distill.springTiming
+          } else if let value = ingredient.finalValues.first, spring = ingredient.springs.first {
+            let distill = Distill()
+            
+            animation.values = distill.calculateSpring(property, finalValue: value,
+              layer: presentedLayer, type: ingredient.calculation, spring: spring)
+            animation.duration = distill.springTiming
+
+            ingredient.springs.removeFirst()
           }
 
           if !ingredient.finalValues.isEmpty { ingredient.finalValues.removeFirst() }

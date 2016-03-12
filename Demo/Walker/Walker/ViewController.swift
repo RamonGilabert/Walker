@@ -72,7 +72,7 @@ class ViewController: UIViewController {
           $0.x = finalValue
         }
       case 4:
-        spring(view, delay: 0.5, spring: 200, friction: 10, mass: 10) {
+        spring(view, delay: 0.5, spring: 800, friction: 10, mass: 10) {
           $0.x = finalValue
         }
       default:

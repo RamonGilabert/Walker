@@ -160,6 +160,7 @@ public class Ingredient: Equatable {
   var animations: [CAKeyframeAnimation] = []
   var properties: [Animation.Property] = []
   var finalValues: [NSValue] = []
+  var springs: [(spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat)] = []
   var distillery: Distillery
 
   init(distillery: Distillery, view: UIView, duration: NSTimeInterval,
@@ -216,14 +217,14 @@ public class Ingredient: Equatable {
       animation.values = [value]
       animation.delegate = distillery
     } else {
-      animation = Distill.spring(property, spring: spring.spring,
-        friction: spring.friction, mass: spring.mass, tolerance: spring.tolerance, type: .Spring)
+      animation = Distill.spring(property, type: .Spring)
       animation.delegate = distillery
     }
 
     animations.append(animation)
     properties.append(property)
     finalValues.append(value)
+    springs.append(spring)
   }
 }
 

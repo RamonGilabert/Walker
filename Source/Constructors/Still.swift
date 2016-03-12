@@ -15,11 +15,9 @@ public func distill(sets: (animation: CAKeyframeAnimation, final: NSValue)..., v
 
     if let _ = set.animation.timingFunction {
       set.animation.values = [Animation.propertyValue(property, layer: presentedLayer), set.final]
-    } else {
-      set.animation.values = Distill.calculateSpring(property, finalValue: set.final,
-        layer: presentedLayer, type: .Spring)
-      set.animation.duration = Distill.springTiming
     }
+
+    // TODO: Implement reusable springs.
 
     view.layer.addAnimation(set.animation, forKey: key)
   }
@@ -44,24 +42,5 @@ public struct Still {
 
       return Distill.bezier(property,
         bezierPoints: Animation.points(curve), duration: duration, options: options)
-  }
-
-  /**
-   Chain gets executed when the first animate blocks of animations are done.
-
-   - Parameter property: The Animation.Property that you want to animate.
-   - Parameter spring: The value of the spring in the animation.
-   - Parameter friction: The value of the friction that the layer will present.
-   - Parameter mass: The value of the mass of the layer.
-   - Parameter tolerance: The tolerance that will default to 0.0001.
-
-   - Returns: A CAKeyframeAnimation you can modify
-   */
-  public static func spring(property: Animation.Property, spring: CGFloat,
-    friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
-    calculation: Animation.Spring = .Spring) -> CAKeyframeAnimation {
-
-      return Distill.spring(property, spring: spring, friction: friction,
-        mass: mass, tolerance: tolerance, type: calculation)
   }
 }
