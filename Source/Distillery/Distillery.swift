@@ -91,6 +91,7 @@ public class Distillery: NSObject {
 
     if ingredient.properties.contains(.PositionX)
       || ingredient.properties.contains(.PositionY)
+      || ingredient.properties.contains(.Origin)
       || ingredient.properties.contains(.Width)
       || ingredient.properties.contains(.Height)
       || ingredient.properties.contains(.Size)
