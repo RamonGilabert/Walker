@@ -95,7 +95,7 @@ public class Distillery: NSObject {
       || ingredient.properties.contains(.Width)
       || ingredient.properties.contains(.Height)
       || ingredient.properties.contains(.Size)
-      || ingredient.properties.contains(.Frame){
+      || ingredient.properties.contains(.Frame) {
 
         ingredient.view.layer.position = layer.position
         ingredient.view.layer.frame.size = layer.frame.size
