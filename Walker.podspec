@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Walker"
-  s.summary          = "The new animation library"
-  s.version          = "0.1.0"
+  s.summary          = "A travel companion for your animations."
+  s.version          = "0.9"
   s.homepage         = "https://github.com/RamonGilabert/Walker"
   s.license          = 'MIT'
   s.author           = { "Ramon Gilabert" => "ramon.gilabert.llop@gmail.com" }
