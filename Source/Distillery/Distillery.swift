@@ -5,6 +5,7 @@ var distilleries: [Distillery] = []
 public func closeDistilleries() {
 
   distilleries.forEach { $0.ingredients.forEach { $0.forEach { $0.view.layer.removeAllAnimations() } } }
+  distilleries.removeAll()
 }
 
 public class Distillery: NSObject {

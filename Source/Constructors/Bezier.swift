@@ -111,6 +111,7 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval,
 }
 
 private func validate(distillery: Distillery) {
+  closeDistilleries()
 
   var shouldProceed = true
   distilleries.forEach {
