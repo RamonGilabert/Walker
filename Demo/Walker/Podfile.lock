@@ -1,5 +1,5 @@
 PODS:
-  - Walker (0.1.0)
+  - Walker (0.9)
 
 DEPENDENCIES:
   - Walker (from `../../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Walker: 694d094cc8e9c79d5b906ff1c2cea581ba1c9be0
+  Walker: a9401362364ed7fb4e816b1946ca44bc8e233f9a
 
 COCOAPODS: 0.39.0.beta.4
