@@ -111,8 +111,6 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval,
 }
 
 private func validate(distillery: Distillery) {
-  closeDistilleries()
-
   var shouldProceed = true
   distilleries.forEach {
     if let ingredients = $0.ingredients.first, ingredient = ingredients.first where ingredient.finalValues.isEmpty {

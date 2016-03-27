@@ -158,8 +158,6 @@ extension Distillery {
         animationIngredients.append(ingredient)
       }
 
-      closeDistilleries()
-
       if shouldProceed {
         delays.append(delay)
         ingredients.append(animationIngredients)
@@ -178,8 +176,6 @@ extension Distillery {
           spring: spring, friction: friction, mass: mass, tolerance: tolerance, calculation: calculation)
         animationIngredients.append(ingredient)
       }
-
-      closeDistilleries()
 
       if shouldProceed {
         delays.append(delay)
