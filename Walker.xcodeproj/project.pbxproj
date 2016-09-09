@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		292D71D01C94934800CFC060 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 292D71CF1C94934800CFC060 /* Info.plist */; };
 		292D71DE1C9493BC00CFC060 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 292D71D21C9493BC00CFC060 /* .gitkeep */; };
 		292D71DF1C9493BC00CFC060 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71D41C9493BC00CFC060 /* Animation.swift */; };
 		292D71E01C9493BC00CFC060 /* Distill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D71D51C9493BC00CFC060 /* Distill.swift */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		292D71C31C94930C00CFC060 /* Walker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Walker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		292D71CF1C94934800CFC060 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		292D71D21C9493BC00CFC060 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		292D71D41C9493BC00CFC060 /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		292D71D51C9493BC00CFC060 /* Distill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distill.swift; sourceTree = "<group>"; };
@@ -31,6 +29,7 @@
 		292D71DA1C9493BC00CFC060 /* Still.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Still.swift; sourceTree = "<group>"; };
 		292D71DC1C9493BC00CFC060 /* Distillery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distillery.swift; sourceTree = "<group>"; };
 		292D71DD1C9493BC00CFC060 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		29BB21A21D82B3BC00FA2D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,7 +46,7 @@
 		292D71B91C94930C00CFC060 = {
 			isa = PBXGroup;
 			children = (
-				292D71C51C94930C00CFC060 /* Walker */,
+				29BB21A11D82B3BC00FA2D92 /* Others */,
 				292D71D11C9493BC00CFC060 /* Source */,
 				292D71C41C94930C00CFC060 /* Products */,
 			);
@@ -60,22 +59,6 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
-		};
-		292D71C51C94930C00CFC060 /* Walker */ = {
-			isa = PBXGroup;
-			children = (
-				292D71CE1C94934800CFC060 /* Others */,
-			);
-			path = Walker;
-			sourceTree = "<group>";
-		};
-		292D71CE1C94934800CFC060 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				292D71CF1C94934800CFC060 /* Info.plist */,
-			);
-			path = Others;
-			sourceTree = SOURCE_ROOT;
 		};
 		292D71D11C9493BC00CFC060 /* Source */ = {
 			isa = PBXGroup;
@@ -117,6 +100,14 @@
 			path = Distillery;
 			sourceTree = "<group>";
 		};
+		29BB21A11D82B3BC00FA2D92 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				29BB21A21D82B3BC00FA2D92 /* Info.plist */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -154,7 +145,7 @@
 		292D71BA1C94930C00CFC060 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = BlackBox;
 				TargetAttributes = {
 					292D71C21C94930C00CFC060 = {
@@ -184,7 +175,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				292D71D01C94934800CFC060 /* Info.plist in Resources */,
 				292D71DE1C9493BC00CFC060 /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
