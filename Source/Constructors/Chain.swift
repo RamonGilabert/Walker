@@ -14,9 +14,9 @@ extension Distillery {
 
   - Returns: A series of ingredients that you can configure with all the animatable properties.
   */
-  public func chain(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
-    animations: Ingredient -> Void) -> Distillery {
+  public func chain(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+    curve: Animation.Curve = .linear, options: [Animation.Options] = [],
+    animations: (Ingredient) -> Void) -> Distillery {
 
       animations(bezier(1, delay, duration, curve, options)[0])
 
@@ -33,8 +33,8 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chains(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+  public func chains(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+    curve: Animation.Curve = .linear, options: [Animation.Options] = [],
      animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
       let ingredients = bezier(2, delay, duration, curve, options)
@@ -53,8 +53,8 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chainTwo(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+  public func chainTwo(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+    curve: Animation.Curve = .linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
       let ingredients = bezier(3, delay, duration, curve, options)
@@ -73,8 +73,8 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chainsTwo(delay delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.5,
-    curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+  public func chainsTwo(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+    curve: Animation.Curve = .linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
       let ingredients = bezier(4, delay, duration, curve, options)
@@ -96,9 +96,9 @@ extension Distillery {
 
   - Returns: A series of ingredients that you can configure with all the animatable properties.
   */
-  public func chain(delay delay: NSTimeInterval = 0,
+  public func chain(delay: TimeInterval = 0,
     spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
-    kind: Animation.Spring = .Spring, animations: Ingredient -> Void) -> Distillery {
+    kind: Animation.Spring = .spring, animations: (Ingredient) -> Void) -> Distillery {
 
       animations(constructor(1, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)[0])
 
@@ -116,9 +116,9 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chains(delay delay: NSTimeInterval = 0, spring: CGFloat,
+  public func chains(delay: TimeInterval = 0, spring: CGFloat,
     friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
-    kind: Animation.Spring = .Spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
+    kind: Animation.Spring = .spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
       let ingredients = constructor(2, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
       animations(ingredients[0], ingredients[1])
@@ -137,8 +137,8 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chainTwo(delay delay: NSTimeInterval = 0, spring: CGFloat, friction: CGFloat,
-    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .Spring,
+  public func chainTwo(delay: TimeInterval = 0, spring: CGFloat, friction: CGFloat,
+    mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .spring,
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
       let ingredients = constructor(3, delay: delay, spring, friction, mass: mass, tolerance: tolerance, kind)
@@ -149,8 +149,8 @@ extension Distillery {
 
   // MARK: - Private constructors
 
-  private func bezier(value: Int, _ delay: NSTimeInterval,
-    _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> [Ingredient] {
+  fileprivate func bezier(_ value: Int, _ delay: TimeInterval,
+    _ duration: TimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> [Ingredient] {
 
       var animationIngredients: [Ingredient] = []
       for index in 0..<value {
@@ -167,7 +167,7 @@ extension Distillery {
       return animationIngredients
   }
 
-  private func constructor(value: Int, delay: NSTimeInterval, _ spring: CGFloat,
+  fileprivate func constructor(_ value: Int, delay: TimeInterval, _ spring: CGFloat,
     _ friction: CGFloat, mass: CGFloat, tolerance: CGFloat, _ calculation: Animation.Spring) -> [Ingredient] {
 
       var animationIngredients: [Ingredient] = []
