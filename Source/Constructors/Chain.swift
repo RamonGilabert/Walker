@@ -14,7 +14,7 @@ extension Distillery {
 
   - Returns: A series of ingredients that you can configure with all the animatable properties.
   */
-  public func chain(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+  @discardableResult public func chain(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
     curve: Animation.Curve = .linear, options: [Animation.Options] = [],
     animations: (Ingredient) -> Void) -> Distillery {
 
@@ -33,7 +33,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chains(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+  @discardableResult public func chains(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
     curve: Animation.Curve = .linear, options: [Animation.Options] = [],
      animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -53,7 +53,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chainTwo(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+  @discardableResult public func chainTwo(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
     curve: Animation.Curve = .linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -73,7 +73,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chainsTwo(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
+  @discardableResult public func chainsTwo(delay: TimeInterval = 0, duration: TimeInterval = 0.5,
     curve: Animation.Curve = .linear, options: [Animation.Options] = [],
     animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -96,7 +96,7 @@ extension Distillery {
 
   - Returns: A series of ingredients that you can configure with all the animatable properties.
   */
-  public func chain(delay: TimeInterval = 0,
+  @discardableResult public func chain(delay: TimeInterval = 0,
     spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
     kind: Animation.Spring = .spring, animations: (Ingredient) -> Void) -> Distillery {
 
@@ -116,7 +116,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chains(delay: TimeInterval = 0, spring: CGFloat,
+  @discardableResult public func chains(delay: TimeInterval = 0, spring: CGFloat,
     friction: CGFloat, mass: CGFloat, tolerance: CGFloat = 0.0001,
     kind: Animation.Spring = .spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -137,7 +137,7 @@ extension Distillery {
 
    - Returns: A series of ingredients that you can configure with all the animatable properties.
    */
-  public func chainTwo(delay: TimeInterval = 0, spring: CGFloat, friction: CGFloat,
+  @discardableResult public func chainTwo(delay: TimeInterval = 0, spring: CGFloat, friction: CGFloat,
     mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .spring,
     animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 

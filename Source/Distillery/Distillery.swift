@@ -42,7 +42,7 @@ open class Distillery: NSObject {
       guard let ingredient = self.ingredients.first else { return }
 
       for (_, ingredient) in ingredient.enumerated() {
-        guard let presentedLayer = ingredient.view.layer.presentation() as? CALayer else { return }
+        guard let presentedLayer = ingredient.view.layer.presentation() else { return }
 
         for (index, animation) in ingredient.animations.enumerated() {
           let property = ingredient.properties[index]
@@ -65,10 +65,13 @@ open class Distillery: NSObject {
       }
     }
   }
+}
+
+extension Distillery: CAAnimationDelegate {
 
   // MARK: - Finish animation
 
-  open override func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+  open func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     guard var group = ingredients.first, let animation = anim as? CAKeyframeAnimation else { return }
 
     var index = 0
@@ -77,14 +80,14 @@ open class Distillery: NSObject {
       for (animationPosition, _) in ingredient.animations.enumerated()
         where ingredient.view.layer.animation(forKey: "animation-\(animationPosition)-\(self.description)") == animation {
 
-        index = position
-        animationIndex = animationPosition
+          index = position
+          animationIndex = animationPosition
       }
     }
 
     let ingredient = group[index]
 
-    guard let layer = ingredient.view.layer.presentation() as? CALayer else { return }
+    guard let layer = ingredient.view.layer.presentation() else { return }
 
     if ingredient.properties.contains(.Transform) {
       ingredient.view.layer.transform = layer.transform
@@ -98,8 +101,8 @@ open class Distillery: NSObject {
       || ingredient.properties.contains(.Size)
       || ingredient.properties.contains(.Frame) {
 
-        ingredient.view.layer.position = layer.position
-        ingredient.view.layer.frame.size = layer.frame.size
+      ingredient.view.layer.position = layer.position
+      ingredient.view.layer.frame.size = layer.frame.size
     }
 
     ingredient.view.layer.cornerRadius = layer.cornerRadius

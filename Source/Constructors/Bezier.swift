@@ -10,7 +10,7 @@ import UIKit
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(_ view: UIView, delay: TimeInterval = 0, duration: TimeInterval = 0.35,
+@discardableResult public func animate(_ view: UIView, delay: TimeInterval = 0, duration: TimeInterval = 0.35,
   curve: Animation.Curve = .linear,
   options: [Animation.Options] = [],
   animations: (Ingredient) -> Void) -> Distillery {
@@ -33,7 +33,7 @@ public func animate(_ view: UIView, delay: TimeInterval = 0, duration: TimeInter
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(_ firstView: UIView, _ secondView: UIView,
+@discardableResult public func animate(_ firstView: UIView, _ secondView: UIView,
   delay: TimeInterval = 0, duration: TimeInterval = 0.35,
   curve: Animation.Curve = .linear, options: [Animation.Options] = [],
   animations: (Ingredient, Ingredient) -> Void) -> Distillery {
@@ -56,7 +56,7 @@ public func animate(_ firstView: UIView, _ secondView: UIView,
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
+@discardableResult public func animate(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   delay: TimeInterval = 0, duration: TimeInterval = 0.35,
   curve: Animation.Curve = .linear, options: [Animation.Options] = [],
   animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
@@ -79,7 +79,7 @@ public func animate(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIVi
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
+@discardableResult public func animate(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   _ fourthView: UIView, duration: TimeInterval = 0.35,
   delay: TimeInterval = 0, curve: Animation.Curve = .linear, options: [Animation.Options] = [],
   animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {

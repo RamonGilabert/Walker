@@ -94,14 +94,14 @@ open class Ingredient: Equatable {
    Changes the x position in the anchor point (0, 0).
    */
   open func x(_ value: CGFloat) {
-    animate(.PositionX, value + view.frame.width / 2)
+    animate(.PositionX, value + view.frame.width / 2 as NSValue)
   }
 
   /**
    Changes the y position in the anchor point (0, 0).
    */
   open func y(_ value: CGFloat) {
-    animate(.PositionY, value + view.frame.height / 2)
+    animate(.PositionY, value + view.frame.height / 2 as NSValue)
   }
 
   /**
@@ -109,7 +109,7 @@ open class Ingredient: Equatable {
    */
   open func width(_ value: CGFloat) {
     animate(.Width, value as NSValue)
-    animate(.PositionX, view.frame.origin.x + value / 2)
+    animate(.PositionX, view.frame.origin.x + value / 2 as NSValue)
   }
 
   /**
@@ -117,7 +117,7 @@ open class Ingredient: Equatable {
    */
   open func height(_ value: CGFloat) {
     animate(.Height, value as NSValue)
-    animate(.PositionY, view.frame.origin.y + value / 2)
+    animate(.PositionY, view.frame.origin.y + value / 2 as NSValue)
   }
 
   /**

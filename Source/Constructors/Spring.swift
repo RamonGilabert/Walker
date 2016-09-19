@@ -11,7 +11,7 @@ import UIKit
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func spring(_ view: UIView, delay: TimeInterval = 0, spring: CGFloat, friction: CGFloat,
+@discardableResult public func spring(_ view: UIView, delay: TimeInterval = 0, spring: CGFloat, friction: CGFloat,
   mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .spring, animations: (Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([view], delay, spring, friction, mass, tolerance, kind)
@@ -33,7 +33,7 @@ public func spring(_ view: UIView, delay: TimeInterval = 0, spring: CGFloat, fri
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func spring(_ firstView: UIView, _ secondView: UIView,
+@discardableResult public func spring(_ firstView: UIView, _ secondView: UIView,
   delay: TimeInterval = 0, spring: CGFloat, friction: CGFloat,
   mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .spring, animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -56,7 +56,7 @@ public func spring(_ firstView: UIView, _ secondView: UIView,
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func spring(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
+@discardableResult public func spring(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
   delay: TimeInterval = 0, spring: CGFloat, friction: CGFloat,
   mass: CGFloat, tolerance: CGFloat = 0.0001, kind: Animation.Spring = .spring  , animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
@@ -68,7 +68,7 @@ public func spring(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIVie
     return builder.distillery
 }
 
-private func constructor(_ views: [UIView], _ delay: TimeInterval, _ spring: CGFloat,
+@discardableResult private func constructor(_ views: [UIView], _ delay: TimeInterval, _ spring: CGFloat,
   _ friction: CGFloat, _ mass: CGFloat, _ tolerance: CGFloat, _ calculation: Animation.Spring) -> (ingredients: [Ingredient], distillery: Distillery) {
     let distillery = Distillery()
     var ingredients: [Ingredient] = []
@@ -84,7 +84,7 @@ private func constructor(_ views: [UIView], _ delay: TimeInterval, _ spring: CGF
     return (ingredients: ingredients, distillery: distillery)
 }
 
-private func validate(_ distillery: Distillery) {
+@discardableResult private func validate(_ distillery: Distillery) {
   var shouldProceed = true
   distilleries.forEach {
     if let ingredients = $0.ingredients.first, let ingredient = ingredients.first , ingredient.finalValues.isEmpty {
