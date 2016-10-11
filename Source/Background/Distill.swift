@@ -12,21 +12,21 @@ class Distill {
 
   // MARK: - Cubic bezier
 
-  static func bezier(property: Animation.Property, bezierPoints: [Float], duration: NSTimeInterval, options: [Animation.Options]) -> CAKeyframeAnimation {
+  static func bezier(_ property: Animation.Property, bezierPoints: [Float], duration: TimeInterval, options: [Animation.Options]) -> CAKeyframeAnimation {
     let animation = CAKeyframeAnimation(keyPath: property.rawValue)
     animation.duration = duration
-    animation.removedOnCompletion = false
+    animation.isRemovedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
-    animation.additive = false
-    animation.cumulative = false
+    animation.isAdditive = false
+    animation.isCumulative = false
     animation.timingFunction = CAMediaTimingFunction(controlPoints:
       bezierPoints[0], bezierPoints[1], bezierPoints[2], bezierPoints[3])
 
     options.forEach { option in
       switch option {
-      case .Reverse :
+      case .reverse :
         animation.autoreverses = true
-      case let .Repeat(t):
+      case let .repeat(t):
         animation.repeatCount = t
       }
     }
@@ -36,15 +36,15 @@ class Distill {
 
   // MARK: - Spring
 
-  static func spring(property: Animation.Property, type: Animation.Spring) -> CAKeyframeAnimation {
+  static func spring(_ property: Animation.Property, type: Animation.Spring) -> CAKeyframeAnimation {
     let animation = CAKeyframeAnimation(keyPath: property.rawValue)
-    animation.removedOnCompletion = false
+    animation.isRemovedOnCompletion = false
     animation.fillMode = kCAFillModeForwards
 
     return animation
   }
 
-  func calculateSpring(property: Animation.Property, finalValue: NSValue,
+  func calculateSpring(_ property: Animation.Property, finalValue: NSValue,
     layer: CALayer, type: Animation.Spring,
     spring: (spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat)) -> [NSValue] {
 
@@ -64,7 +64,7 @@ class Distill {
       springEnded = false
       springTiming = 0
 
-      for (index, element) in initialArray.enumerate() {
+      for (index, element) in initialArray.enumerated() {
         distances.append(finalArray[index] - element)
         increments.append(abs(distances[index]) * tolerance)
         proposedValues.append(0)
@@ -73,11 +73,11 @@ class Distill {
 
       while !springEnded {
         springEnded = true
-        for (index, element) in initialArray.enumerate() {
+        for (index, element) in initialArray.enumerated() {
           guard element != 0 else { continue }
           proposedValues[index] = initialArray[index] + (distances[index] - springPosition(distances[index], time: springTiming, from: element))
 
-          if type == .Bounce && proposedValues[index] >= finalArray[index] {
+          if type == .bounce && proposedValues[index] >= finalArray[index] {
             proposedValues[index] = (finalArray[index] * 2) - proposedValues[index]
           }
 
@@ -94,13 +94,13 @@ class Distill {
 
         switch property {
         case .PositionX, .PositionY, .Width, .Height, .CornerRadius, .Opacity:
-          value = stepValues[0]
+          value = stepValues[0] as NSValue
         case .Origin:
-          value = NSValue(CGPoint: CGPoint(x: stepValues[0], y: stepValues[1]))
+          value = NSValue(cgPoint: CGPoint(x: stepValues[0], y: stepValues[1]))
         case .Size:
-          value = NSValue(CGSize: CGSize(width: stepValues[0], height: stepValues[1]))
+          value = NSValue(cgSize: CGSize(width: stepValues[0], height: stepValues[1]))
         case .Frame:
-          value = NSValue(CGRect: CGRect(x: stepValues[0], y: stepValues[1], width: stepValues[2], height: stepValues[3]))
+          value = NSValue(cgRect: CGRect(x: stepValues[0], y: stepValues[1], width: stepValues[2], height: stepValues[3]))
         case .Transform:
           var transform = CATransform3DIdentity
           transform.m11 = stepValues[0]
@@ -119,7 +119,7 @@ class Distill {
           transform.m42 = stepValues[13]
           transform.m43 = stepValues[14]
           transform.m44 = stepValues[15]
-          value = NSValue(CATransform3D: transform)
+          value = NSValue(caTransform3D: transform)
         }
 
         finalValues.append(value)
@@ -129,7 +129,7 @@ class Distill {
       return finalValues
   }
 
-  private func springPosition(distance: CGFloat, time: CFTimeInterval, from: CGFloat) -> CGFloat {
+  fileprivate func springPosition(_ distance: CGFloat, time: CFTimeInterval, from: CGFloat) -> CGFloat {
     let gamma = friction / (2 * mass)
     let angularVelocity = sqrt((spring / mass) - pow(gamma, 2)) * 4
     let position = exp(-gamma * CGFloat(time) * 5) * distance * cos(angularVelocity * CGFloat(time))
@@ -137,7 +137,7 @@ class Distill {
     return position
   }
   
-  private func springStatusEnded(previous: CGFloat, proposed: CGFloat, to: CGFloat, increment: CGFloat) -> Bool {
+  fileprivate func springStatusEnded(_ previous: CGFloat, proposed: CGFloat, to: CGFloat, increment: CGFloat) -> Bool {
     return abs(proposed - previous) <= increment && abs(previous - to) <= increment
   }
 }

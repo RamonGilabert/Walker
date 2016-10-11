@@ -1,171 +1,171 @@
 import UIKit
 
-public class Ingredient: Equatable {
+open class Ingredient: Equatable {
 
   internal enum Kind {
-    case Bezier, Spring
+    case bezier, spring
   }
 
   /**
    Changes the opacity of the layer.
    */
-  public var alpha: CGFloat {
+  open var alpha: CGFloat {
     didSet { alpha(alpha) }
   }
 
   /**
    Changes the x position in the anchor point (0, 0).
    */
-  public var x: CGFloat {
+  open var x: CGFloat {
     didSet { x(x) }
   }
 
   /**
    Changes the y position in the anchor point (0, 0).
    */
-  public var y: CGFloat {
+  open var y: CGFloat {
     didSet { y(y) }
   }
 
   /**
    Changes the width of the layer.
    */
-  public var width: CGFloat {
+  open var width: CGFloat {
     didSet { width(width) }
   }
 
   /**
    Changes the height of the layer.
    */
-  public var height: CGFloat {
+  open var height: CGFloat {
     didSet { height(height) }
   }
 
   /**
    Changes the origin of the view in the anchor point (0, 0)
    */
-  public var origin: CGPoint {
+  open var origin: CGPoint {
     didSet { origin(origin.x, origin.y) }
   }
 
   /**
    Changes the size of the view.
    */
-  public var size: CGSize {
+  open var size: CGSize {
     didSet { size(size.width, size.height) }
   }
 
   /**
    Changes the frame of the view.
    */
-  public var frame: CGRect {
+  open var frame: CGRect {
     didSet { frame(frame.origin.x, frame.origin.y, frame.width, frame.height) }
   }
 
   /**
    Changes the cornerRadius of the layer.
    */
-  public var radius: CGFloat {
+  open var radius: CGFloat {
     didSet { radius(radius) }
   }
 
   /**
    Apply a transform value, can be any `CGAffineTransform`.
    */
-  public var transform: CGAffineTransform {
+  open var transform: CGAffineTransform {
     didSet { transform(transform) }
   }
 
   /**
    Apply a transform value, can be any `CATransform3D`.
    */
-  public var transform3D: CATransform3D {
+  open var transform3D: CATransform3D {
     didSet { transform3D(transform3D) }
   }
 
   /**
    Changes the opacity of the layer.
    */
-  public func alpha(value: CGFloat) {
-    animate(.Opacity, value)
+  open func alpha(_ value: CGFloat) {
+    animate(.Opacity, value as NSValue)
   }
 
   /**
    Changes the x position in the anchor point (0, 0).
    */
-  public func x(value: CGFloat) {
-    animate(.PositionX, value + view.frame.width / 2)
+  open func x(_ value: CGFloat) {
+    animate(.PositionX, value + view.frame.width / 2 as NSValue)
   }
 
   /**
    Changes the y position in the anchor point (0, 0).
    */
-  public func y(value: CGFloat) {
-    animate(.PositionY, value + view.frame.height / 2)
+  open func y(_ value: CGFloat) {
+    animate(.PositionY, value + view.frame.height / 2 as NSValue)
   }
 
   /**
    Changes the width of the layer.
    */
-  public func width(value: CGFloat) {
-    animate(.Width, value)
-    animate(.PositionX, view.frame.origin.x + value / 2)
+  open func width(_ value: CGFloat) {
+    animate(.Width, value as NSValue)
+    animate(.PositionX, view.frame.origin.x + value / 2 as NSValue)
   }
 
   /**
    Changes the height of the layer.
    */
-  public func height(value: CGFloat) {
-    animate(.Height, value)
-    animate(.PositionY, view.frame.origin.y + value / 2)
+  open func height(_ value: CGFloat) {
+    animate(.Height, value as NSValue)
+    animate(.PositionY, view.frame.origin.y + value / 2 as NSValue)
   }
 
   /**
    Changes the origin of the view in the anchor point (0, 0)
    */
-  public func origin(x: CGFloat, _ y: CGFloat) {
-    animate(.Origin, NSValue(CGPoint: CGPoint(x: x + view.frame.width / 2, y: y + view.frame.height / 2)))
+  open func origin(_ x: CGFloat, _ y: CGFloat) {
+    animate(.Origin, NSValue(cgPoint: CGPoint(x: x + view.frame.width / 2, y: y + view.frame.height / 2)))
   }
 
   /**
    Changes the size of the view.
    */
-  public func size(width: CGFloat, _ height: CGFloat) {
-    animate(.Size, NSValue(CGSize: CGSize(width: width, height: height)))
-    animate(.Origin, NSValue(CGPoint: CGPoint(x: view.frame.origin.x + width / 2, y: view.frame.origin.y + height / 2)))
+  open func size(_ width: CGFloat, _ height: CGFloat) {
+    animate(.Size, NSValue(cgSize: CGSize(width: width, height: height)))
+    animate(.Origin, NSValue(cgPoint: CGPoint(x: view.frame.origin.x + width / 2, y: view.frame.origin.y + height / 2)))
   }
 
   /**
    Changes the frame of the view.
    */
-  public func frame(x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
-    animate(.Size, NSValue(CGSize: CGSize(width: width, height: height)))
-    animate(.Origin, NSValue(CGPoint: CGPoint(x: x + width / 2, y: y + height / 2)))
+  open func frame(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
+    animate(.Size, NSValue(cgSize: CGSize(width: width, height: height)))
+    animate(.Origin, NSValue(cgPoint: CGPoint(x: x + width / 2, y: y + height / 2)))
   }
 
   /**
    Changes the cornerRadius of the layer.
    */
-  public func radius(value: CGFloat) {
-    animate(.CornerRadius, value)
+  open func radius(_ value: CGFloat) {
+    animate(.CornerRadius, value as NSValue)
   }
 
   /**
    Apply a transform value, can be any `CGAffineTransform`.
    */
-  public func transform(value: CGAffineTransform) {
-    animate(.Transform, NSValue(CATransform3D: CATransform3DMakeAffineTransform(value)))
+  open func transform(_ value: CGAffineTransform) {
+    animate(.Transform, NSValue(caTransform3D: CATransform3DMakeAffineTransform(value)))
   }
 
   /**
    Apply a transform value, can be any `CATransform3D`.
    */
-  public func transform3D(value: CATransform3D) {
-    animate(.Transform, NSValue(CATransform3D: value))
+  open func transform3D(_ value: CATransform3D) {
+    animate(.Transform, NSValue(caTransform3D: value))
   }
 
   internal let view: UIView
-  internal let duration: NSTimeInterval
+  internal let duration: TimeInterval
   internal let curve: Animation.Curve
   internal let kind: Kind
   internal let calculation: Animation.Spring
@@ -177,15 +177,15 @@ public class Ingredient: Equatable {
   var springs: [(spring: CGFloat, friction: CGFloat, mass: CGFloat, tolerance: CGFloat)] = []
   var distillery: Distillery
 
-  init(distillery: Distillery, view: UIView, duration: NSTimeInterval,
+  init(distillery: Distillery, view: UIView, duration: TimeInterval,
     curve: Animation.Curve, options: [Animation.Options]) {
 
       self.distillery = distillery
       self.view = view
       self.duration = duration
       self.curve = curve
-      self.kind = .Bezier
-      self.calculation = .Spring
+      self.kind = .bezier
+      self.calculation = .spring
       self.options = options
       self.spring = (0, 0, 0, 0)
       self.alpha = view.alpha
@@ -207,8 +207,8 @@ public class Ingredient: Equatable {
       self.distillery = distillery
       self.view = view
       self.duration = 0
-      self.curve = .Linear
-      self.kind = .Spring
+      self.curve = .linear
+      self.kind = .spring
       self.calculation = calculation
       self.options = options
       self.spring = (spring, friction, mass, tolerance)
@@ -225,15 +225,15 @@ public class Ingredient: Equatable {
       self.transform3D = view.layer.transform
   }
 
-  func animate(property: Animation.Property, _ value: NSValue) {
+  func animate(_ property: Animation.Property, _ value: NSValue) {
     var animation = CAKeyframeAnimation()
 
-    if kind == .Bezier {
+    if kind == .bezier {
       animation = Distill.bezier(property, bezierPoints: Animation.points(curve), duration: duration, options: options)
       animation.values = [value]
       animation.delegate = distillery
     } else {
-      animation = Distill.spring(property, type: .Spring)
+      animation = Distill.spring(property, type: .spring)
       animation.delegate = distillery
     }
 

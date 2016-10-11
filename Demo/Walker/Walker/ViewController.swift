@@ -11,24 +11,24 @@ class ViewController: UIViewController {
 
   struct Colors {
     static let mainColor = UIColor(red:0.04, green:0.57, blue:0.97, alpha:1)
-    static let views = UIColor.whiteColor()
+    static let views = UIColor.white
   }
 
   lazy var animationButton: UIButton = {
     let button = UIButton()
     button.layer.cornerRadius = 1.5
-    button.layer.borderColor = UIColor.whiteColor().CGColor
+    button.layer.borderColor = UIColor.white.cgColor
     button.layer.borderWidth = 1.5
-    button.setTitle("Start animations".uppercaseString, forState: .Normal)
-    button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-    button.addTarget(self, action: "animationButtonDidPress:", forControlEvents: .TouchUpInside)
-    button.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
+    button.setTitle("Start animations".uppercased(), for: UIControlState())
+    button.setTitleColor(UIColor.white, for: UIControlState())
+    button.addTarget(self, action: #selector(ViewController.animationButtonDidPress(_:)), for: .touchUpInside)
+    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
 
     return button
   }()
 
-  let totalWidth = UIScreen.mainScreen().bounds.width
-  let totalHeight = UIScreen.mainScreen().bounds.height
+  let totalWidth = UIScreen.main.bounds.width
+  let totalHeight = UIScreen.main.bounds.height
   var views: [UIView] = []
 
   override func viewDidLoad() {
@@ -45,10 +45,10 @@ class ViewController: UIViewController {
 
   // MARK: - Actions
 
-  func animationButtonDidPress(button: UIButton) {
+  func animationButtonDidPress(_ button: UIButton) {
     let finalValue = views.first?.frame.origin.x == 25 ? totalWidth - Dimensions.viewSize - 25 : 25
 
-    for (index, view) in views.enumerate() {
+    for (index, view) in views.enumerated() {
 
       switch index {
       case 0:
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
           $0.alpha = 1
         }
       case 3:
-        animate(view, duration: 1, curve: .Bezier(1, 0.4, 1, 0.5)) {
+        animate(view, duration: 1, curve: .bezier(1, 0.4, 1, 0.5)) {
           $0.x = finalValue
         }
       case 4:
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
           $0.x = finalValue
         }
       default:
-        animate(view, curve: .EaseInOut) {
+        animate(view, curve: .easeInOut) {
           $0.x = finalValue
         }
       }
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
 
   // MARK: - Configuration
 
-  func setupViews(count: Int) {
+  func setupViews(_ count: Int) {
     for index in 0..<count {
       let view = UIView()
       view.frame = CGRect(
@@ -111,7 +111,7 @@ class ViewController: UIViewController {
 
   // MARK: - UIStatusBar methods
 
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return .LightContent
+  override var preferredStatusBarStyle : UIStatusBarStyle {
+    return .lightContent
   }
 }

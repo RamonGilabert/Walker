@@ -10,10 +10,10 @@ import UIKit
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
-  curve: Animation.Curve = .Linear,
+@discardableResult public func animate(_ view: UIView, delay: TimeInterval = 0, duration: TimeInterval = 0.35,
+  curve: Animation.Curve = .linear,
   options: [Animation.Options] = [],
-  animations: Ingredient -> Void) -> Distillery {
+  animations: (Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([view], delay, duration, curve, options)
     animations(builder.ingredient[0])
@@ -33,9 +33,9 @@ public func animate(view: UIView, delay: NSTimeInterval = 0, duration: NSTimeInt
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(firstView: UIView, _ secondView: UIView,
-  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
-  curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+@discardableResult public func animate(_ firstView: UIView, _ secondView: UIView,
+  delay: TimeInterval = 0, duration: TimeInterval = 0.35,
+  curve: Animation.Curve = .linear, options: [Animation.Options] = [],
   animations: (Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView], delay, duration, curve, options)
@@ -56,9 +56,9 @@ public func animate(firstView: UIView, _ secondView: UIView,
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
-  delay: NSTimeInterval = 0, duration: NSTimeInterval = 0.35,
-  curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+@discardableResult public func animate(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
+  delay: TimeInterval = 0, duration: TimeInterval = 0.35,
+  curve: Animation.Curve = .linear, options: [Animation.Options] = [],
   animations: (Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView, thirdView], delay, duration, curve, options)
@@ -79,9 +79,9 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 
  - Returns: A series of ingredients that you can configure with all the animatable properties.
  */
-public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
-  _ fourthView: UIView, duration: NSTimeInterval = 0.35,
-  delay: NSTimeInterval = 0, curve: Animation.Curve = .Linear, options: [Animation.Options] = [],
+@discardableResult public func animate(_ firstView: UIView, _ secondView: UIView, _ thirdView: UIView,
+  _ fourthView: UIView, duration: TimeInterval = 0.35,
+  delay: TimeInterval = 0, curve: Animation.Curve = .linear, options: [Animation.Options] = [],
   animations: (Ingredient, Ingredient, Ingredient, Ingredient) -> Void) -> Distillery {
 
     let builder = constructor([firstView, secondView, thirdView, fourthView], delay, duration, curve, options)
@@ -94,8 +94,8 @@ public func animate(firstView: UIView, _ secondView: UIView, _ thirdView: UIView
 
 // MARK: - Private helpers
 
-private func constructor(views: [UIView], _ delay: NSTimeInterval,
-  _ duration: NSTimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (ingredient: [Ingredient], distillery: Distillery) {
+private func constructor(_ views: [UIView], _ delay: TimeInterval,
+  _ duration: TimeInterval, _ curve: Animation.Curve, _ options: [Animation.Options]) -> (ingredient: [Ingredient], distillery: Distillery) {
 
     let distillery = Distillery()
     var ingredients: [Ingredient] = []
@@ -110,10 +110,10 @@ private func constructor(views: [UIView], _ delay: NSTimeInterval,
     return (ingredient: ingredients, distillery: distillery)
 }
 
-private func validate(distillery: Distillery) {
+private func validate(_ distillery: Distillery) {
   var shouldProceed = true
   distilleries.forEach {
-    if let ingredients = $0.ingredients.first, ingredient = ingredients.first where ingredient.finalValues.isEmpty {
+    if let ingredients = $0.ingredients.first, let ingredient = ingredients.first , ingredient.finalValues.isEmpty {
       shouldProceed = false
       return
     }

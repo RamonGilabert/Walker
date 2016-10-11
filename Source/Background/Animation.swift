@@ -3,22 +3,22 @@ import UIKit
 public struct Animation {
   
   public enum Curve {
-    case Linear
-    case Ease
-    case EaseIn
-    case EaseOut
-    case EaseInOut
-    case Bezier(Float, Float, Float, Float)
+    case linear
+    case ease
+    case easeIn
+    case easeOut
+    case easeInOut
+    case bezier(Float, Float, Float, Float)
   }
 
   public enum Options {
-    case Reverse
-    case Repeat(Float)
+    case reverse
+    case `repeat`(Float)
   }
 
   public enum Spring {
-    case Spring
-    case Bounce
+    case spring
+    case bounce
   }
 
   public enum Property: String {
@@ -34,49 +34,49 @@ public struct Animation {
     case Transform = "transform"
   }
 
-  static func points(curve: Curve) -> [Float] {
+  static func points(_ curve: Curve) -> [Float] {
     switch curve {
-    case .Linear:
+    case .linear:
       return [0, 0, 1, 1]
-    case .Ease:
+    case .ease:
       return [0.25, 0.1, 0.25, 1]
-    case .EaseIn:
+    case .easeIn:
       return [0.42, 0, 1, 1]
-    case .EaseOut:
+    case .easeOut:
       return [0, 0, 0.58, 1]
-    case .EaseInOut:
+    case .easeInOut:
       return [0.42, 0, 0.58, 1]
-    case let .Bezier(x, y, z, p):
+    case let .bezier(x, y, z, p):
       return [x, y, z, p]
     }
   }
 
-  static func propertyValue(property: Property, layer: CALayer) -> NSValue {
+  static func propertyValue(_ property: Property, layer: CALayer) -> NSValue {
     switch property {
     case .PositionX:
-      return layer.position.x
+      return layer.position.x as NSValue
     case .PositionY:
-      return layer.position.y
+      return layer.position.y as NSValue
     case .Opacity:
-      return layer.opacity
+      return layer.opacity as NSValue
     case .Origin:
-      return NSValue(CGPoint: layer.position)
+      return NSValue(cgPoint: layer.position)
     case .Width:
-      return layer.bounds.width
+      return layer.bounds.width as NSValue
     case .Height:
-      return layer.bounds.height
+      return layer.bounds.height as NSValue
     case .Size:
-      return NSValue(CGSize: layer.bounds.size)
+      return NSValue(cgSize: layer.bounds.size)
     case .Frame:
-      return NSValue(CGRect: layer.frame)
+      return NSValue(cgRect: layer.frame)
     case .CornerRadius:
-      return layer.cornerRadius
+      return layer.cornerRadius as NSValue
     case .Transform:
-      return NSValue(CATransform3D: layer.transform)
+      return NSValue(caTransform3D: layer.transform)
     }
   }
 
-  static func values(property: Property, to: NSValue, layer: CALayer) -> (finalValue: [CGFloat], initialValue: [CGFloat]) {
+  static func values(_ property: Property, to: NSValue, layer: CALayer) -> (finalValue: [CGFloat], initialValue: [CGFloat]) {
     switch property {
     case .PositionX:
       guard let to = to as? CGFloat else { return ([0], [layer.position.x]) }
@@ -88,28 +88,28 @@ public struct Animation {
       guard let to = to as? CGFloat else { return ([1], [1]) }
       return ([to], [CGFloat(layer.opacity)])
     case .Origin:
-      return ([to.CGPointValue().x, to.CGPointValue().y], [layer.position.x, layer.position.y])
+      return ([to.cgPointValue.x, to.cgPointValue.y], [layer.position.x, layer.position.y])
     case .Width:
-      return ([to.CGSizeValue().width], [layer.bounds.width])
+      return ([to.cgSizeValue.width], [layer.bounds.width])
     case .Height:
-      return ([to.CGSizeValue().height], [layer.bounds.height])
+      return ([to.cgSizeValue.height], [layer.bounds.height])
     case .Size:
-      return ([to.CGSizeValue().width, to.CGSizeValue().height], [layer.bounds.width, layer.bounds.height])
+      return ([to.cgSizeValue.width, to.cgSizeValue.height], [layer.bounds.width, layer.bounds.height])
     case .Frame:
-      return ([to.CGRectValue().origin.x, to.CGRectValue().origin.y,
-        to.CGRectValue().size.width, to.CGRectValue().size.height],
+      return ([to.cgRectValue.origin.x, to.cgRectValue.origin.y,
+        to.cgRectValue.size.width, to.cgRectValue.size.height],
         [layer.position.x, layer.position.y, layer.frame.size.width, layer.frame.size.height])
     case .CornerRadius:
       return ([to as! CGFloat], [layer.cornerRadius])
     case .Transform:
-      return ([to.CATransform3DValue.m11, to.CATransform3DValue.m12,
-        to.CATransform3DValue.m13, to.CATransform3DValue.m14,
-        to.CATransform3DValue.m21, to.CATransform3DValue.m22,
-        to.CATransform3DValue.m23, to.CATransform3DValue.m24,
-        to.CATransform3DValue.m31, to.CATransform3DValue.m32,
-        to.CATransform3DValue.m33, to.CATransform3DValue.m34,
-        to.CATransform3DValue.m41, to.CATransform3DValue.m42,
-        to.CATransform3DValue.m43, to.CATransform3DValue.m44],
+      return ([to.caTransform3DValue.m11, to.caTransform3DValue.m12,
+        to.caTransform3DValue.m13, to.caTransform3DValue.m14,
+        to.caTransform3DValue.m21, to.caTransform3DValue.m22,
+        to.caTransform3DValue.m23, to.caTransform3DValue.m24,
+        to.caTransform3DValue.m31, to.caTransform3DValue.m32,
+        to.caTransform3DValue.m33, to.caTransform3DValue.m34,
+        to.caTransform3DValue.m41, to.caTransform3DValue.m42,
+        to.caTransform3DValue.m43, to.caTransform3DValue.m44],
 
         [layer.transform.m11, layer.transform.m12, layer.transform.m13,
           layer.transform.m14, layer.transform.m21, layer.transform.m22,
