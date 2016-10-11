@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/Walker.svg?style=flat)](http://cocoadocs.org/docsets/Walker)
 [![Platform](https://img.shields.io/cocoapods/p/Walker.svg?style=flat)](http://cocoadocs.org/docsets/Walker)
 [![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/Walker.svg?style=flat)](http://cocoadocs.org/docsets/Walker)
-![Swift](https://img.shields.io/badge/%20in-swift%202.2-orange.svg)
+![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
 
 ## The story
 
