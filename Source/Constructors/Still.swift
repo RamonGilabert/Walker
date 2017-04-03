@@ -7,7 +7,7 @@ import UIKit
  - Parameter view: The view you want to apply the animation to.
  - Parameter key: An optional key to put in the animation.
  */
-@discardableResult public func distill(_ sets: (animation: CAKeyframeAnimation, final: NSValue)..., view: UIView, key: String? = nil) {
+public func distill(_ sets: (animation: CAKeyframeAnimation, final: NSValue)..., view: UIView, key: String? = nil) {
 
   for set in sets {
     guard let keyPath = set.animation.keyPath, let property = Animation.Property(rawValue: keyPath),
