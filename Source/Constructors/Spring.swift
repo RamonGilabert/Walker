@@ -84,7 +84,7 @@ import UIKit
     return (ingredients: ingredients, distillery: distillery)
 }
 
-@discardableResult private func validate(_ distillery: Distillery) {
+private func validate(_ distillery: Distillery) {
   var shouldProceed = true
   distilleries.forEach {
     if let ingredients = $0.ingredients.first, let ingredient = ingredients.first , ingredient.finalValues.isEmpty {
